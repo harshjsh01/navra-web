@@ -25,13 +25,12 @@ export default function NavigationHUD() {
       >
         <Link href="/" className="flex items-center gap-3 group">
           <div className="w-10 h-10 rounded-full overflow-hidden border border-white/20 bg-gradient-to-tr from-blue-600 via-cyan-400 to-sky-300 p-[1.5px] shadow-lg group-hover:scale-105 transition-transform">
-             <div className="w-full h-full bg-[#020C1B] rounded-full flex items-center justify-center p-1.5">
-                <img src="/navra_text.png" alt="NAVRA" className="w-full h-full object-contain" />
+             <div className="w-full h-full bg-[#020C1B] rounded-full flex items-center justify-center p-1">
+                <img src="/NAVRA.png" alt="NAVRA Logo" className="w-full h-full object-contain" />
              </div>
           </div>
-          <div className="flex flex-col">
-            <span className="font-serif text-sm tracking-[0.2em] font-bold text-white group-hover:text-cyan-300 transition-colors">NAVRA</span>
-            <span className="font-mono text-[9px] tracking-widest text-cyan-400 uppercase font-semibold">Studio</span>
+          <div className="flex items-center">
+            <img src="/NAVRA text.png" alt="NAVRA Studio" className="h-7 w-auto object-contain brightness-110 group-hover:brightness-125 transition-all" />
           </div>
         </Link>
 
