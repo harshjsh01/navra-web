@@ -24,19 +24,19 @@ export default function NavigationHUD() {
         className="w-full max-w-5xl px-6 py-3 flex items-center justify-between rounded-full glass-hud shadow-2xl transition-all duration-300"
       >
         <Link href="/" className="flex items-center gap-3 group">
-          <div className="w-10 h-10 rounded-full overflow-hidden border border-white/20 bg-gradient-to-tr from-blue-600 to-cyan-400 p-[1px] shadow-lg group-hover:scale-105 transition-transform">
-             <div className="w-full h-full bg-[#020C1B] rounded-full flex items-center justify-center p-1">
+          <div className="w-10 h-10 rounded-full overflow-hidden border border-white/25 bg-gradient-to-tr from-pink-500 via-purple-500 to-amber-400 p-[1.5px] shadow-lg group-hover:scale-105 transition-transform">
+             <div className="w-full h-full bg-[#0B032D] rounded-full flex items-center justify-center p-1">
                 <img src="/navra_logo_perfect.png" alt="NAVRA" className="w-full h-full object-contain" />
              </div>
           </div>
           <div className="flex flex-col">
-            <span className="font-serif text-sm tracking-[0.2em] font-bold text-white group-hover:text-cyan-300 transition-colors">NAVRA</span>
-            <span className="font-mono text-[9px] tracking-widest text-cyan-400 uppercase">Studio</span>
+            <span className="font-serif text-sm tracking-[0.2em] font-bold text-white group-hover:text-pink-300 transition-colors">NAVRA</span>
+            <span className="font-mono text-[9px] tracking-widest text-pink-400 uppercase font-semibold">Studio</span>
           </div>
         </Link>
 
         {/* Desktop Nav */}
-        <div className="hidden lg:flex items-center gap-2">
+        <div className="hidden lg:flex items-center gap-1.5 bg-black/20 p-1 rounded-full border border-white/10">
           {NAV_ITEMS.map((item) => {
             const isActive = pathname === item.href;
             const Icon = item.icon;
@@ -44,11 +44,11 @@ export default function NavigationHUD() {
               <Link
                 key={item.href}
                 href={item.href}
-                className={`relative px-4 py-2 rounded-full text-xs font-medium tracking-wide transition-colors flex items-center gap-2 ${
-                  isActive ? 'text-white bg-white/10' : 'text-slate-400 hover:text-white hover:bg-white/5'
+                className={`relative px-4 py-2 rounded-full text-xs font-medium tracking-wide transition-all duration-200 flex items-center gap-2 ${
+                  isActive ? 'text-white bg-gradient-to-r from-pink-500/30 to-purple-600/30 border border-pink-500/40 shadow-sm' : 'text-slate-300 hover:text-white hover:bg-white/10'
                 }`}
               >
-                <Icon className={`w-3.5 h-3.5 ${isActive ? 'text-cyan-400' : ''}`} />
+                <Icon className={`w-3.5 h-3.5 ${isActive ? 'text-pink-400' : ''}`} />
                 {item.name}
               </Link>
             );
