@@ -1,15 +1,12 @@
 @import "tailwindcss";
 
-@theme {
-  --color-ink-violet: #0B0813;
-  --color-prismatic-purple: #9D4EDD;
-  --color-electric-ultraviolet: #7B2CBF;
-  --color-stage-crimson: #E0115F;
-}
-
 :root {
-  --background: #0B0813;
-  --foreground: #ffffff;
+  --background: #020C1B;
+  --foreground: #F8FAFC;
+  --gradient-speed: 15s;
+  --gradient-color-1: #1D4ED8;
+  --gradient-color-2: #0EA5E9;
+  --gradient-color-3: #020C1B;
 }
 
 body {
@@ -17,5 +14,80 @@ body {
   color: var(--foreground);
   margin: 0;
   padding: 0;
-  overflow: hidden; /* For full screen 3D canvas */
+  overflow-x: hidden;
+}
+
+/* CSS Animated Gradient Mesh */
+.gradient-mesh {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+  background-color: var(--background);
+  z-index: -10;
+  filter: blur(100px);
+  pointer-events: none;
+}
+
+.gradient-blob {
+  position: absolute;
+  border-radius: 50%;
+  mix-blend-mode: screen;
+  transition: background-color 2s ease-in-out;
+  transform: translate3d(0, 0, 0); /* GPU Acceleration */
+}
+
+.blob-1 {
+  width: 60vw;
+  height: 60vw;
+  top: -10%;
+  left: -10%;
+  background-color: var(--gradient-color-1);
+  animation: moveBlob1 var(--gradient-speed) infinite alternate ease-in-out;
+}
+
+.blob-2 {
+  width: 70vw;
+  height: 70vw;
+  top: 40%;
+  left: 40%;
+  background-color: var(--gradient-color-2);
+  animation: moveBlob2 var(--gradient-speed) infinite alternate-reverse ease-in-out;
+}
+
+.blob-3 {
+  width: 50vw;
+  height: 50vw;
+  top: 10%;
+  right: -10%;
+  background-color: var(--gradient-color-3);
+  animation: moveBlob3 var(--gradient-speed) infinite alternate ease-in-out;
+}
+
+@keyframes moveBlob1 {
+  0% { transform: translate3d(0, 0, 0) scale(1); }
+  50% { transform: translate3d(20%, 30%, 0) scale(1.1); }
+  100% { transform: translate3d(-10%, 40%, 0) scale(0.9); }
+}
+
+@keyframes moveBlob2 {
+  0% { transform: translate3d(0, 0, 0) scale(1); }
+  50% { transform: translate3d(-30%, -20%, 0) scale(0.9); }
+  100% { transform: translate3d(-50%, 10%, 0) scale(1.1); }
+}
+
+@keyframes moveBlob3 {
+  0% { transform: translate3d(0, 0, 0) scale(1); }
+  50% { transform: translate3d(-40%, 20%, 0) scale(1.1); }
+  100% { transform: translate3d(-20%, -30%, 0) scale(1); }
+}
+
+/* Glass HUD Utility */
+.glass-hud {
+  background: rgba(2, 12, 27, 0.4);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
 }
