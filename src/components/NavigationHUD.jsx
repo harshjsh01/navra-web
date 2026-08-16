@@ -23,11 +23,11 @@ export default function NavigationHUD() {
       <nav 
         className="w-full max-w-5xl px-6 py-3 flex items-center justify-between rounded-full glass-hud shadow-2xl transition-all duration-300"
       >
-        <Link href="/" className="flex items-center group py-1">
+        <Link href="/" className="flex items-center group py-0.5">
           <img 
             src="/NAVRA text.png" 
             alt="NAVRA Studio" 
-            className="h-8 md:h-9 w-auto object-contain brightness-110 group-hover:brightness-125 group-hover:scale-105 transition-all duration-300 drop-shadow-[0_2px_8px_rgba(0,0,0,0.5)]" 
+            className="h-11 md:h-12 w-auto object-contain brightness-110 group-hover:brightness-125 group-hover:scale-105 transition-all duration-300 drop-shadow-[0_2px_10px_rgba(0,0,0,0.6)]" 
           />
         </Link>
 
