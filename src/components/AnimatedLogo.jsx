@@ -216,22 +216,22 @@ export default function AnimatedLogo() {
                   <rect width="931" height="544" fill="black" />
 
                   {/* Letter N Reveal Box */}
-                  <rect className="mask-letter-n" x="120" y="90" width="165" height="230" rx="8" fill="white" />
+                  <rect className="mask-letter-n" x="120" y="80" width="165" height="205" rx="4" fill="white" />
 
                   {/* Letter A1 Reveal Box */}
-                  <rect className="mask-letter-a1" x="270" y="90" width="165" height="230" rx="8" fill="white" />
+                  <rect className="mask-letter-a1" x="270" y="80" width="165" height="205" rx="4" fill="white" />
 
                   {/* Letter V Reveal Box */}
-                  <rect className="mask-letter-v" x="415" y="90" width="165" height="230" rx="8" fill="white" />
+                  <rect className="mask-letter-v" x="415" y="80" width="165" height="205" rx="4" fill="white" />
 
                   {/* Letter R Reveal Box */}
-                  <rect className="mask-letter-r" x="560" y="90" width="165" height="230" rx="8" fill="white" />
+                  <rect className="mask-letter-r" x="560" y="80" width="165" height="205" rx="4" fill="white" />
 
                   {/* Letter A2 Reveal Box */}
-                  <rect className="mask-letter-a2" x="700" y="90" width="165" height="230" rx="8" fill="white" />
+                  <rect className="mask-letter-a2" x="700" y="80" width="165" height="205" rx="4" fill="white" />
 
                   {/* "studio" Cursive Handwriting Reveal Strip */}
-                  <rect className="mask-studio" x="240" y="300" width="480" height="200" rx="4" fill="white" />
+                  <rect className="mask-studio" x="220" y="280" width="520" height="240" rx="4" fill="white" />
                 </mask>
               </defs>
 
