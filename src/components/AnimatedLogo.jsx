@@ -153,7 +153,7 @@ export default function AnimatedLogo() {
   }, []);
 
   return (
-    <div ref={containerRef} className="relative flex items-center justify-center w-full max-w-3xl mx-auto py-2">
+    <div ref={containerRef} className="relative flex items-center justify-center w-full max-w-xl mx-auto py-2">
       {/* 3D Interactive Stage */}
       <div
         ref={stageRef}
@@ -162,11 +162,11 @@ export default function AnimatedLogo() {
       >
         {/* Multi-Layered Electric Sapphire Aura */}
         <div
-          className="logo-glow-aura absolute -inset-14 rounded-full bg-gradient-to-tr from-blue-600/40 via-cyan-400/30 to-sky-300/15 blur-3xl pointer-events-none -z-10"
+          className="logo-glow-aura absolute -inset-10 rounded-full bg-gradient-to-tr from-blue-600/40 via-cyan-400/30 to-sky-300/15 blur-3xl pointer-events-none -z-10"
         />
 
-        {/* Increased Size Master Logo Lockup Container */}
-        <div className="relative w-84 sm:w-[460px] md:w-[540px] lg:w-[600px] aspect-[16/10] flex items-center justify-center">
+        {/* Master Logo Lockup Container */}
+        <div className="relative w-72 sm:w-84 md:w-96 aspect-[16/10] flex items-center justify-center">
           
           {/* Layer 1: The Three Men in the Back (Authentic source layer) */}
           <div className="three-man-layer absolute inset-0 flex items-center justify-center pointer-events-none z-10">
