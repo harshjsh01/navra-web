@@ -5,115 +5,150 @@ import gsap from 'gsap';
 
 export default function AnimatedLogo() {
   const containerRef = useRef(null);
+  const cardRef = useRef(null);
 
   useEffect(() => {
     const ctx = gsap.context(() => {
-      const tl = gsap.timeline();
+      const tl = gsap.timeline({
+        defaults: { ease: 'power3.out' }
+      });
 
-      // Draw the silhouette strokes
-      tl.to('.silhouette-path', {
-        strokeDashoffset: 0,
-        duration: 1.5,
-        ease: 'power2.inOut',
-        stagger: 0.1,
-      })
-      // Fill the silhouettes and drop shadow
-      .to('.silhouette-path', {
-        fill: '#080B1E', // Very dark navy
-        strokeOpacity: 0,
-        duration: 0.8,
-        filter: 'drop-shadow(0px 0px 15px rgba(37, 99, 235, 0.3))',
-        ease: 'power2.out',
-      }, "-=0.5")
-      // Draw NAVRA
-      .to('.navra-outline', {
-        strokeDashoffset: 0,
-        duration: 1.8,
-        stagger: 0.1,
-        ease: 'power3.inOut',
-      }, "-=0.5")
-      // Fill NAVRA
-      .to('.navra-outline', {
-        fill: '#F8FAFC',
-        strokeOpacity: 0,
-        duration: 1,
-        ease: 'power2.out',
-      }, "-=0.8")
-      // Draw studio
-      .to('.studio-outline', {
-        strokeDashoffset: 0,
-        duration: 1.5,
-        ease: 'power2.inOut',
-      }, "-=1.0")
-      // Fill studio
-      .to('.studio-outline', {
-        fill: '#E0E7FF',
-        strokeOpacity: 0,
-        duration: 0.8,
-        ease: 'power2.out',
-      }, "-=0.5");
+      // 1. Initial State
+      gsap.set('.logo-glow', { scale: 0.6, opacity: 0 });
+      gsap.set('.logo-silhouettes', { scale: 0.9, opacity: 0, y: 20 });
+      gsap.set('.logo-navra-wrap', { clipPath: 'polygon(0% 0%, 0% 0%, 0% 100%, 0% 100%)', opacity: 0 });
+      gsap.set('.logo-studio-wrap', { clipPath: 'polygon(0% 0%, 0% 0%, 0% 100%, 0% 100%)', opacity: 0 });
+      gsap.set('.logo-flare', { xPercent: -150, opacity: 0 });
 
+      // 2. Timeline Sequence
+      tl
+        // Ambient sapphire aura burst
+        .to('.logo-glow', {
+          scale: 1.2,
+          opacity: 0.7,
+          duration: 1.8,
+          ease: 'power2.out',
+        })
+        // Silhouettes smoothly emerge with depth
+        .to('.logo-silhouettes', {
+          scale: 1,
+          opacity: 1,
+          y: 0,
+          duration: 1.4,
+          ease: 'back.out(1.4)',
+        }, '-=1.2')
+        // NAVRA letters progressive left-to-right laser sweep
+        .to('.logo-navra-wrap', {
+          clipPath: 'polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%)',
+          opacity: 1,
+          duration: 1.5,
+          ease: 'power2.inOut',
+        }, '-=0.8')
+        // Light flare glints across the letters
+        .to('.logo-flare', {
+          xPercent: 250,
+          opacity: 0.9,
+          duration: 1.2,
+          ease: 'power2.inOut',
+        }, '-=1.1')
+        // "studio" handwritten cursive pen-trace from left to right
+        .to('.logo-studio-wrap', {
+          clipPath: 'polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%)',
+          opacity: 1,
+          duration: 1.2,
+          ease: 'power1.inOut',
+        }, '-=0.6')
+        // Settle glowing aura into an ambient breathing pulse
+        .to('.logo-glow', {
+          scale: 1.0,
+          opacity: 0.45,
+          duration: 1.0,
+        });
+
+      // Subtle ambient hover & 3D tilt tracking
+      const card = cardRef.current;
+      if (card) {
+        const handleMouseMove = (e) => {
+          const rect = card.getBoundingClientRect();
+          const x = (e.clientX - rect.left) / rect.width - 0.5;
+          const y = (e.clientY - rect.top) / rect.height - 0.5;
+          
+          gsap.to(card, {
+            rotationY: x * 15,
+            rotationX: -y * 15,
+            transformPerspective: 1000,
+            duration: 0.5,
+            ease: 'power2.out',
+          });
+        };
+
+        const handleMouseLeave = () => {
+          gsap.to(card, {
+            rotationY: 0,
+            rotationX: 0,
+            duration: 0.8,
+            ease: 'power2.out',
+          });
+        };
+
+        card.addEventListener('mousemove', handleMouseMove);
+        card.addEventListener('mouseleave', handleMouseLeave);
+
+        return () => {
+          card.removeEventListener('mousemove', handleMouseMove);
+          card.removeEventListener('mouseleave', handleMouseLeave);
+        };
+      }
     }, containerRef);
+
     return () => ctx.revert();
   }, []);
 
   return (
-    <div ref={containerRef} className="relative flex items-center justify-center w-full max-w-lg mx-auto p-4 aspect-video">
-      <svg
-        viewBox="0 0 500 300"
-        xmlns="http://www.w3.org/2000/svg"
-        className="w-full h-full overflow-visible drop-shadow-2xl"
+    <div ref={containerRef} className="relative flex items-center justify-center w-full max-w-xl mx-auto py-6">
+      {/* 3D Interactive Card Wrapper */}
+      <div 
+        ref={cardRef} 
+        className="relative flex items-center justify-center w-full cursor-pointer select-none"
+        style={{ transformStyle: 'preserve-3d' }}
       >
-        {/* Silhouette Figures Background */}
-        <g transform="translate(0, -20)">
-           {/* Center Figure */}
-           <circle className="silhouette-path" cx="250" cy="110" r="28" fill="none" stroke="#2563EB" strokeWidth="2" strokeDasharray="200" strokeDashoffset="200" />
-           <path className="silhouette-path" d="M 210 160 Q 250 140 290 160 L 310 260 L 190 260 Z" fill="none" stroke="#2563EB" strokeWidth="2" strokeDasharray="400" strokeDashoffset="400" />
-           
-           {/* Left Figure */}
-           <circle className="silhouette-path" cx="170" cy="125" r="24" fill="none" stroke="#2563EB" strokeWidth="2" strokeDasharray="200" strokeDashoffset="200" />
-           <path className="silhouette-path" d="M 100 170 Q 150 150 200 170 L 220 260 L 80 260 Z" fill="none" stroke="#2563EB" strokeWidth="2" strokeDasharray="400" strokeDashoffset="400" />
-           
-           {/* Right Figure */}
-           <circle className="silhouette-path" cx="330" cy="125" r="24" fill="none" stroke="#2563EB" strokeWidth="2" strokeDasharray="200" strokeDashoffset="200" />
-           <path className="silhouette-path" d="M 300 170 Q 350 150 400 170 L 420 260 L 280 260 Z" fill="none" stroke="#2563EB" strokeWidth="2" strokeDasharray="400" strokeDashoffset="400" />
-        </g>
+        {/* Dynamic Multi-Layer Glow */}
+        <div 
+          className="logo-glow absolute -inset-10 rounded-full bg-gradient-to-tr from-blue-600/40 via-cyan-500/20 to-transparent blur-3xl pointer-events-none -z-10"
+        />
 
-        {/* Text with GSAP Animation on Stroke */}
-        <g transform="translate(100, 195)">
-           <text 
-             className="navra-outline font-rye" 
-             x="0" 
-             y="0" 
-             fontSize="85" 
-             fontWeight="400"
-             letterSpacing="-1"
-             fill="none" 
-             stroke="#F8FAFC" 
-             strokeWidth="1.5" 
-             strokeDasharray="800" 
-             strokeDashoffset="800"
-           >
-             NAVRA
-           </text>
-        </g>
-        
-        <g transform="translate(195, 240)">
-           <text 
-             className="studio-outline font-great-vibes" 
-             x="0" 
-             y="0" 
-             fontSize="55" 
-             fill="none" 
-             stroke="#93C5FD" 
-             strokeWidth="1.5" 
-             strokeDasharray="500" 
-             strokeDashoffset="500"
-           >
-             studio
-           </text>
-        </g>
-      </svg>
+        {/* Outer Logo Container */}
+        <div className="relative w-72 sm:w-96 md:w-[420px] aspect-[4/3] flex items-center justify-center">
+          
+          {/* Layer 1: The Three Authentic Silhouettes */}
+          <img
+            src="/navra_sil_only.png"
+            alt="Navra Silhouettes"
+            className="logo-silhouettes absolute inset-0 w-full h-full object-contain filter drop-shadow-[0_0_25px_rgba(29,78,216,0.5)] z-10"
+          />
+
+          {/* Layer 2: The Authentic NAVRA Wordmark with Liquid Light Sweep */}
+          <div className="logo-navra-wrap absolute inset-0 w-full h-full z-20 overflow-hidden">
+            <img
+              src="/navra_text_only.png"
+              alt="NAVRA"
+              className="w-full h-full object-contain filter drop-shadow-[0_10px_25px_rgba(0,0,0,0.8)]"
+            />
+            {/* Shimmer Light Glint */}
+            <div className="logo-flare absolute inset-0 w-1/3 h-full bg-gradient-to-r from-transparent via-cyan-200/50 to-transparent transform -skew-x-25 pointer-events-none blur-sm" />
+          </div>
+
+          {/* Layer 3: The Authentic Studio Cursive Text with Stroke Reveal */}
+          <div className="logo-studio-wrap absolute inset-0 w-full h-full z-30 overflow-hidden">
+            <img
+              src="/navra_studio_hd.png"
+              alt="Studio Script"
+              className="w-full h-full object-contain filter drop-shadow-[0_4px_15px_rgba(56,189,248,0.6)]"
+            />
+          </div>
+
+        </div>
+      </div>
     </div>
   );
 }
