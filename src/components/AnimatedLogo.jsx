@@ -11,73 +11,84 @@ export default function AnimatedLogo() {
     const ctx = gsap.context(() => {
       const tl = gsap.timeline({ defaults: { ease: 'power3.out' } });
 
-      // 1. Initial State
+      // 1. Initial States
       gsap.set('.logo-glow-aura', { scale: 0.6, opacity: 0 });
-      gsap.set('.three-man-layer', { scale: 0.75, y: -40, opacity: 0 });
-      gsap.set('.navra-text-wrap', { clipPath: 'polygon(0% 0%, 0% 0%, 0% 100%, 0% 100%)', opacity: 0 });
-      gsap.set('.laser-tracer', { xPercent: -150, opacity: 0 });
+      gsap.set('.three-man-layer', { scale: 0.8, y: -35, opacity: 0 });
+      gsap.set('.letter-pop', { scale: 0, y: 45, opacity: 0 });
+      gsap.set('.studio-writing-wrap', { clipPath: 'polygon(0% 0%, 0% 0%, 0% 100%, 0% 100%)', opacity: 0 });
+      gsap.set('.pen-spark', { left: '10%', opacity: 0 });
       gsap.set('.shimmer-flare', { xPercent: -180, opacity: 0 });
 
-      // 2. SVGator Choreographed Animation Sequence
+      // 2. Choreographed Animation Timeline
       tl
-        // Phase 1: Electric Sapphire Aura Burst
+        // Phase 1: Electric Sapphire Ambient Glow
         .to('.logo-glow-aura', {
           scale: 1.25,
           opacity: 0.75,
-          duration: 1.2,
+          duration: 1.0,
           ease: 'power2.out',
         })
 
-        // Phase 2: The Three Figures drop in with elastic spring bounce
+        // Phase 2: Three Figures in the back drop & settle
         .to('.three-man-layer', {
           scale: 1,
           y: 0,
           opacity: 1,
-          duration: 1.0,
-          ease: 'elastic.out(1.15, 0.45)',
-        }, '-=0.9')
+          duration: 0.9,
+          ease: 'elastic.out(1.1, 0.5)',
+        }, '-=0.8')
 
-        // Phase 3: "NAVRA text" Progressive Left-to-Right Laser Sweep & Reveal
-        .to('.laser-tracer', {
+        // Phase 3: "N" -> "A" -> "V" -> "R" -> "A" Pop Up Sequentially
+        .to('.letter-pop', {
+          scale: 1,
+          y: 0,
           opacity: 1,
-          duration: 0.2,
+          duration: 0.55,
+          stagger: 0.12, // Distinct sequential pops: N, then A, then V, then R, then A
+          ease: 'back.out(2.0)',
         }, '-=0.4')
-        .to('.navra-text-wrap', {
+
+        // Phase 4: "studio" in speed like someone is writing
+        .to('.pen-spark', {
+          opacity: 1,
+          duration: 0.1,
+        }, '+=0.05')
+        .to('.studio-writing-wrap', {
           clipPath: 'polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%)',
           opacity: 1,
-          duration: 1.4,
-          ease: 'power2.inOut',
-        }, '-=0.3')
-        .to('.laser-tracer', {
-          xPercent: 240,
-          duration: 1.4,
-          ease: 'power2.inOut',
+          duration: 0.65, // Swift handwriting speed
+          ease: 'power1.inOut',
         }, '<')
-        .to('.laser-tracer', {
+        .to('.pen-spark', {
+          left: '90%',
+          duration: 0.65,
+          ease: 'power1.inOut',
+        }, '<')
+        .to('.pen-spark', {
           opacity: 0,
-          duration: 0.3,
+          duration: 0.2,
         })
 
-        // Phase 4: Liquid metallic shimmer flare sweeps across the letters
+        // Phase 5: Metallic Shimmer Glint across the finished lockup
         .to('.shimmer-flare', {
           xPercent: 220,
           opacity: 0.85,
-          duration: 1.2,
+          duration: 1.0,
           ease: 'power2.inOut',
-        }, '-=0.6')
+        }, '-=0.3')
         .to('.shimmer-flare', {
           opacity: 0,
-          duration: 0.3,
+          duration: 0.25,
         })
 
-        // Phase 5: Settle glow to subtle ambient breathing pulse
+        // Settle aura to gentle ambient breathing pulse
         .to('.logo-glow-aura', {
           scale: 1.0,
           opacity: 0.45,
           duration: 0.8,
         });
 
-      // 3. Interactive 3D Parallax & Hover Dynamics
+      // 3. Interactive 3D Parallax & Hover Wave
       const stage = stageRef.current;
       if (stage) {
         const handleMouseMove = (e) => {
@@ -93,14 +104,14 @@ export default function AnimatedLogo() {
             ease: 'power2.out',
           });
 
-          // Parallax layer depth separation
+          // Parallax depth separation
           gsap.to('.three-man-layer', {
-            x: -x * 14,
-            y: -y * 10,
+            x: -x * 12,
+            y: -y * 8,
             duration: 0.4,
             ease: 'power2.out',
           });
-          gsap.to('.navra-text-wrap', {
+          gsap.to('.letters-row, .studio-writing-wrap', {
             x: x * 8,
             y: y * 6,
             duration: 0.4,
@@ -116,10 +127,19 @@ export default function AnimatedLogo() {
             ease: 'power2.out',
           });
           gsap.to('.three-man-layer', { x: 0, y: 0, duration: 0.8, ease: 'power2.out' });
-          gsap.to('.navra-text-wrap', { x: 0, y: 0, duration: 0.8, ease: 'power2.out' });
+          gsap.to('.letters-row, .studio-writing-wrap', { x: 0, y: 0, duration: 0.8, ease: 'power2.out' });
         };
 
         const handleMouseEnter = () => {
+          // Playful ripple wave across the letters on hover
+          gsap.to('.letter-pop', {
+            y: -6,
+            stagger: 0.04,
+            duration: 0.2,
+            yoyo: true,
+            repeat: 1,
+            ease: 'power1.inOut',
+          });
           gsap.to('.logo-glow-aura', {
             scale: 1.25,
             opacity: 0.7,
@@ -158,7 +178,7 @@ export default function AnimatedLogo() {
         {/* Master Logo Lockup Container */}
         <div className="relative w-72 sm:w-84 md:w-96 aspect-[16/10] flex items-center justify-center">
           
-          {/* Layer 1: The Three Men in the Back (Authentic clean layer) */}
+          {/* Layer 1: The Three Men in the Back */}
           <div className="three-man-layer absolute inset-0 flex items-center justify-center pointer-events-none z-10">
             <img
               src="/three_man.png"
@@ -167,22 +187,46 @@ export default function AnimatedLogo() {
             />
           </div>
 
-          {/* Layer 2: The Official NAVRA text.png in Front (NAVRA + studio together) */}
-          <div className="navra-text-wrap absolute inset-0 flex items-center justify-center pointer-events-none z-20 overflow-hidden">
-            <img
-              src="/navra_text.png"
-              alt="NAVRA Studio"
-              className="w-full h-auto object-contain filter drop-shadow-[0_12px_28px_rgba(0,0,0,0.85)]"
-            />
+          {/* Layer 2: NAVRA Letters popping up sequentially (N -> A -> V -> R -> A) */}
+          <div className="letters-row absolute inset-x-4 top-[24%] flex items-center justify-center gap-[1%] z-20 pointer-events-none">
+            {/* N */}
+            <div className="letter-pop w-[18%] flex items-center justify-center">
+              <img src="/letter_n.png" alt="N" className="w-full h-auto object-contain filter drop-shadow-[0_8px_16px_rgba(0,0,0,0.85)]" />
+            </div>
+            {/* A */}
+            <div className="letter-pop w-[20%] flex items-center justify-center -ml-[2%]">
+              <img src="/letter_a1.png" alt="A" className="w-full h-auto object-contain filter drop-shadow-[0_8px_16px_rgba(0,0,0,0.85)]" />
+            </div>
+            {/* V */}
+            <div className="letter-pop w-[20%] flex items-center justify-center -ml-[2%]">
+              <img src="/letter_v.png" alt="V" className="w-full h-auto object-contain filter drop-shadow-[0_8px_16px_rgba(0,0,0,0.85)]" />
+            </div>
+            {/* R */}
+            <div className="letter-pop w-[20%] flex items-center justify-center -ml-[2%]">
+              <img src="/letter_r.png" alt="R" className="w-full h-auto object-contain filter drop-shadow-[0_8px_16px_rgba(0,0,0,0.85)]" />
+            </div>
+            {/* A */}
+            <div className="letter-pop w-[19%] flex items-center justify-center -ml-[2%]">
+              <img src="/letter_a2.png" alt="A" className="w-full h-auto object-contain filter drop-shadow-[0_8px_16px_rgba(0,0,0,0.85)]" />
+            </div>
 
-            {/* Shimmer Light Flare Glint traversing across the text */}
+            {/* Shimmer Light Flare */}
             <div
-              className="shimmer-flare absolute inset-0 w-1/2 h-full bg-gradient-to-r from-transparent via-cyan-100/40 to-transparent transform -skew-x-25 pointer-events-none blur-sm"
+              className="shimmer-flare absolute inset-0 w-1/3 h-full bg-gradient-to-r from-transparent via-cyan-100/40 to-transparent transform -skew-x-25 pointer-events-none blur-sm"
             />
           </div>
 
-          {/* Laser Accent Beam Tracer */}
-          <div className="laser-tracer absolute inset-x-0 bottom-[32%] h-[2px] bg-gradient-to-r from-transparent via-cyan-400 to-transparent pointer-events-none z-30 blur-[1px]" />
+          {/* Layer 3: The Cursive "studio" Writing Out Rapidly */}
+          <div className="studio-writing-wrap absolute inset-x-0 bottom-[8%] flex items-center justify-center z-30 pointer-events-none overflow-hidden px-8">
+            <img
+              src="/word_studio.png"
+              alt="studio"
+              className="w-[50%] sm:w-[48%] h-auto object-contain filter drop-shadow-[0_4px_14px_rgba(56,189,248,0.8)]"
+            />
+          </div>
+
+          {/* Glowing Pen Tracer Spark */}
+          <div className="pen-spark absolute bottom-[19%] w-3 h-3 rounded-full bg-cyan-300 shadow-[0_0_14px_#38BDF8] pointer-events-none z-40" />
 
         </div>
       </div>
