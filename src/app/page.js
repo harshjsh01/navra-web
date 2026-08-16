@@ -78,12 +78,12 @@ export default function Home() {
       
       {/* Hero Content HTML Overlay */}
       <div className="relative z-10 flex flex-col items-center text-center">
-        {/* Original NAVRA Logo */}
-        <div className="hero-anim mb-8 w-64 md:w-80">
-           <img src="/NAVRA.png" alt="Navra Studio Logo" className="w-full h-auto object-contain drop-shadow-2xl" />
+        {/* Property.ai-Style Animated Vector Logo */}
+        <div className="relative z-0 w-full flex items-center justify-center mb-8 pointer-events-none">
+          <AnimatedLogo />
         </div>
 
-        <div className="hero-anim inline-flex items-center gap-2 px-3 py-1.5 rounded-full border border-blue-500/30 text-blue-300 text-[10px] font-mono tracking-widest uppercase mb-6 bg-blue-500/10 backdrop-blur-sm">
+        <div className="hero-anim inline-flex items-center gap-2 px-3 py-1.5 rounded-full border border-blue-500/30 text-blue-300 text-[10px] font-mono tracking-widest uppercase mb-6 bg-blue-500/10 backdrop-blur-sm -mt-10">
           <Sparkles className="w-3.5 h-3.5 text-cyan-400" />
           <span>Vector Motion • CSS Gradients v4.0</span>
         </div>
