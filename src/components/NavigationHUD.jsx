@@ -23,15 +23,12 @@ export default function NavigationHUD() {
       <nav 
         className="w-full max-w-5xl px-6 py-3 flex items-center justify-between rounded-full glass-hud shadow-2xl transition-all duration-300"
       >
-        <Link href="/" className="flex items-center gap-3 group">
-          <div className="w-10 h-10 rounded-full overflow-hidden border border-white/20 bg-gradient-to-tr from-blue-600 via-cyan-400 to-sky-300 p-[1.5px] shadow-lg group-hover:scale-105 transition-transform">
-             <div className="w-full h-full bg-[#020C1B] rounded-full flex items-center justify-center p-1">
-                <img src="/NAVRA.png" alt="NAVRA Logo" className="w-full h-full object-contain" />
-             </div>
-          </div>
-          <div className="flex items-center">
-            <img src="/NAVRA text.png" alt="NAVRA Studio" className="h-7 w-auto object-contain brightness-110 group-hover:brightness-125 transition-all" />
-          </div>
+        <Link href="/" className="flex items-center group py-1">
+          <img 
+            src="/NAVRA text.png" 
+            alt="NAVRA Studio" 
+            className="h-8 md:h-9 w-auto object-contain brightness-110 group-hover:brightness-125 group-hover:scale-105 transition-all duration-300 drop-shadow-[0_2px_8px_rgba(0,0,0,0.5)]" 
+          />
         </Link>
 
         {/* Desktop Nav */}
