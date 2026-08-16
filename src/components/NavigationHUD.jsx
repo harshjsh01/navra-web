@@ -3,10 +3,10 @@
 import { useState } from 'react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
-import { Sparkles, Film, TrendingUp, Cpu, Radio, Users, Menu, X } from 'lucide-react';
+import { Home, Film, TrendingUp, Cpu, Radio, Users, Menu, X } from 'lucide-react';
 
 const NAV_ITEMS = [
-  { name: 'Home', href: '/', icon: Sparkles },
+  { name: 'Home', href: '/', icon: Home },
   { name: 'Media Production', href: '/media', icon: Film },
   { name: 'Digital Growth', href: '/growth', icon: TrendingUp },
   { name: 'Tech & AI', href: '/tech', icon: Cpu },
