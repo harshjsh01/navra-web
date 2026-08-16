@@ -25,8 +25,8 @@ export default function NavigationHUD() {
       >
         <Link href="/" className="flex items-center gap-3 group">
           <div className="w-10 h-10 rounded-full overflow-hidden border border-white/20 bg-gradient-to-tr from-blue-600 via-cyan-400 to-sky-300 p-[1.5px] shadow-lg group-hover:scale-105 transition-transform">
-             <div className="w-full h-full bg-[#020C1B] rounded-full flex items-center justify-center p-1">
-                <img src="/navra_logo_perfect.png" alt="NAVRA" className="w-full h-full object-contain" />
+             <div className="w-full h-full bg-[#020C1B] rounded-full flex items-center justify-center p-1.5">
+                <img src="/navra_text.png" alt="NAVRA" className="w-full h-full object-contain" />
              </div>
           </div>
           <div className="flex flex-col">
