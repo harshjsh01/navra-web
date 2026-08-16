@@ -1,5 +1,5 @@
 import { initializeApp, getApps, getApp } from 'firebase/app';
-import { getFirestore, collection, addDoc, serverTimestamp } from 'firebase/firestore';
+import { getFirestore, collection, addDoc, serverTimestamp, onSnapshot } from 'firebase/firestore';
 
 const firebaseConfig = {
   apiKey: process.env.NEXT_PUBLIC_FIREBASE_API_KEY,
@@ -12,5 +12,10 @@ const firebaseConfig = {
 
 const app = getApps().length === 0 ? initializeApp(firebaseConfig) : getApp();
 const db = getFirestore(app);
+
+// Export collection listeners
+export const subscribeToLeads = (callback) => onSnapshot(collection(db, 'leads'), callback);
+export const subscribeToEvents = (callback) => onSnapshot(collection(db, 'events'), callback);
+export const subscribeToTeam = (callback) => onSnapshot(collection(db, 'team'), callback);
 
 export { db, collection, addDoc, serverTimestamp };
