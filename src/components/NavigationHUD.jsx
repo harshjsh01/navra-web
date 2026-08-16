@@ -24,9 +24,9 @@ export default function NavigationHUD() {
         className="w-full max-w-5xl px-6 py-3 flex items-center justify-between rounded-full glass-hud shadow-2xl transition-all duration-300"
       >
         <Link href="/" className="flex items-center gap-3 group">
-          <div className="w-8 h-8 rounded-full overflow-hidden border border-white/20 bg-gradient-to-tr from-blue-600 to-cyan-400 p-[1px] shadow-lg group-hover:scale-105 transition-transform">
-             <div className="w-full h-full bg-[#020C1B] rounded-full flex items-center justify-center">
-                <span className="font-serif text-white font-bold text-xs tracking-widest">N</span>
+          <div className="w-10 h-10 rounded-full overflow-hidden border border-white/20 bg-gradient-to-tr from-blue-600 to-cyan-400 p-[1px] shadow-lg group-hover:scale-105 transition-transform">
+             <div className="w-full h-full bg-[#020C1B] rounded-full flex items-center justify-center p-1.5">
+                <img src="/NAVRA.png" alt="N" className="w-full h-full object-contain" />
              </div>
           </div>
           <div className="flex flex-col">

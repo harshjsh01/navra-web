@@ -37,6 +37,7 @@ body {
   mix-blend-mode: screen;
   transition: background-color 2s ease-in-out;
   transform: translate3d(0, 0, 0); /* GPU Acceleration */
+  opacity: 0.25; /* Dimmed so text remains highly visible */
 }
 
 .blob-1 {

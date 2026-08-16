@@ -56,7 +56,7 @@ export default function Home() {
         opacity: 0,
         duration: 1.2,
         stagger: 0.15,
-        delay: 0.5,
+        delay: 0.2,
         ease: 'power3.out',
       });
       
@@ -65,7 +65,7 @@ export default function Home() {
         opacity: 0,
         duration: 1.2,
         stagger: 0.1,
-        delay: 1.0,
+        delay: 0.8,
         ease: 'power3.out',
       });
     }, heroRef);
@@ -74,25 +74,21 @@ export default function Home() {
   }, []);
 
   return (
-    <div ref={heroRef} className="relative w-full min-h-screen pb-20 px-4 sm:px-6 lg:px-8 max-w-6xl mx-auto flex flex-col justify-center pt-10">
+    <div ref={heroRef} className="relative w-full min-h-screen pb-20 px-4 sm:px-6 lg:px-8 max-w-6xl mx-auto flex flex-col justify-center pt-24 md:pt-32">
       
-      {/* Property.ai-Style Animated Vector Logo */}
-      <div className="relative z-0 w-full flex items-center justify-center mb-8 pointer-events-none">
-        <AnimatedLogo />
-      </div>
-
       {/* Hero Content HTML Overlay */}
-      <div className="relative z-10 flex flex-col items-center text-center -mt-20">
+      <div className="relative z-10 flex flex-col items-center text-center">
+        {/* Original NAVRA Logo */}
+        <div className="hero-anim mb-8 w-64 md:w-80">
+           <img src="/NAVRA.png" alt="Navra Studio Logo" className="w-full h-auto object-contain drop-shadow-2xl" />
+        </div>
+
         <div className="hero-anim inline-flex items-center gap-2 px-3 py-1.5 rounded-full border border-blue-500/30 text-blue-300 text-[10px] font-mono tracking-widest uppercase mb-6 bg-blue-500/10 backdrop-blur-sm">
           <Sparkles className="w-3.5 h-3.5 text-cyan-400" />
           <span>Vector Motion • CSS Gradients v4.0</span>
         </div>
 
-        <h1 className="hero-anim font-serif text-5xl sm:text-6xl md:text-8xl font-black tracking-tight text-white drop-shadow-2xl">
-          NAVRA <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-cyan-300">STUDIO</span>
-        </h1>
-
-        <p className="hero-anim text-slate-300 max-w-2xl text-sm sm:text-base md:text-lg font-light tracking-wide mt-6 leading-relaxed">
+        <p className="hero-anim text-slate-300 max-w-2xl text-sm sm:text-base md:text-lg font-light tracking-wide mt-2 leading-relaxed">
           Elite full-stack creative agency and software development studio. We merge high-performance CSS animated gradients with fluid vector SVGs for an unparalleled digital experience.
         </p>
 
