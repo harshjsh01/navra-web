@@ -110,8 +110,7 @@ export default function Footer() {
                 className="text-cyan-400 font-medium hover:text-cyan-300 hover:underline transition-colors"
               >
                 Harsh Joshi
-              </a>{' '}
-              (<a href="mailto:harshjsh02@gmail.com" className="text-slate-400 hover:text-cyan-300 transition-colors">harshjsh02@gmail.com</a>)
+              </a>
             </p>
           </div>
 
