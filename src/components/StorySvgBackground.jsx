@@ -224,49 +224,67 @@ export default function StorySvgBackground() {
         <g className="parallax-fore">
           {/* Main Foreground Rolling Hill Wave Sweep */}
           <path
-            d="M-50 620 Q 220 520 540 630 T 1150 590 Q 1350 560 1500 650 L 1500 1200 L -50 1200 Z"
+            d="M-50 560 Q 220 470 540 560 T 1150 530 Q 1350 500 1500 580 L 1500 1400 L -50 1400 Z"
             fill="url(#hillForeBrand1)"
           />
           <path
-            d="M-50 670 Q 280 560 660 670 T 1280 630 Q 1420 600 1500 700 L 1500 1200 L -50 1200 Z"
+            d="M-50 610 Q 280 510 660 610 T 1280 570 Q 1420 540 1500 630 L 1500 1400 L -50 1400 Z"
             fill="url(#hillForeBrand2)"
           />
 
-          {/* Left Stylized Tree */}
-          <g className="sway-tree-left" transform="translate(180, 640)">
-            <line x1="0" y1="0" x2="0" y2="-180" stroke="#0F172A" strokeWidth="8" strokeLinecap="round" />
-            <line x1="0" y1="-70" x2="-35" y2="-110" stroke="#0F172A" strokeWidth="5" strokeLinecap="round" />
-            <line x1="0" y1="-90" x2="35" y2="-130" stroke="#0F172A" strokeWidth="5" strokeLinecap="round" />
-            <ellipse cx="0" cy="-190" rx="65" ry="95" fill="url(#treeBrand1)" />
-            <ellipse cx="-40" cy="-140" rx="45" ry="65" fill="url(#treeBrand2)" opacity="0.85" />
-            <ellipse cx="45" cy="-160" rx="40" ry="60" fill="url(#treeBrand1)" opacity="0.9" />
+          {/* Left Large Tree 1 */}
+          <g className="sway-tree-left" transform="translate(100, 580)">
+            <line x1="0" y1="0" x2="0" y2="-190" stroke="#0A0F1D" strokeWidth="8" strokeLinecap="round" />
+            <line x1="0" y1="-80" x2="-35" y2="-120" stroke="#0A0F1D" strokeWidth="5" strokeLinecap="round" />
+            <line x1="0" y1="-100" x2="35" y2="-140" stroke="#0A0F1D" strokeWidth="5" strokeLinecap="round" />
+            <ellipse cx="0" cy="-200" rx="65" ry="95" fill="url(#treeBrand1)" />
+            <ellipse cx="-38" cy="-150" rx="45" ry="65" fill="url(#treeBrand2)" opacity="0.85" />
+            <ellipse cx="40" cy="-170" rx="40" ry="60" fill="url(#treeBrand1)" opacity="0.9" />
           </g>
 
-          {/* Right Stylized Tree */}
-          <g className="sway-tree-right" transform="translate(1260, 620)">
-            <line x1="0" y1="0" x2="0" y2="-200" stroke="#0F172A" strokeWidth="8" strokeLinecap="round" />
-            <line x1="0" y1="-80" x2="40" y2="-125" stroke="#0F172A" strokeWidth="5" strokeLinecap="round" />
-            <line x1="0" y1="-110" x2="-35" y2="-150" stroke="#0F172A" strokeWidth="5" strokeLinecap="round" />
-            <ellipse cx="0" cy="-210" rx="70" ry="105" fill="url(#treeBrand2)" />
-            <ellipse cx="50" cy="-160" rx="48" ry="70" fill="url(#treeBrand1)" opacity="0.85" />
-            <ellipse cx="-45" cy="-175" rx="42" ry="65" fill="url(#treeBrand2)" opacity="0.9" />
+          {/* Left Medium Tree 2 */}
+          <g className="sway-tree-left" transform="translate(230, 620)">
+            <line x1="0" y1="0" x2="0" y2="-150" stroke="#0A0F1D" strokeWidth="7" strokeLinecap="round" />
+            <line x1="0" y1="-60" x2="-25" y2="-95" stroke="#0A0F1D" strokeWidth="4" strokeLinecap="round" />
+            <line x1="0" y1="-75" x2="25" y2="-110" stroke="#0A0F1D" strokeWidth="4" strokeLinecap="round" />
+            <circle cx="0" cy="-155" r="55" fill="url(#treeBrand2)" />
+            <circle cx="30" cy="-130" r="38" fill="url(#treeBrand1)" opacity="0.85" />
           </g>
 
-          {/* Glowing Ice-Blue & Sapphire Flora blooming along the organic curve */}
+          {/* Right Large Tree 3 */}
+          <g className="sway-tree-right" transform="translate(1340, 580)">
+            <line x1="0" y1="0" x2="0" y2="-210" stroke="#0A0F1D" strokeWidth="8" strokeLinecap="round" />
+            <line x1="0" y1="-85" x2="40" y2="-130" stroke="#0A0F1D" strokeWidth="5" strokeLinecap="round" />
+            <line x1="0" y1="-115" x2="-35" y2="-155" stroke="#0A0F1D" strokeWidth="5" strokeLinecap="round" />
+            <ellipse cx="0" cy="-220" rx="70" ry="105" fill="url(#treeBrand2)" />
+            <ellipse cx="50" cy="-170" rx="48" ry="70" fill="url(#treeBrand1)" opacity="0.85" />
+            <ellipse cx="-45" cy="-185" rx="42" ry="65" fill="url(#treeBrand2)" opacity="0.9" />
+          </g>
+
+          {/* Vertical Grass Marks on the Hill */}
+          {[60, 180, 310, 480, 620, 780, 920, 1140, 1260, 1410].map((gx, idx) => (
+            <g key={`g-${idx}`} transform={`translate(${gx}, 660)`} opacity="0.6">
+              <line x1="0" y1="0" x2="0" y2="12" stroke="#1E293B" strokeWidth="3" strokeLinecap="round" />
+              <line x1="6" y1="-2" x2="6" y2="10" stroke="#1E293B" strokeWidth="3" strokeLinecap="round" />
+            </g>
+          ))}
+
+          {/* Glowing Ice-Blue & Sapphire Flora blooming along the curve */}
           {[
-            { cx: 120, cy: 690, color: '#38BDF8' },
-            { cx: 160, cy: 670, color: '#0EA5E9' },
-            { cx: 200, cy: 695, color: '#60A5FA' },
-            { cx: 380, cy: 720, color: '#38BDF8' },
-            { cx: 420, cy: 700, color: '#2563EB' },
-            { cx: 460, cy: 715, color: '#67E8F9' },
-            { cx: 980, cy: 710, color: '#38BDF8' },
-            { cx: 1020, cy: 690, color: '#0EA5E9' },
-            { cx: 1060, cy: 705, color: '#60A5FA' },
-            { cx: 1320, cy: 680, color: '#2563EB' },
-            { cx: 1360, cy: 670, color: '#38BDF8' },
+            { cx: 70, cy: 620, color: '#38BDF8' },
+            { cx: 120, cy: 640, color: '#0EA5E9' },
+            { cx: 160, cy: 615, color: '#60A5FA' },
+            { cx: 340, cy: 660, color: '#38BDF8' },
+            { cx: 380, cy: 635, color: '#2563EB' },
+            { cx: 420, cy: 655, color: '#67E8F9' },
+            { cx: 960, cy: 650, color: '#38BDF8' },
+            { cx: 1000, cy: 625, color: '#0EA5E9' },
+            { cx: 1040, cy: 645, color: '#60A5FA' },
+            { cx: 1240, cy: 620, color: '#2563EB' },
+            { cx: 1280, cy: 605, color: '#38BDF8' },
+            { cx: 1410, cy: 630, color: '#67E8F9' },
           ].map((flower, idx) => (
-            <g key={idx} transform={`translate(${flower.cx}, ${flower.cy})`}>
+            <g key={`fl-${idx}`} transform={`translate(${flower.cx}, ${flower.cy})`}>
               <line x1="0" y1="0" x2="0" y2="-35" stroke="#0F172A" strokeWidth="3" strokeLinecap="round" />
               <path d="M -8 -35 Q -12 -50 -6 -52 Q 0 -42 0 -35 Q 0 -42 6 -52 Q 12 -50 8 -35 Z" fill={flower.color} />
               <circle className="flower-glow" cx="0" cy="-45" r="5" fill="url(#cyanBlossomGlow)" />
