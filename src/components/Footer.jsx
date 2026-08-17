@@ -89,16 +89,32 @@ export default function Footer() {
               </li>
               <li className="pt-2 flex items-center gap-2 text-xs font-mono text-slate-400">
                 <Mail className="w-3.5 h-3.5 text-cyan-400" />
-                <span>contact@navrastudio.com</span>
+                <a href="mailto:harshjsh02@gmail.com" className="hover:text-cyan-300 transition-colors">
+                  harshjsh02@gmail.com
+                </a>
               </li>
             </ul>
           </div>
 
         </div>
 
-        {/* Bottom Bar: Copyright & Back to Top */}
-        <div className="pt-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-slate-500 font-mono">
-          <p>© {new Date().getFullYear()} Navra Studio. All rights reserved.</p>
+        {/* Bottom Bar: Copyright, Designer Credit & Back to Top */}
+        <div className="pt-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-slate-400 font-mono">
+          <div className="flex flex-col sm:flex-row items-center sm:items-start gap-1 sm:gap-4 text-center sm:text-left">
+            <p>© {new Date().getFullYear()} Navra Studio. All rights reserved.</p>
+            <span className="hidden sm:inline text-slate-600">•</span>
+            <p className="text-slate-300">
+              Designed & Built by{' '}
+              <a
+                href="mailto:harshjsh02@gmail.com"
+                className="text-cyan-400 font-medium hover:text-cyan-300 hover:underline transition-colors"
+              >
+                Harsh Joshi
+              </a>{' '}
+              (<a href="mailto:harshjsh02@gmail.com" className="text-slate-400 hover:text-cyan-300 transition-colors">harshjsh02@gmail.com</a>)
+            </p>
+          </div>
+
           <button
             onClick={scrollToTop}
             className="hover:text-cyan-300 transition-colors cursor-pointer flex items-center gap-1.5 focus:outline-none"
