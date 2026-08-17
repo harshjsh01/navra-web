@@ -222,14 +222,18 @@ export default function StorySvgBackground() {
 
         {/* 5. Foreground Rolling Hills with Stylized Trees & Glowing Flora (Layer 4) */}
         <g className="parallax-fore">
-          {/* Main Foreground Hill Sweep */}
+          {/* Main Foreground Rolling Hill Wave Sweep */}
           <path
-            d="M-50 580 Q 280 480 620 580 T 1250 560 Q 1400 540 1500 640 L 1500 900 L -50 900 Z"
+            d="M-50 620 Q 220 520 540 630 T 1150 590 Q 1350 560 1500 650 L 1500 1200 L -50 1200 Z"
+            fill="url(#hillForeBrand1)"
+          />
+          <path
+            d="M-50 670 Q 280 560 660 670 T 1280 630 Q 1420 600 1500 700 L 1500 1200 L -50 1200 Z"
             fill="url(#hillForeBrand2)"
           />
 
           {/* Left Stylized Tree */}
-          <g className="sway-tree-left" transform="translate(180, 600)">
+          <g className="sway-tree-left" transform="translate(180, 640)">
             <line x1="0" y1="0" x2="0" y2="-180" stroke="#0F172A" strokeWidth="8" strokeLinecap="round" />
             <line x1="0" y1="-70" x2="-35" y2="-110" stroke="#0F172A" strokeWidth="5" strokeLinecap="round" />
             <line x1="0" y1="-90" x2="35" y2="-130" stroke="#0F172A" strokeWidth="5" strokeLinecap="round" />
@@ -239,7 +243,7 @@ export default function StorySvgBackground() {
           </g>
 
           {/* Right Stylized Tree */}
-          <g className="sway-tree-right" transform="translate(1260, 580)">
+          <g className="sway-tree-right" transform="translate(1260, 620)">
             <line x1="0" y1="0" x2="0" y2="-200" stroke="#0F172A" strokeWidth="8" strokeLinecap="round" />
             <line x1="0" y1="-80" x2="40" y2="-125" stroke="#0F172A" strokeWidth="5" strokeLinecap="round" />
             <line x1="0" y1="-110" x2="-35" y2="-150" stroke="#0F172A" strokeWidth="5" strokeLinecap="round" />
@@ -248,19 +252,19 @@ export default function StorySvgBackground() {
             <ellipse cx="-45" cy="-175" rx="42" ry="65" fill="url(#treeBrand2)" opacity="0.9" />
           </g>
 
-          {/* Glowing Ice-Blue & Sapphire Flora */}
+          {/* Glowing Ice-Blue & Sapphire Flora blooming along the organic curve */}
           {[
-            { cx: 120, cy: 640, color: '#38BDF8' },
-            { cx: 160, cy: 625, color: '#0EA5E9' },
-            { cx: 200, cy: 650, color: '#60A5FA' },
-            { cx: 380, cy: 680, color: '#38BDF8' },
-            { cx: 420, cy: 660, color: '#2563EB' },
-            { cx: 460, cy: 675, color: '#67E8F9' },
-            { cx: 980, cy: 670, color: '#38BDF8' },
-            { cx: 1020, cy: 650, color: '#0EA5E9' },
-            { cx: 1060, cy: 665, color: '#60A5FA' },
-            { cx: 1320, cy: 640, color: '#2563EB' },
-            { cx: 1360, cy: 630, color: '#38BDF8' },
+            { cx: 120, cy: 690, color: '#38BDF8' },
+            { cx: 160, cy: 670, color: '#0EA5E9' },
+            { cx: 200, cy: 695, color: '#60A5FA' },
+            { cx: 380, cy: 720, color: '#38BDF8' },
+            { cx: 420, cy: 700, color: '#2563EB' },
+            { cx: 460, cy: 715, color: '#67E8F9' },
+            { cx: 980, cy: 710, color: '#38BDF8' },
+            { cx: 1020, cy: 690, color: '#0EA5E9' },
+            { cx: 1060, cy: 705, color: '#60A5FA' },
+            { cx: 1320, cy: 680, color: '#2563EB' },
+            { cx: 1360, cy: 670, color: '#38BDF8' },
           ].map((flower, idx) => (
             <g key={idx} transform={`translate(${flower.cx}, ${flower.cy})`}>
               <line x1="0" y1="0" x2="0" y2="-35" stroke="#0F172A" strokeWidth="3" strokeLinecap="round" />
@@ -268,9 +272,6 @@ export default function StorySvgBackground() {
               <circle className="flower-glow" cx="0" cy="-45" r="5" fill="url(#cyanBlossomGlow)" />
             </g>
           ))}
-
-          {/* Solid Deep Midnight Navy Base to guarantee total contrast */}
-          <rect x="0" y="660" width="1440" height="240" fill="#020C1B" opacity="0.98" />
         </g>
       </svg>
     </div>
