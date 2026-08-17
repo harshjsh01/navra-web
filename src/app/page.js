@@ -87,7 +87,7 @@ export default function Home() {
       {/* ======================================================== */}
       {/* SECTION 1: FIRST FOLD (Hero with Animated Logo & Tagline) */}
       {/* ======================================================== */}
-      <section className="relative w-full min-h-[92vh] flex flex-col justify-between items-center px-4 sm:px-6 lg:px-8 max-w-5xl mx-auto pt-8 sm:pt-12 pb-6">
+      <section className="relative w-full min-h-[92vh] flex flex-col justify-between items-center px-4 sm:px-6 lg:px-8 max-w-5xl mx-auto pt-24 sm:pt-28 pb-8">
         
         {/* Top spacer */}
         <div className="h-2" />
@@ -128,29 +128,25 @@ export default function Home() {
       {/* ======================================================== */}
       {/* SECTION 2: SCROLLED CONTENT (About Us, Spectrum & CTAs)  */}
       {/* ======================================================== */}
-      <section id="about-section" className="relative z-10 w-full bg-[#020C1B] pt-20 pb-32 border-t border-cyan-500/10">
-        
-        {/* Subtle decorative ambient backdrop */}
-        <div className="absolute top-0 inset-x-0 h-40 bg-gradient-to-b from-[#020C1B]/40 to-[#020C1B] pointer-events-none -z-10" />
-
+      <section id="about-section" className="relative z-10 w-full pt-16 pb-32">
         <div className="max-w-5xl px-4 sm:px-6 lg:px-8 mx-auto">
           
           {/* Decorative Divider & Header */}
-          <div className="flex flex-col items-center text-center mb-14">
+          <div className="flex flex-col items-center text-center mb-12">
             <div className="flex items-center gap-4 w-full justify-center mb-4">
               <div className="h-[1px] w-12 sm:w-28 bg-gradient-to-r from-transparent to-cyan-400/60" />
-              <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold tracking-tight text-white drop-shadow-md">
+              <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold tracking-tight text-white drop-shadow-lg">
                 Bring your design to the next level
               </h2>
               <div className="h-[1px] w-12 sm:w-28 bg-gradient-to-l from-transparent to-cyan-400/60" />
             </div>
-            <p className="text-xs sm:text-sm text-cyan-300/80 font-mono tracking-wider uppercase">
+            <p className="text-xs sm:text-sm text-cyan-300/90 font-mono tracking-wider uppercase drop-shadow">
               What We Do • Full-Spectrum Agency Capabilities
             </p>
           </div>
 
           {/* Core Identity Card */}
-          <div className="p-6 sm:p-8 rounded-3xl bg-[#051329] border border-cyan-500/30 backdrop-blur-2xl shadow-[0_15px_35px_rgba(0,0,0,0.8)] mb-12">
+          <div className="p-6 sm:p-8 rounded-3xl bg-black/40 border border-cyan-500/30 backdrop-blur-xl shadow-[0_15px_35px_rgba(0,0,0,0.6)] mb-12">
             <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 mb-4 pb-4 border-b border-white/10">
               <div>
                 <span className="text-[10px] font-mono tracking-widest px-2.5 py-1 rounded-full border border-blue-500/30 text-blue-300 bg-blue-500/10 uppercase">
@@ -164,17 +160,17 @@ export default function Home() {
                 </span>
               </div>
             </div>
-            <p className="text-slate-300 text-sm sm:text-base font-light leading-relaxed">
+            <p className="text-slate-200 text-sm sm:text-base font-light leading-relaxed">
               Navra Studio serves as your agency arm, handling complete digital management, creative production, and custom software engineering for external clients and internal brands.
             </p>
           </div>
 
           {/* Service Spectrum Heading */}
           <div className="mb-6 flex items-center justify-between">
-            <h4 className="text-xl sm:text-2xl font-bold text-white tracking-wide">
+            <h4 className="text-xl sm:text-2xl font-bold text-white tracking-wide drop-shadow">
               Service Spectrum
             </h4>
-            <span className="text-xs font-mono text-cyan-400/80">
+            <span className="text-xs font-mono text-cyan-300/90 drop-shadow">
               Capabilities & Deliverables
             </span>
           </div>
@@ -187,14 +183,14 @@ export default function Home() {
                 <Link
                   key={service.title}
                   href={service.href}
-                  className={`group relative p-7 rounded-2xl bg-gradient-to-br ${service.color} bg-[#041024] hover:bg-[#071938] border ${service.borderColor} transition-all duration-300 hover:-translate-y-1.5 shadow-[0_10px_25px_rgba(0,0,0,0.5)] hover:shadow-[0_15px_35px_rgba(6,182,212,0.15)] flex flex-col justify-between`}
+                  className={`group relative p-7 rounded-2xl bg-black/40 hover:bg-black/60 border ${service.borderColor} backdrop-blur-xl transition-all duration-300 hover:-translate-y-1.5 shadow-[0_10px_25px_rgba(0,0,0,0.5)] hover:shadow-[0_15px_35px_rgba(6,182,212,0.25)] flex flex-col justify-between`}
                 >
                   <div>
                     <div className="flex items-center justify-between mb-5">
-                      <div className="w-12 h-12 rounded-xl bg-blue-500/15 flex items-center justify-center border border-cyan-400/25 group-hover:scale-110 transition-transform">
-                        <Icon className="w-6 h-6 text-cyan-400" />
+                      <div className="w-12 h-12 rounded-xl bg-blue-500/20 flex items-center justify-center border border-cyan-400/30 group-hover:scale-110 transition-transform">
+                        <Icon className="w-6 h-6 text-cyan-300" />
                       </div>
-                      <span className="text-[10px] font-mono tracking-widest px-3 py-1 rounded-full border border-cyan-400/20 text-cyan-300 bg-cyan-500/10">
+                      <span className="text-[10px] font-mono tracking-widest px-3 py-1 rounded-full border border-cyan-400/30 text-cyan-300 bg-cyan-500/10">
                         {service.tag}
                       </span>
                     </div>
@@ -231,7 +227,7 @@ export default function Home() {
 
             <Link
               href="/media"
-              className="inline-flex items-center gap-2 px-7 py-3.5 rounded-full bg-white/10 hover:bg-white/20 border border-white/20 text-white font-medium text-sm transition-all duration-300 backdrop-blur-md hover:border-cyan-400/40"
+              className="inline-flex items-center gap-2 px-7 py-3.5 rounded-full bg-black/40 hover:bg-black/60 border border-white/20 text-white font-medium text-sm transition-all duration-300 backdrop-blur-xl hover:border-cyan-400/40"
             >
               <Play className="w-3.5 h-3.5 fill-white text-white" />
               <span>Explore Showcase</span>

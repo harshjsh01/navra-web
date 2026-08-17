@@ -9,7 +9,7 @@ export default function Footer() {
   };
 
   return (
-    <footer className="relative z-20 w-full bg-[#010814] border-t border-cyan-500/15 text-slate-300 pt-16 pb-12 overflow-hidden">
+    <footer className="relative z-20 w-full bg-black/40 backdrop-blur-2xl border-t border-white/10 text-slate-300 pt-16 pb-12 overflow-hidden">
       {/* Background ambient gradient glow */}
       <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full max-w-4xl h-32 bg-gradient-to-b from-cyan-500/10 via-blue-600/5 to-transparent blur-3xl pointer-events-none -z-10" />
 
