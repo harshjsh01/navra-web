@@ -4,7 +4,7 @@ import { useEffect, useRef } from 'react';
 import Link from 'next/link';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
-import { ArrowRight, Film, TrendingUp, Cpu, Radio, Play, ChevronDown } from 'lucide-react';
+import { ArrowRight, Film, TrendingUp, Cpu, Radio, Play, ChevronDown, Sparkles } from 'lucide-react';
 import AnimatedLogo from '@/components/AnimatedLogo';
 
 gsap.registerPlugin(ScrollTrigger);
@@ -49,20 +49,30 @@ export default function Home() {
 
   useEffect(() => {
     const ctx = gsap.context(() => {
-      // 1. First Fold Entrance
-      gsap.from('.first-fold-heading-wrap', {
-        y: 25,
+      // 1. Initial Hero Subtle Fade In
+      gsap.from('.hero-logo-wrap', {
+        y: -15,
         opacity: 0,
         duration: 1.0,
-        delay: 0.3,
         ease: 'power3.out',
       });
 
-      // 2. Scroll Triggered Entrance for Scrolled Content
-      gsap.from('.scrolled-content-heading', {
+      // 2. Scroll-Triggered Entrance for the Lower Section
+      gsap.from('.scrolled-heading-block', {
         scrollTrigger: {
           trigger: '#about-section',
           start: 'top 80%',
+        },
+        y: 40,
+        opacity: 0,
+        duration: 1.0,
+        ease: 'power3.out',
+      });
+
+      gsap.from('.about-intro-block', {
+        scrollTrigger: {
+          trigger: '.about-intro-block',
+          start: 'top 85%',
         },
         y: 35,
         opacity: 0,
@@ -87,7 +97,7 @@ export default function Home() {
           trigger: '.bottom-cta-wrap',
           start: 'top 92%',
         },
-        y: 25,
+        y: 30,
         opacity: 0,
         duration: 0.8,
         ease: 'power3.out',
@@ -98,7 +108,7 @@ export default function Home() {
     return () => ctx.revert();
   }, []);
 
-  const scrollToAbout = () => {
+  const scrollToContent = () => {
     const aboutEl = document.getElementById('about-section');
     if (aboutEl) {
       aboutEl.scrollIntoView({ behavior: 'smooth' });
@@ -109,80 +119,96 @@ export default function Home() {
     <div ref={pageRef} className="relative w-full flex flex-col items-center select-none">
       
       {/* ======================================================== */}
-      {/* SECTION 1: FIRST FOLD (Initial Screen with Animated Logo) */}
+      {/* SECTION 1: FIRST FOLD (Clean Hero: Logo & Unobstructed Story Landscape) */}
       {/* ======================================================== */}
-      <section className="relative w-full min-h-screen flex flex-col justify-between items-center px-4 sm:px-6 lg:px-8 max-w-5xl mx-auto pt-16 sm:pt-20 pb-8">
+      <section className="relative w-full min-h-screen flex flex-col justify-between items-center px-4 sm:px-6 lg:px-8 max-w-5xl mx-auto pt-20 sm:pt-24 pb-12">
         
         {/* Top Spacer */}
-        <div className="h-2" />
+        <div className="h-4" />
 
         {/* Center: The Interactive Animated Logo */}
-        <div className="flex flex-col items-center justify-center w-full my-auto">
+        <div className="hero-logo-wrap flex flex-col items-center justify-center w-full mt-4 sm:mt-8">
           <AnimatedLogo />
         </div>
 
-        {/* Bottom of First Fold: Exact Reference Heading Placement */}
-        <div 
-          onClick={scrollToAbout}
-          className="first-fold-heading-wrap flex flex-col items-center text-center cursor-pointer group mt-4 mb-2"
+        {/* Midground is left completely open for the animated train, viaduct bridge, swaying trees, and flowers */}
+        <div className="flex-1 w-full pointer-events-none min-h-[140px] sm:min-h-[220px]" />
+
+        {/* Subtle Scroll Down Prompt at the bottom of the first fold */}
+        <button
+          onClick={scrollToContent}
+          className="group flex flex-col items-center gap-1.5 text-slate-400 hover:text-cyan-300 transition-colors cursor-pointer select-none focus:outline-none z-20"
         >
-          {/* Top-Left Offset Accent Line */}
-          <div className="w-full flex justify-center mb-2.5">
-            <div className="h-[2px] w-24 sm:w-32 bg-white/70 rounded-full mr-24 group-hover:w-36 group-hover:bg-cyan-300 transition-all duration-300" />
+          <span className="text-[10px] font-mono tracking-widest uppercase text-slate-400 group-hover:text-cyan-300 transition-colors">
+            Scroll to explore
+          </span>
+          <div className="w-7 h-7 rounded-full bg-black/40 border border-white/15 flex items-center justify-center group-hover:border-cyan-400/50 group-hover:bg-cyan-500/15 transition-all animate-bounce backdrop-blur-md">
+            <ChevronDown className="w-4 h-4 text-slate-300 group-hover:text-cyan-300" />
           </div>
-
-          <h1 className="text-xl sm:text-2xl md:text-3xl font-extrabold tracking-tight text-white drop-shadow-[0_4px_12px_rgba(0,0,0,0.8)] group-hover:text-cyan-200 transition-colors">
-            Bring your design to the next level
-          </h1>
-
-          {/* Bottom-Right Offset Accent Line */}
-          <div className="w-full flex justify-center mt-2.5">
-            <div className="h-[2px] w-24 sm:w-32 bg-white/70 rounded-full ml-24 group-hover:w-36 group-hover:bg-cyan-300 transition-all duration-300" />
-          </div>
-
-          <div className="flex items-center gap-1 mt-3 text-slate-400 group-hover:text-cyan-300 transition-colors text-xs font-mono">
-            <span>Scroll down</span>
-            <ChevronDown className="w-3.5 h-3.5 animate-bounce text-cyan-400" />
-          </div>
-        </div>
+        </button>
 
       </section>
 
       {/* ======================================================== */}
-      {/* SECTION 2: SCROLLED CONTENT (Dark Background Section)   */}
+      {/* SECTION 2: SCROLLED CONTENT (Lower Ground Section)      */}
       {/* ======================================================== */}
       <section 
         id="about-section" 
-        className="about-section relative z-10 w-full bg-[#020C1B] border-t border-cyan-900/20 py-20 px-4 sm:px-6 lg:px-8 shadow-2xl"
+        className="about-section relative z-10 w-full bg-[#020C1B] border-t border-cyan-900/30 pt-24 pb-32 px-4 sm:px-6 lg:px-8 shadow-2xl"
       >
         <div className="max-w-4xl mx-auto flex flex-col items-center text-center">
           
-          {/* Scrolled Section Heading with Accent Lines */}
-          <div className="scrolled-content-heading flex flex-col items-center mb-8">
-            <div className="w-full flex justify-center mb-2.5">
-              <div className="h-[2px] w-24 sm:w-32 bg-white/70 rounded-full mr-20" />
+          {/* 1. Exact Reference Heading Placement with Offset Accent Lines */}
+          <div className="scrolled-heading-block flex flex-col items-center mb-6">
+            {/* Top-Left Offset Line */}
+            <div className="w-full flex justify-center mb-3">
+              <div className="h-[2px] w-24 sm:w-36 bg-white/80 rounded-full mr-24 sm:mr-32" />
             </div>
 
-            <h2 className="text-2xl sm:text-3xl md:text-4xl font-extrabold tracking-tight text-white drop-shadow">
+            <h2 className="text-2xl sm:text-3xl md:text-4xl font-extrabold tracking-tight text-white drop-shadow-[0_4px_16px_rgba(0,0,0,0.9)]">
               Bring your design to the next level
             </h2>
 
-            <div className="w-full flex justify-center mt-2.5">
-              <div className="h-[2px] w-24 sm:w-32 bg-white/70 rounded-full ml-20" />
+            {/* Bottom-Right Offset Line */}
+            <div className="w-full flex justify-center mt-3">
+              <div className="h-[2px] w-24 sm:w-36 bg-white/80 rounded-full ml-24 sm:mr-[-8rem] sm:ml-32" />
             </div>
           </div>
 
-          {/* About Us & Agency Core Identity Description */}
-          <div className="max-w-2xl text-slate-300 text-sm sm:text-base font-normal leading-relaxed text-center mb-12">
-            <p className="mb-4">
-              <strong className="text-white font-semibold">Navra Studio</strong> serves as your agency arm, handling complete digital management, creative production, and custom software engineering for external clients and internal brands.
+          {/* 2. Animation & Creative Statement */}
+          <p className="max-w-2xl text-slate-300 text-sm sm:text-base font-normal leading-relaxed text-center mb-16 px-4">
+            Want to learn how to create stunning web animations that will power up any website? SVG animations are constantly growing in popularity and they prevail against GIFs in so many ways. Join us to explore the latest trends and techniques in the field of web animations and become a pro in no time!
+          </p>
+
+          {/* 3. About Us & Core Identity (YDIX / Navra Studio) */}
+          <div className="about-intro-block w-full p-6 sm:p-8 rounded-3xl bg-[#051329]/90 border border-cyan-500/20 backdrop-blur-2xl shadow-[0_15px_35px_rgba(0,0,0,0.8)] mb-14 text-left">
+            <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 mb-4 pb-4 border-b border-white/10">
+              <div>
+                <span className="text-[10px] font-mono tracking-widest px-2.5 py-1 rounded-full border border-cyan-400/30 text-cyan-300 bg-cyan-500/10 uppercase font-semibold">
+                  About Us • Agency Arm
+                </span>
+                <h3 className="text-2xl sm:text-3xl font-black text-white mt-2">
+                  Navra Studio
+                </h3>
+              </div>
+              <div className="text-left md:text-right">
+                <span className="text-xs sm:text-sm font-semibold text-cyan-300 font-mono block">
+                  Core Identity: Full-Stack Creative Agency & Software Studio
+                </span>
+                <span className="text-[11px] text-slate-400 font-mono">
+                  Powered by YDIX Ecosystem
+                </span>
+              </div>
+            </div>
+            <p className="text-slate-300 text-sm sm:text-base font-light leading-relaxed mb-3">
+              Navra Studio serves as your agency arm, handling complete digital management, creative production, and custom software engineering for external clients and internal brands.
             </p>
             <p className="text-slate-400 text-xs sm:text-sm leading-relaxed">
               We merge high-performance interactive vector SVG motion, animated storytelling landscapes, and intelligent multi-page architectures into one seamless digital experience.
             </p>
           </div>
 
-          {/* Service Spectrum Heading */}
+          {/* 4. Service Spectrum Header */}
           <div className="w-full mb-6 flex items-center justify-between border-b border-white/10 pb-3">
             <h3 className="text-lg sm:text-xl font-bold text-white tracking-wide">
               Service Spectrum
@@ -192,22 +218,22 @@ export default function Home() {
             </span>
           </div>
 
-          {/* 4 Core Services Grid */}
-          <div className="service-grid grid grid-cols-1 sm:grid-cols-2 gap-5 w-full mb-14 text-left">
+          {/* 5. 4 Core Services Grid */}
+          <div className="service-grid grid grid-cols-1 sm:grid-cols-2 gap-5 w-full mb-16 text-left">
             {SERVICE_SPECTRUM.map((service) => {
               const Icon = service.icon;
               return (
                 <Link
                   key={service.title}
                   href={service.href}
-                  className="service-card-item group p-6 rounded-2xl bg-[#051329]/85 hover:bg-[#091E3D] border border-white/10 hover:border-cyan-400/40 backdrop-blur-xl transition-all duration-300 hover:-translate-y-1 shadow-lg flex flex-col justify-between"
+                  className="service-card-item group p-6 rounded-2xl bg-[#051329]/80 hover:bg-[#081F42] border border-white/10 hover:border-cyan-400/40 backdrop-blur-xl transition-all duration-300 hover:-translate-y-1 shadow-lg flex flex-col justify-between"
                 >
                   <div>
                     <div className="flex items-center justify-between mb-4">
                       <div className="w-10 h-10 rounded-xl bg-blue-500/10 flex items-center justify-center border border-blue-500/20 group-hover:bg-blue-500/20 transition-colors">
                         <Icon className="w-5 h-5 text-cyan-400" />
                       </div>
-                      <span className="text-[9px] font-mono tracking-widest px-2.5 py-0.5 rounded-full border border-blue-500/20 text-cyan-300 bg-blue-500/5">
+                      <span className="text-[9px] font-mono tracking-widest px-2.5 py-0.5 rounded-full border border-blue-500/20 text-cyan-300 bg-blue-500/5 font-semibold">
                         {service.tag}
                       </span>
                     </div>
@@ -232,7 +258,7 @@ export default function Home() {
             })}
           </div>
 
-          {/* Call to Action Buttons */}
+          {/* 6. Action Buttons (Positioned at the bottom below everything) */}
           <div className="bottom-cta-wrap flex flex-wrap items-center justify-center gap-4">
             <Link
               href="/contact"
