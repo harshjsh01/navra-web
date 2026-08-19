@@ -2,7 +2,7 @@
 
 import { usePathname } from 'next/navigation';
 import StorySvgBackground from './StorySvgBackground';
-import RetroMediaBackground from './RetroMediaBackground';
+import MediaSvgBackground from './MediaSvgBackground';
 import NavigationHUD from './NavigationHUD';
 import Footer from './Footer';
 
@@ -13,7 +13,7 @@ export default function AppLayoutWrapper({ children }) {
   return (
     <div className="relative min-h-screen w-full flex flex-col text-slate-100 selection:bg-cyan-500 selection:text-black">
       {/* Route-Specific Interactive Storytelling SVG Landscapes */}
-      {isMediaPage ? <RetroMediaBackground /> : <StorySvgBackground />}
+      {isMediaPage ? <MediaSvgBackground /> : <StorySvgBackground />}
 
       {/* Floating HUD Navigation */}
       <NavigationHUD />
