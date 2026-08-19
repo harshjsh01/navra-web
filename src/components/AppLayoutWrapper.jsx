@@ -5,6 +5,7 @@ import StorySvgBackground from './StorySvgBackground';
 import NewspaperMediaBackground from './NewspaperMediaBackground';
 import NavigationHUD from './NavigationHUD';
 import Footer from './Footer';
+import GlobalMascotPeek from './GlobalMascotPeek';
 
 export default function AppLayoutWrapper({ children }) {
   const pathname = usePathname();
@@ -22,6 +23,9 @@ export default function AppLayoutWrapper({ children }) {
       <main className={`relative z-10 w-full flex-1 flex flex-col ${isMediaPage ? 'h-full pt-0' : 'pt-16'}`}>
         {children}
       </main>
+
+      {/* Global Mascot Companion Peeking on Other Pages */}
+      <GlobalMascotPeek />
 
       {/* Global Studio Footer for other pages */}
       {!isMediaPage && <Footer />}
