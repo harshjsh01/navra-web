@@ -12,8 +12,8 @@ export default function AppLayoutWrapper({ children }) {
 
   return (
     <div className="relative min-h-screen w-full flex flex-col text-slate-100 selection:bg-cyan-500 selection:text-black">
-      {/* Route-Specific Interactive Background Landscapes */}
-      {isMediaPage ? <NewspaperMediaBackground /> : <StorySvgBackground />}
+      {/* Route-Specific Background Landscape for other pages */}
+      {!isMediaPage && <StorySvgBackground />}
 
       {/* Floating HUD Navigation */}
       <NavigationHUD />
