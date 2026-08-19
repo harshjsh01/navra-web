@@ -1,14 +1,19 @@
 'use client';
 
+import { usePathname } from 'next/navigation';
 import StorySvgBackground from './StorySvgBackground';
+import MediaSvgBackground from './MediaSvgBackground';
 import NavigationHUD from './NavigationHUD';
 import Footer from './Footer';
 
 export default function AppLayoutWrapper({ children }) {
+  const pathname = usePathname();
+  const isMediaPage = pathname === '/media';
+
   return (
     <div className="relative min-h-screen w-full flex flex-col text-slate-100 selection:bg-cyan-500 selection:text-black">
-      {/* Interactive Storytelling SVG Vector Landscape */}
-      <StorySvgBackground />
+      {/* Route-Specific Interactive Storytelling SVG Landscapes */}
+      {isMediaPage ? <MediaSvgBackground /> : <StorySvgBackground />}
 
       {/* Floating HUD Navigation */}
       <NavigationHUD />
