@@ -17,17 +17,20 @@ import {
   Send,
   Mail,
   CheckCircle2,
-  Compass,
   Move,
-  MousePointer
+  Search,
+  Quote,
+  Maximize2
 } from 'lucide-react';
 
-const SHOWCASE_ITEMS = [
+const SHOWCASE_ARTICLES = [
   {
     id: 1,
-    title: 'NAVRA SIGNATURE BRAND SHOWREEL',
+    title: 'CREATIVE AGENCY UNVEILS CINEMATIC MEDIA MATRIX',
+    highlightWord: 'UNVEILED TODAY',
     kicker: 'LEAD STORY // 4K MASTER CUT',
     client: 'NAVRA STUDIO LAB // 2026',
+    byline: 'By Harsh Joshi, Chief Media Director',
     category: 'Cinematic Reels',
     type: 'video',
     mediaSrc: '/show/finalreel_navra.mp4',
@@ -35,165 +38,170 @@ const SHOWCASE_ITEMS = [
     edition: 'PAGE 01 • VOL. 26',
     duration: '1:10',
     resolution: '4K CINEMA',
-    tags: ['MASTER REEL', 'VFX MOTION', 'COLOR SCIENCE'],
-    stats: 'FLAGSHIP',
-    dateline: 'NAVRA DESK — ',
-    description: 'The master studio showreel showcasing cinematic pacing, analog sound design, dynamic transitions, and commercial storytelling engineered for high audience retention.',
+    caption: 'Fig 1.1 — Master 4K studio showreel showcasing dynamic speed ramps, anamorphic color grading, and commercial storytelling.',
+    dateline: 'NEW DELHI — ',
+    col1: 'In a landmark release for digital creative production, Navra Studio has revealed its full-spectrum media workflow, merging high-velocity video editing with bespoke sound engineering.',
+    col2: 'The signature showreel demonstrates precision narrative pacing, speed ramp transitions, and studio-grade color science engineered to captivate audiences and maximize viewer retention across multi-channel digital platforms.',
+    quote: 'We engineer visual identities and cinematic reels that command attention in an overcrowded digital landscape.',
   },
   {
     id: 2,
-    title: 'CREATIVE MASTERCLASS & WORKSHOP PROMO',
-    kicker: 'SPECIAL REPORT // DESIGN LAB',
+    title: 'HANDS-ON MASTERCLASS WORKSHOPS EXPAND DIGITAL CRAFT',
+    highlightWord: 'LIVE SESSIONS',
+    kicker: 'EDUCATION WIRE // DESIGN PIPELINE',
     client: 'NAVRA WORKSHOPS // LIVE',
+    byline: 'By Editorial Bureau',
     category: 'Cinematic Reels',
     type: 'video',
     mediaSrc: '/show/workshop_promo.mp4',
     posterSrc: '/show/edit_2.png',
-    edition: 'PAGE 02 • EDUCATION',
+    edition: 'PAGE 01 • LOWER QUADRANT',
     duration: '0:40',
     resolution: '1080P 60FPS',
-    tags: ['WORKSHOP', 'MOTION DESIGN', 'EVENT PROMO'],
-    stats: 'EDUCATIONAL',
-    dateline: 'STUDIO REPORT — ',
-    description: 'Hands-on creative masterclass highlighting live design workflows, software pipelines, typography manipulation, and dynamic graphic edits.',
+    caption: 'Fig 1.2 — Live masterclass creative session demonstrating dynamic graphic workflows and software pipelines.',
+    dateline: 'STUDIO DESK — ',
+    col1: 'Navra Studio creative masterclasses provide interactive training in kinetic typography, software automation, and commercial video post-production.',
+    col2: 'Participants engage in real-time project breakdowns, learning how to structure retention-optimized reels for high-impact brand campaigns.',
+    quote: 'Bridging the gap between raw concept and finished broadcast masters.',
   },
   {
     id: 3,
-    title: 'EXCLUSIVE PRE-ORDER CAMPAIGN FILM',
+    title: 'EXCLUSIVE PRE-ORDER CAMPAIGN ACHIEVES RECORD ROAS',
+    highlightWord: 'HIGH CONVERSION',
     kicker: 'COMMERCIAL DISPATCH // AD SUITE',
     client: 'PRODUCT LAUNCH // COMMERCIAL',
+    byline: 'By Commercial Analytics Desk',
     category: 'Commercials',
     type: 'video',
     mediaSrc: '/show/preorder_final_reel.mp4',
     posterSrc: '/show/wedding_collection.png',
-    edition: 'PAGE 03 • COMMERCE',
+    edition: 'PAGE 01 • COMMERCE',
     duration: '0:45',
     resolution: '4K ULTRA HD',
-    tags: ['PRE-ORDER', 'PRODUCT AD', 'HIGH-HOOK'],
-    stats: '+340% ROAS',
+    caption: 'Fig 1.3 — High-conversion commercial ad reel featuring product launch overlays and retention hooks.',
     dateline: 'MARKETING WIRE — ',
-    description: 'High-conversion product pre-order commercial reel featuring energetic pacing, kinetic title overlays, and promotional narrative structure.',
+    col1: 'Engineered specifically for paid social marketing funnels, the pre-order commercial video utilizes aggressive opening hooks and synchronized audio cues.',
+    col2: 'Campaign analytics indicate a +340% increase in ROAS and unprecedented click-through rates across Instagram, TikTok, and YouTube Shorts.',
+    quote: 'Every frame is engineered to hold attention and drive direct purchase intent.',
   },
   {
     id: 4,
-    title: 'NAVRANG NAVRATRI FESTIVAL REEL',
-    kicker: 'CULTURAL BROADSIDE // LIVE STAGE',
+    title: 'CULTURAL FESTIVALS CAPTIVATED BY FAST-PACED REELS',
+    highlightWord: 'FESTIVE REACH',
+    kicker: 'CULTURAL BROADSIDE // STAGE PRODUCTION',
     client: 'CULTURAL EXPERIENCE // 2026',
+    byline: 'By Cultural Affairs Correspondent',
     category: 'Cinematic Reels',
     type: 'video',
     mediaSrc: '/show/navrang_navratri.mp4',
     posterSrc: '/show/edit_1.png',
-    edition: 'PAGE 04 • CULTURE',
+    edition: 'PAGE 01 • EVENT WIRE',
     duration: '0:15',
     resolution: '1080P HD',
-    tags: ['EVENT REEL', 'MUSIC SYNC', 'FESTIVAL'],
-    stats: '150K+ VIEWS',
-    dateline: 'LIVE EVENT — ',
-    description: 'High-energy cultural event promotional reel featuring dynamic music synchronization and festive visual pacing.',
+    caption: 'Fig 1.4 — Festive promotional reel capturing live stage energy with precision music synchronization.',
+    dateline: 'MUMBAI — ',
+    col1: 'Navrang Navratri and Navratri Rangat event coverage generated over 430,000 combined impressions across festive digital channels.',
+    col2: 'Fast-cut editing paired with vibrant traditional color balance brought the raw energy of live stage performances directly to mobile feeds.',
+    quote: 'Preserving cultural grandeur through modern cinematic pacing.',
   },
   {
     id: 5,
-    title: 'NAVRATRI RANGAT FESTIVAL PROMO',
-    kicker: 'STAGE PRODUCTION // SOUND DESIGN',
-    client: 'STAGE & LIVE PRODUCTION',
-    category: 'Cinematic Reels',
-    type: 'video',
-    mediaSrc: '/show/navratri_rangat.mp4',
-    posterSrc: '/show/edit_2.png',
-    edition: 'PAGE 05 • ENTERTAINMENT',
-    duration: '0:30',
-    resolution: '1080P HD',
-    tags: ['COLOR GRADE', 'AUDIO MASTER', 'STAGE PROMO'],
-    stats: '280K+ VIEWS',
-    dateline: 'PRODUCTION WIRE — ',
-    description: 'Cinematic festival promotional video with festive color grading, rhythm cuts, and atmospheric sound design.',
-  },
-  {
-    id: 6,
-    title: 'DYNAMIC MOTION IDENTITY & TYPOGRAPHY',
-    kicker: 'DIGITAL INNOVATION // VECTOR LAB',
+    title: '3D MOTION CGI & KINETIC TYPOGRAPHY REACH NEW FRONTIERS',
+    highlightWord: 'DIGITAL INNOVATION',
+    kicker: 'TECHNOLOGY REPORT // VECTOR LAB',
     client: 'NAVRA MOTION LAB',
+    byline: 'By Tech & Motion Editor',
     category: '3D Motion',
     type: 'video',
     mediaSrc: '/show/motion_design.mp4',
     posterSrc: '/show/we_agency.png',
-    edition: 'PAGE 06 • TECHNOLOGY',
+    edition: 'PAGE 02 • TECH DESK',
     duration: '0:20',
     resolution: 'VECTOR 60FPS',
-    tags: ['MOTION GRAPHICS', 'KINETIC TYPE', 'VISUAL ID'],
-    stats: 'VIRAL REACH',
-    dateline: 'TECH DESK — ',
-    description: 'Modern kinetic typography motion reel with stylized visual transitions and fluid vector animations.',
+    caption: 'Fig 2.1 — Kinetic typography motion reel with vector logo simulations and fluid transitions.',
+    dateline: 'INNOVATION LAB — ',
+    col1: 'By combining SVG vector math with 3D CGI simulations, Navra Studio produces digital motion identities that elevate web and software interfaces.',
+    col2: 'Modern brands demand fluid kinetic systems that transition seamlessly from video advertising into live digital product environments.',
+    quote: 'Typography in motion is the heartbeat of contemporary digital brand systems.',
   },
   {
-    id: 7,
-    title: 'CINEMATIC SEQUENCE & MOOD FILM',
-    kicker: 'CINEMA CRITIQUE // VISUAL ESSAY',
+    id: 6,
+    title: 'ATMOSPHERIC CINEMATIC SEQUENCE CAPTURES VISUAL POETRY',
+    highlightWord: 'CINEMA CRITIQUE',
+    kicker: 'VISUAL ESSAY // COLOR SCIENCE',
     client: 'VISUAL STORYTELLING LAB',
+    byline: 'By Film & Optics Reviewer',
     category: 'Cinematic Reels',
     type: 'video',
     mediaSrc: '/show/walk_cinematic.mov',
     posterSrc: '/show/wedding_collection.png',
-    edition: 'PAGE 07 • ESSAY',
+    edition: 'PAGE 02 • ARTS',
     duration: '0:45',
     resolution: '4K CINEMA',
-    tags: ['CINEMATIC FILM', 'COLOR SCIENCE', 'PACING'],
-    stats: 'MASTER QUALITY',
+    caption: 'Fig 2.2 — Anamorphic visual sequence showcasing bespoke LUT color grading and wide-angle framing.',
     dateline: 'CINEMA WIRE — ',
-    description: 'Atmospheric narrative visual sequence with custom color treatment and cinematic wide-angle framing.',
+    col1: 'Exploring the subtle interplay between natural lighting and digital grading algorithms, this visual sequence demonstrates mood development.',
+    col2: 'Anamorphic lens emulation paired with spatial audio design creates an immersive narrative experience suited for high-end brand films.',
+    quote: 'Light, shadow, and pacing unite to form unforgettable visual stories.',
   },
   {
-    id: 8,
-    title: 'LUXURY GOLD & DIAMOND WEDDING CAMPAIGN',
-    kicker: 'COMMERCIAL BROADSHEET // SPECIAL AD',
+    id: 7,
+    title: 'ROYAL WEDDING JEWELRY COLLECTION ANNOUNCES 25% SAVINGS',
+    highlightWord: 'COMMERCIAL AD',
+    kicker: 'SPECIAL COMMERCIAL GAZETTE',
     client: 'FINE JEWELRY BROADSIDE',
+    byline: 'Sponsored Feature',
     category: 'Commercials',
     type: 'image',
     mediaSrc: '/show/wedding_collection.png',
     posterSrc: '/show/wedding_collection.png',
-    edition: 'PAGE 08 • ADVERTISEMENT',
-    duration: 'POSTER / AD',
+    edition: 'PAGE 02 • ADVERTISEMENT',
+    duration: 'PRINT AD',
     resolution: '1080x1080 HQ',
-    tags: ['COMMERCIAL', 'JEWELRY BRANDING', 'AD DESIGN'],
-    stats: 'COMMERCIAL',
-    dateline: 'SPECIAL GAZETTE — ',
-    description: 'Premium luxury commercial creative developed for high-converting social media advertising and wedding collection promotions.',
+    caption: 'Fig 2.3 — Commercial ad creative for the Luxury Gold & Diamond Wedding Collection.',
+    dateline: 'COMMERCIAL DESK — ',
+    col1: 'Explore our latest wedding collection in gold and diamond at an exclusive 25% discount available until 23rd November.',
+    col2: 'Crafted with timeless elegance and certified purity. Visit authorized showrooms or reserve exclusive collection pieces online.',
+    quote: 'Elegance refined. Tradition celebrated with royal gold craftsmanship.',
   },
   {
-    id: 9,
-    title: 'CREATIVE AGENCY BRAND IDENTITY SYSTEM',
-    kicker: 'IDENTITY STANDARD // BRAND ARCHIVE',
+    id: 8,
+    title: 'AGENCY BRAND IDENTITY SYSTEM SETS NEW VISUAL STANDARD',
+    highlightWord: 'BRAND ARCHIVE',
+    kicker: 'GRAPHIC DESIGN // IDENTITY',
     client: 'NAVRA STUDIO BRAND ARCHIVE',
+    byline: 'By Design Standards Bureau',
     category: 'Brand & Print',
     type: 'image',
     mediaSrc: '/show/we_agency.png',
     posterSrc: '/show/we_agency.png',
-    edition: 'PAGE 09 • IDENTITY',
-    duration: 'VISUAL ID',
+    edition: 'PAGE 02 • IDENTITY',
+    duration: 'BRAND ID',
     resolution: '1080x1080 HQ',
-    tags: ['BRAND IDENTITY', 'TYPOGRAPHY', 'EDITORIAL'],
-    stats: 'STANDARD',
-    dateline: 'BRAND GAZETTE — ',
-    description: 'Comprehensive agency visual identity artwork featuring modern typography hierarchy and brand color synergy.',
+    caption: 'Fig 2.4 — Comprehensive agency visual identity layout and typography hierarchy.',
+    dateline: 'DESIGN ARCHIVE — ',
+    col1: 'The Navra Studio brand identity system establishes a rigorous typographic hierarchy, balancing bold serif authority with clean monospaced precision.',
+    col2: 'Applied across digital merchandise, print publications, and software HUD interfaces for complete brand consistency.',
+    quote: 'Consistent identity architecture builds long-term brand equity.',
   },
 ];
 
 export default function MediaPage() {
-  const [selectedMedia, setSelectedMedia] = useState(null);
+  const [selectedArticle, setSelectedArticle] = useState(null);
   const [formSubmitted, setFormSubmitted] = useState(false);
   const containerRef = useRef(null);
-  const canvas3DRef = useRef(null);
+  const broadsheetRef = useRef(null);
 
-  // Drag physics refs
+  // Drag & Physics refs
   const isDragging = useRef(false);
   const dragMoved = useRef(false);
   const startPos = useRef({ x: 0, y: 0 });
-  const currentPos = useRef({ x: -260, y: -140, rotX: 0, rotY: 0 });
-  const targetPos = useRef({ x: -260, y: -140, rotX: 0, rotY: 0 });
+  const currentPos = useRef({ x: -200, y: -100, rotX: 0, rotY: 0 });
+  const targetPos = useRef({ x: -200, y: -100, rotX: 0, rotY: 0 });
 
   useEffect(() => {
-    const canvas = canvas3DRef.current;
-    if (!canvas) return;
+    const sheet = broadsheetRef.current;
+    if (!sheet) return;
 
     let animationFrameId;
     const renderLoop = () => {
@@ -202,8 +210,8 @@ export default function MediaPage() {
       currentPos.current.rotX += (targetPos.current.rotX - currentPos.current.rotX) * 0.1;
       currentPos.current.rotY += (targetPos.current.rotY - currentPos.current.rotY) * 0.1;
 
-      if (canvas) {
-        canvas.style.transform = `
+      if (sheet) {
+        sheet.style.transform = `
           translate3d(${currentPos.current.x}px, ${currentPos.current.y}px, 0)
           rotateX(${currentPos.current.rotX}deg)
           rotateY(${currentPos.current.rotY}deg)
@@ -236,13 +244,19 @@ export default function MediaPage() {
       } else {
         const xNorm = (e.clientX / window.innerWidth - 0.5) * 2;
         const yNorm = (e.clientY / window.innerHeight - 0.5) * 2;
-        targetPos.current.rotY = xNorm * 5;
-        targetPos.current.rotX = -yNorm * 5;
+        targetPos.current.rotY = xNorm * 4.5;
+        targetPos.current.rotX = -yNorm * 4.5;
       }
     };
 
     const handleMouseUp = () => {
       isDragging.current = false;
+    };
+
+    // Wheel scrolling support
+    const handleWheel = (e) => {
+      targetPos.current.x -= e.deltaX * 0.8;
+      targetPos.current.y -= e.deltaY * 0.8;
     };
 
     const handleTouchStart = (e) => {
@@ -260,8 +274,8 @@ export default function MediaPage() {
         if (Math.abs(dx) > 3 || Math.abs(dy) > 3) {
           dragMoved.current = true;
         }
-        targetPos.current.x += dx * 1.3;
-        targetPos.current.y += dy * 1.3;
+        targetPos.current.x += dx * 1.2;
+        targetPos.current.y += dy * 1.2;
         startPos.current = { x: e.touches[0].clientX, y: e.touches[0].clientY };
       }
     };
@@ -273,6 +287,7 @@ export default function MediaPage() {
     window.addEventListener('mousedown', handleMouseDown);
     window.addEventListener('mousemove', handleMouseMove);
     window.addEventListener('mouseup', handleMouseUp);
+    window.addEventListener('wheel', handleWheel, { passive: true });
     window.addEventListener('touchstart', handleTouchStart);
     window.addEventListener('touchmove', handleTouchMove);
     window.addEventListener('touchend', handleTouchEnd);
@@ -282,15 +297,16 @@ export default function MediaPage() {
       window.removeEventListener('mousedown', handleMouseDown);
       window.removeEventListener('mousemove', handleMouseMove);
       window.removeEventListener('mouseup', handleMouseUp);
+      window.removeEventListener('wheel', handleWheel);
       window.removeEventListener('touchstart', handleTouchStart);
       window.removeEventListener('touchmove', handleTouchMove);
       window.removeEventListener('touchend', handleTouchEnd);
     };
   }, []);
 
-  const handleTileClick = (item) => {
+  const handleArticleClick = (article) => {
     if (dragMoved.current) return;
-    setSelectedMedia(item);
+    setSelectedArticle(article);
   };
 
   const handleContactSubmit = (e) => {
@@ -302,609 +318,462 @@ export default function MediaPage() {
   return (
     <div
       ref={containerRef}
-      className="relative w-screen h-screen overflow-hidden bg-[#020C1B] text-slate-100 font-sans select-none cursor-grab active:cursor-grabbing"
-      style={{ perspective: '1300px' }}
+      className="relative w-screen h-screen overflow-hidden bg-[#020C1B] text-slate-200 font-sans select-none cursor-grab active:cursor-grabbing"
+      style={{ perspective: '1400px' }}
     >
-      {/* Deep Atmosphere Glows */}
+      {/* Deep Space Background Atmosphere */}
       <div className="absolute inset-0 bg-[#020C1B] pointer-events-none" />
       <div 
-        className="absolute inset-0 opacity-[0.06] pointer-events-none" 
+        className="absolute inset-0 opacity-[0.05] pointer-events-none" 
         style={{
           backgroundImage: 'radial-gradient(#38BDF8 1px, transparent 1px)',
-          backgroundSize: '28px 28px'
+          backgroundSize: '24px 24px'
         }} 
       />
-      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,transparent_45%,#020C1B_95%)] pointer-events-none z-10" />
+      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,transparent_50%,#020C1B_95%)] pointer-events-none z-10" />
 
-      {/* ======================================================== */}
-      {/* FLOATING INTERACTIVE HUD TAG ("DRAG & CLICK TO EXPLORE") */}
-      {/* ======================================================== */}
+      {/* Floating HUD Instruction Pill */}
       <div className="fixed bottom-6 left-1/2 -translate-x-1/2 z-30 pointer-events-none">
-        <div className="flex items-center gap-3 px-5 py-2.5 rounded-full bg-[#041026]/90 border border-cyan-400/40 text-cyan-300 text-xs font-mono backdrop-blur-xl shadow-[0_10px_30px_rgba(0,0,0,0.8)]">
+        <div className="flex items-center gap-3 px-6 py-2.5 rounded-full bg-[#041026]/95 border border-cyan-400/50 text-cyan-300 text-xs font-mono backdrop-blur-xl shadow-[0_10px_35px_rgba(0,0,0,0.85)]">
           <span className="flex h-2 w-2 relative">
             <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-cyan-400 opacity-75"></span>
             <span className="relative inline-flex rounded-full h-2 w-2 bg-cyan-500"></span>
           </span>
-          <span className="font-bold tracking-wider">
-            DRAG TO PAN 3D BROADSHEET • CLICK ANY NEWSPAPER TILE TO EXPAND
+          <span className="font-bold tracking-wider uppercase">
+            DRAG TO PAN BROADSHEET • CLICK ANY ARTICLE TO READ & PLAY VIDEO
           </span>
           <Move className="w-3.5 h-3.5 text-cyan-400 animate-pulse" />
         </div>
       </div>
 
       {/* ======================================================== */}
-      {/* 3D NEWSPAPER BROADSHEET MATRIX (AUTHENTIC EDITORIAL LAYOUT) */}
+      {/* CONTINUOUS 2-PAGE NEWSPAPER BROADSHEET CANVAS (3D PLANE) */}
       {/* ======================================================== */}
       <div
-        ref={canvas3DRef}
-        className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[2200px] h-[1350px] will-change-transform"
+        ref={broadsheetRef}
+        className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[2400px] h-[1550px] will-change-transform flex gap-8 p-6"
         style={{
           transformStyle: 'preserve-3d',
         }}
       >
         {/* ============================================================ */}
-        {/* TILE 1 (ROW 0, COL 0): EDITORIAL LEAD STORY WITH VIDEO CLIP  */}
+        {/* PAGE 1: FRONT PAGE BROADSHEET (LEFT NEWSPAPER SHEET)         */}
         {/* ============================================================ */}
-        <div
-          onClick={() => handleTileClick(SHOWCASE_ITEMS[0])}
-          className="group absolute left-[0px] top-[0px] w-[500px] h-[400px] bg-[#040E20]/95 hover:bg-[#061530] border-2 border-cyan-400/40 hover:border-cyan-300 rounded-none p-5 shadow-[0_20px_50px_rgba(0,0,0,0.9)] backdrop-blur-2xl flex flex-col justify-between overflow-hidden cursor-pointer transition-all duration-300"
-          style={{ transform: 'translateZ(45px)' }}
+        <div 
+          className="w-[1160px] h-full bg-[#040E20]/95 border-2 border-white/20 p-8 shadow-[0_25px_60px_rgba(0,0,0,0.9)] backdrop-blur-2xl flex flex-col justify-between"
+          style={{ transform: 'translateZ(40px)' }}
         >
-          {/* Newspaper Header Bar */}
-          <div className="flex items-center justify-between border-b-2 border-white/20 pb-2 text-[10px] font-mono text-cyan-300">
-            <span className="font-bold uppercase tracking-wider">SECTION 1 // LEAD BROADCAST</span>
-            <span className="text-slate-400 font-mono">VOL. 26 • ISSUE 01</span>
-          </div>
-
-          <div className="my-2">
-            <span className="text-[10px] font-mono text-cyan-400 uppercase tracking-widest block font-bold">
-              {SHOWCASE_ITEMS[0].kicker}
-            </span>
-            <h3 className="text-lg font-black font-serif uppercase tracking-tight text-white leading-tight group-hover:text-cyan-200 transition-colors">
-              {SHOWCASE_ITEMS[0].title}
-            </h3>
-          </div>
-
-          {/* Embedded CRT Video Box */}
-          <div className="relative w-full h-44 bg-black border border-white/15 overflow-hidden my-auto">
-            <video
-              src="/show/finalreel_navra.mp4"
-              muted
-              autoPlay
-              loop
-              playsInline
-              className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-            />
-            <div className="absolute inset-0 bg-[linear-gradient(rgba(18,16,16,0)_50%,rgba(0,0,0,0.35)_50%)] bg-[length:100%_4px] pointer-events-none opacity-40" />
-            <div className="absolute top-2 left-2 px-2 py-0.5 bg-black/80 text-[9px] font-mono text-cyan-300 border border-white/20">
-              ● LIVE 4K MONITOR
+          <div>
+            {/* Top Newspaper Issue Bar */}
+            <div className="flex items-center justify-between border-b-2 border-white/20 pb-2 text-[11px] font-mono text-cyan-300 font-bold">
+              <span>VOL. XXVI // NO. 8802</span>
+              <span>WEDNESDAY, AUGUST 19, 2026</span>
+              <span>PRICE: SPECIAL MEDIA EDITION</span>
+              <span>WEATHER: 60FPS CINEMA</span>
             </div>
-            <div className="absolute inset-0 flex items-center justify-center bg-black/20 group-hover:bg-black/0 transition-colors">
-              <div className="w-12 h-12 rounded-full bg-cyan-400 text-black flex items-center justify-center shadow-2xl group-hover:scale-110 transition-transform">
-                <Play className="w-5 h-5 fill-current ml-0.5" />
+
+            {/* Classic Newspaper Grand Masthead */}
+            <div className="py-5 text-center border-b-4 border-double border-white/30 my-2">
+              <h1 className="text-6xl sm:text-7xl font-black font-serif uppercase tracking-tight text-white leading-none">
+                THE NAVRA CHRONICLE
+              </h1>
+              <div className="flex items-center justify-between mt-2 pt-2 border-t border-white/10 text-[10px] font-mono text-slate-300 uppercase tracking-widest">
+                <span>• CINEMATIC REELS</span>
+                <span>• 3D MOTION CGI</span>
+                <span>• BRAND IDENTITIES</span>
+                <span>• FESTIVAL BROADCASTS</span>
+                <span>• COMMERCIAL SUITES</span>
               </div>
             </div>
-          </div>
 
-          {/* Two-Column Newspaper Article Paragraph */}
-          <div className="grid grid-cols-2 gap-3 pt-2 border-t border-white/10 text-[10px] font-mono text-slate-300 leading-relaxed">
-            <p className="border-r border-white/10 pr-2">
-              <strong className="text-cyan-300">NAVRA DESK —</strong> High-velocity pacing, speed ramps, and bespoke anamorphic color grading.
-            </p>
-            <p className="text-slate-400">
-              Engineered for broadcast campaigns and digital growth conversions.
-            </p>
-          </div>
-
-          <div className="flex items-center justify-between pt-2 border-t border-white/10 text-[10px] font-mono text-cyan-400">
-            <span className="group-hover:underline">▶ Click to Read Article & Play Reel</span>
-            <span className="text-slate-400 font-bold">NV® 2026</span>
-          </div>
-        </div>
-
-        {/* ============================================================ */}
-        {/* TILE 2 (ROW 0, COL 1): "WE (ARE) CREATORS, NOT CONSUMERS"    */}
-        {/* ============================================================ */}
-        <div
-          onClick={() => handleTileClick(SHOWCASE_ITEMS[0])}
-          className="group absolute left-[520px] top-[0px] w-[580px] h-[400px] bg-[#040E20]/95 hover:bg-[#061530] border-2 border-cyan-400/50 hover:border-cyan-300 rounded-none p-6 shadow-[0_20px_50px_rgba(0,0,0,0.9)] backdrop-blur-2xl flex flex-col justify-between overflow-hidden cursor-pointer transition-all duration-300"
-          style={{ transform: 'translateZ(65px)' }}
-        >
-          {/* Newspaper Masthead Banner */}
-          <div className="flex items-center justify-between border-b-2 border-cyan-400/50 pb-3">
-            <div className="flex items-center gap-2">
-              <span className="text-sm font-black font-serif tracking-widest text-white uppercase">
-                NAVRA STUDIO CHRONICLE
-              </span>
-            </div>
-            <div className="text-[10px] font-mono text-cyan-300 font-bold tracking-wider">
-              OFFICIAL PRESS ®
-            </div>
-          </div>
-
-          <div className="relative my-auto flex items-center justify-between">
-            <div className="max-w-[340px] z-10">
-              <div className="text-[10px] font-mono text-cyan-400 uppercase tracking-widest font-bold mb-1">
-                EDITORIAL MANIFESTO
+            {/* ======================================================== */}
+            {/* LEAD STORY (ARTICLE 1: FINALREEL SHOWCASE)               */}
+            {/* ======================================================== */}
+            <div 
+              onClick={() => handleArticleClick(SHOWCASE_ARTICLES[0])}
+              className="group cursor-pointer border-b-2 border-white/20 pb-6 my-4 transition-colors hover:bg-blue-950/20 p-3 -mx-3"
+            >
+              <div className="flex items-center justify-between text-[10px] font-mono text-cyan-400 font-bold mb-1">
+                <span>{SHOWCASE_ARTICLES[0].kicker}</span>
+                <span>{SHOWCASE_ARTICLES[0].byline}</span>
               </div>
-              <h2 className="text-3xl sm:text-4xl font-black font-serif uppercase tracking-tight text-white leading-tight">
-                We (Are) <br />
-                <span className="bg-gradient-to-r from-cyan-300 via-blue-400 to-sky-200 bg-clip-text text-transparent">
-                  Creators,
-                </span> <br />
-                Not Consumers
+
+              <h2 className="text-3xl sm:text-4xl font-black font-serif uppercase text-white leading-tight mb-3 group-hover:text-cyan-200 transition-colors">
+                {SHOWCASE_ARTICLES[0].title} <span className="bg-cyan-500/30 text-cyan-300 px-2 py-0.5 border border-cyan-400/40 text-2xl align-middle font-mono">{SHOWCASE_ARTICLES[0].highlightWord}</span>
               </h2>
-              
-              {/* Newspaper Editorial Columns */}
-              <div className="mt-3 text-[11px] font-mono text-slate-300 leading-relaxed space-y-1">
-                <p>We connect cinematic storytelling with digital software engineering.</p>
-                <div className="flex items-center gap-2 pt-2 text-[10px] text-cyan-300 font-bold">
-                  <span className="px-2 py-0.5 bg-blue-600/30 border border-cyan-400/40">01 CRAFT</span>
-                  <span className="px-2 py-0.5 bg-blue-600/30 border border-cyan-400/40">02 DIRECT</span>
-                  <span className="px-2 py-0.5 bg-blue-600/30 border border-cyan-400/40">03 SCALE</span>
-                </div>
-              </div>
-            </div>
 
-            {/* 3D Figurine Silhouette Graphics */}
-            <div className="flex items-center gap-2 opacity-85 group-hover:scale-105 transition-transform">
-              <div className="w-16 h-32 bg-gradient-to-b from-cyan-400/30 via-blue-600/20 to-transparent border border-cyan-400/40 flex flex-col items-center justify-center p-2 shadow-inner">
-                <div className="w-6 h-6 rounded-full bg-cyan-300/40 border border-cyan-300 mb-1" />
-                <div className="w-10 h-16 rounded-none bg-blue-600/30 border border-cyan-400/30" />
-              </div>
-              <div className="w-16 h-32 bg-gradient-to-b from-blue-500/30 via-indigo-600/20 to-transparent border border-blue-400/40 flex flex-col items-center justify-center p-2 shadow-inner">
-                <div className="w-6 h-6 rounded-full bg-blue-300/40 border border-blue-300 mb-1" />
-                <div className="w-10 h-16 rounded-none bg-indigo-600/30 border border-blue-400/30" />
-              </div>
-            </div>
-          </div>
-
-          <div className="flex items-center justify-between pt-3 border-t-2 border-white/20 text-[10px] font-mono text-slate-400">
-            <span className="text-cyan-300 group-hover:underline">▶ Expand Manifesto & Watch Reel</span>
-            <span className="text-cyan-400 font-bold">PAGE 01</span>
-          </div>
-        </div>
-
-        {/* ============================================================ */}
-        {/* TILE 3 (ROW 0, COL 2): VIBRANT NEON BROADSHEET ("NOT CONSUMERS") */}
-        {/* ============================================================ */}
-        <div
-          onClick={() => handleTileClick(SHOWCASE_ITEMS[1])}
-          className="group absolute left-[1120px] top-[0px] w-[500px] h-[400px] bg-gradient-to-br from-cyan-400 via-cyan-500 to-blue-600 border-2 border-cyan-200 p-7 shadow-[0_30px_70px_rgba(6,182,212,0.4)] flex flex-col justify-between overflow-hidden text-black cursor-pointer transition-all duration-300 hover:scale-[1.02]"
-          style={{ transform: 'translateZ(85px) rotateZ(-1deg)' }}
-        >
-          <div className="absolute inset-0 bg-[radial-gradient(#000000_1px,transparent_1px)] [background-size:16px_16px] opacity-15" />
-          
-          <div className="flex items-center justify-between z-10 border-b-2 border-black/30 pb-2">
-            <span className="text-xs font-mono font-black tracking-widest uppercase">
-              SPECIAL BROADSHEET // ISSUE 02
-            </span>
-            <Barcode className="w-8 h-6 text-black" />
-          </div>
-
-          <div className="relative my-auto z-10">
-            <span className="text-xs font-mono font-bold uppercase tracking-wider block mb-1">
-              EDITORIAL HEADLINE
-            </span>
-            <div className="text-4xl sm:text-5xl font-black uppercase tracking-tighter leading-none font-serif">
-              NOT <br />
-              CONSUMERS
-            </div>
-            <svg viewBox="0 0 200 60" className="w-48 h-12 text-black/80 mt-2">
-              <path
-                d="M 10 40 Q 60 10, 110 35 T 190 25"
-                fill="none"
-                stroke="currentColor"
-                strokeWidth="3.5"
-                strokeLinecap="round"
-              />
-            </svg>
-            <p className="text-xs font-mono font-medium mt-2 max-w-xs leading-snug">
-              We connect the real world with high-tier digital media and interactive motion.
-            </p>
-          </div>
-
-          <div className="flex items-center justify-between text-[11px] font-mono font-black z-10 pt-2 border-t-2 border-black/30">
-            <span>((NV)) BRAND STANDARD</span>
-            <span>★ CLICK TO WATCH WORKSHOP</span>
-          </div>
-        </div>
-
-        {/* ============================================================ */}
-        {/* TILE 4 (ROW 0, COL 3): METALLIC BLUEPRINT GAZETTE CARD       */}
-        {/* ============================================================ */}
-        <div
-          onClick={() => handleTileClick(SHOWCASE_ITEMS[5])}
-          className="group absolute left-[1640px] top-[0px] w-[500px] h-[400px] bg-[#040E20]/95 hover:bg-[#061530] border-2 border-cyan-400/40 hover:border-cyan-300 rounded-none p-6 shadow-[0_20px_50px_rgba(0,0,0,0.9)] backdrop-blur-2xl flex flex-col justify-between overflow-hidden cursor-pointer transition-all duration-300"
-          style={{ transform: 'translateZ(50px)' }}
-        >
-          <div className="flex items-center justify-between border-b border-white/20 pb-2 text-[10px] font-mono">
-            <span className="text-cyan-300 font-bold uppercase">
-              BLUEPRINT SPECIFICATION // 100% & 400%
-            </span>
-            <span className="text-slate-400">REF: NV-09</span>
-          </div>
-
-          <div className="relative w-full h-48 bg-blue-950/40 border border-cyan-500/30 flex items-center justify-center overflow-hidden my-auto p-4">
-            <div className="absolute w-36 h-36 rounded-full border border-cyan-400/30 animate-spin" style={{ animationDuration: '20s' }} />
-            <div className="absolute w-24 h-24 rounded-full border border-dashed border-blue-400/40 animate-spin" style={{ animationDuration: '14s' }} />
-            
-            <div className="relative z-10 flex flex-col items-center">
-              <div className="w-12 h-12 bg-gradient-to-tr from-cyan-400 to-blue-600 shadow-[0_0_20px_rgba(56,189,248,0.6)] flex items-center justify-center text-black font-black text-lg mb-1">
-                NV
-              </div>
-              <span className="text-xs font-mono font-bold text-white tracking-widest uppercase">
-                CHROME TOY SPEC
-              </span>
-              <span className="text-[10px] font-mono text-cyan-300">
-                VECTOR MOTION RENDER
-              </span>
-            </div>
-          </div>
-
-          <div className="pt-2 border-t border-white/10 text-xs font-mono flex items-center justify-between text-slate-400">
-            <span className="text-cyan-300 group-hover:underline">▶ View Motion Identity</span>
-            <span className="text-cyan-400 font-bold">PAGE 06</span>
-          </div>
-        </div>
-
-        {/* ============================================================ */}
-        {/* TILE 5 (ROW 1, COL 0): FESTIVAL REEL (NAVRANG NAVRATRI)      */}
-        {/* ============================================================ */}
-        <div
-          onClick={() => handleTileClick(SHOWCASE_ITEMS[3])}
-          className="group absolute left-[0px] top-[430px] w-[500px] h-[400px] bg-[#040E20]/95 hover:bg-[#061530] border-2 border-cyan-400/40 hover:border-cyan-300 rounded-none p-5 shadow-[0_20px_50px_rgba(0,0,0,0.9)] backdrop-blur-2xl flex flex-col justify-between overflow-hidden cursor-pointer transition-all duration-300"
-          style={{ transform: 'translateZ(55px)' }}
-        >
-          <div className="flex items-center justify-between border-b border-white/20 pb-2 text-[10px] font-mono">
-            <span className="text-cyan-300 font-bold uppercase">
-              CULTURE GAZETTE // FESTIVAL PROMO
-            </span>
-            <span className="text-slate-400">150K+ VIEWS</span>
-          </div>
-
-          <div className="my-1.5">
-            <span className="text-[10px] font-mono text-cyan-400 uppercase tracking-wider block font-bold">
-              {SHOWCASE_ITEMS[3].kicker}
-            </span>
-            <h3 className="text-base font-black font-serif uppercase tracking-tight text-white leading-tight group-hover:text-cyan-200">
-              {SHOWCASE_ITEMS[3].title}
-            </h3>
-          </div>
-
-          <div className="relative w-full h-44 bg-black border border-white/15 overflow-hidden my-auto">
-            <video
-              src="/show/navrang_navratri.mp4"
-              muted
-              autoPlay
-              loop
-              playsInline
-              className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-            />
-          </div>
-
-          <div className="pt-2 border-t border-white/10 text-xs font-mono flex items-center justify-between text-slate-400">
-            <span className="text-cyan-300 group-hover:underline">▶ Watch Festival Reel</span>
-            <span className="text-cyan-400 font-bold">PAGE 04</span>
-          </div>
-        </div>
-
-        {/* ============================================================ */}
-        {/* TILE 6 (ROW 1, COL 1): BROADSIDE HEADLINE BLOCK              */}
-        {/* ============================================================ */}
-        <div
-          className="group absolute left-[520px] top-[430px] w-[580px] h-[400px] bg-[#040E20]/95 border-2 border-white/20 rounded-none p-7 flex flex-col justify-between shadow-[0_20px_50px_rgba(0,0,0,0.9)] backdrop-blur-2xl"
-          style={{ transform: 'translateZ(75px)' }}
-        >
-          <div className="flex items-center justify-between border-b-2 border-white/20 pb-3 text-xs font-mono text-cyan-300">
-            <span className="font-bold tracking-widest">★ THE NAVRA ARCHIVE</span>
-            <Barcode className="w-8 h-5 text-slate-400" />
-          </div>
-
-          <div className="my-auto text-center">
-            <span className="text-xs font-mono text-cyan-400 uppercase tracking-[0.3em] font-bold block mb-2">
-              SPECIAL EDITORIAL ISSUE
-            </span>
-            <h2 className="text-4xl sm:text-5xl font-black font-serif uppercase tracking-tight text-white leading-none mb-3">
-              NAVRA STUDIO COLLECTION
-            </h2>
-            <div className="flex flex-wrap items-center justify-center gap-3 text-xs font-mono text-slate-300 border-t border-b border-white/10 py-2">
-              <span>★ COMMERCIAL DIRECTION</span>
-              <span>★ 3D MOTION CGI</span>
-              <span>★ FESTIVAL REELS</span>
-            </div>
-          </div>
-
-          <div className="flex items-center justify-between pt-3 border-t-2 border-white/20 text-xs font-mono text-slate-400">
-            <span>LAT 28.61° N / 77.20° E</span>
-            <span className="px-3 py-1 bg-blue-600/30 border border-cyan-400/40 text-cyan-300 font-bold">
-              NV® 2026
-            </span>
-          </div>
-        </div>
-
-        {/* ============================================================ */}
-        {/* TILE 7 (ROW 1, COL 2): LUXURY COMMERCIAL GAZETTE AD          */}
-        {/* ============================================================ */}
-        <div
-          onClick={() => handleTileClick(SHOWCASE_ITEMS[7])}
-          className="group absolute left-[1120px] top-[430px] w-[500px] h-[400px] bg-[#040E20]/95 hover:bg-[#061530] border-2 border-amber-400/40 hover:border-amber-300 rounded-none p-5 shadow-[0_20px_50px_rgba(0,0,0,0.9)] backdrop-blur-2xl flex flex-col justify-between overflow-hidden cursor-pointer transition-all duration-300"
-          style={{ transform: 'translateZ(65px)' }}
-        >
-          <div className="flex items-center justify-between border-b border-white/20 pb-2 text-[10px] font-mono">
-            <span className="text-amber-300 font-bold uppercase">
-              ★ COMMERCIAL GAZETTE // LUXURY AD
-            </span>
-            <span className="px-2 py-0.5 bg-amber-500/20 border border-amber-400/40 text-amber-300 font-bold">
-              25% OFF
-            </span>
-          </div>
-
-          <div className="my-1.5">
-            <span className="text-[10px] font-mono text-amber-400 uppercase tracking-wider block font-bold">
-              {SHOWCASE_ITEMS[7].kicker}
-            </span>
-            <h3 className="text-base font-black font-serif uppercase tracking-tight text-white leading-tight group-hover:text-amber-200">
-              {SHOWCASE_ITEMS[7].title}
-            </h3>
-          </div>
-
-          <div className="relative w-full h-44 bg-slate-950 border border-white/15 overflow-hidden my-auto flex items-center justify-center">
-            <img
-              src="/show/wedding_collection.png"
-              alt="Luxury Wedding Collection"
-              className="w-full h-full object-contain p-2 group-hover:scale-105 transition-transform duration-500"
-            />
-          </div>
-
-          <div className="flex items-center justify-between pt-2 border-t border-white/10 text-xs font-mono text-slate-400">
-            <span className="text-amber-300 group-hover:underline">▶ Inspect Commercial Poster</span>
-            <span className="text-amber-300 font-bold">PAGE 08</span>
-          </div>
-        </div>
-
-        {/* ============================================================ */}
-        {/* TILE 8 (ROW 1, COL 3): KINETIC MOTION TYPOGRAPHY BROADCAST   */}
-        {/* ============================================================ */}
-        <div
-          onClick={() => handleTileClick(SHOWCASE_ITEMS[5])}
-          className="group absolute left-[1640px] top-[430px] w-[500px] h-[400px] bg-[#040E20]/95 hover:bg-[#061530] border-2 border-cyan-400/40 hover:border-cyan-300 rounded-none p-5 shadow-[0_20px_50px_rgba(0,0,0,0.9)] backdrop-blur-2xl flex flex-col justify-between overflow-hidden cursor-pointer transition-all duration-300"
-          style={{ transform: 'translateZ(55px)' }}
-        >
-          <div className="flex items-center justify-between border-b border-white/20 pb-2 text-[10px] font-mono">
-            <span className="text-cyan-300 font-bold uppercase">
-              TECH DISPATCH // MOTION ID
-            </span>
-            <span className="text-slate-400">60 FPS</span>
-          </div>
-
-          <div className="my-1.5">
-            <span className="text-[10px] font-mono text-cyan-400 uppercase tracking-wider block font-bold">
-              {SHOWCASE_ITEMS[5].kicker}
-            </span>
-            <h3 className="text-base font-black font-serif uppercase tracking-tight text-white leading-tight group-hover:text-cyan-200">
-              {SHOWCASE_ITEMS[5].title}
-            </h3>
-          </div>
-
-          <div className="relative w-full h-44 bg-black border border-white/15 overflow-hidden my-auto">
-            <video
-              src="/show/motion_design.mp4"
-              muted
-              autoPlay
-              loop
-              playsInline
-              className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-            />
-          </div>
-
-          <div className="pt-2 border-t border-white/10 text-xs font-mono flex items-center justify-between text-slate-400">
-            <span className="text-cyan-300 group-hover:underline">▶ Watch Motion Design</span>
-            <span className="text-cyan-400 font-bold">PAGE 06</span>
-          </div>
-        </div>
-
-        {/* ============================================================ */}
-        {/* TILE 9 (ROW 2, COL 0): WORKSHOP LIVE PROMO REEL CARD         */}
-        {/* ============================================================ */}
-        <div
-          onClick={() => handleTileClick(SHOWCASE_ITEMS[1])}
-          className="group absolute left-[0px] top-[860px] w-[500px] h-[450px] bg-[#040E20]/95 hover:bg-[#061530] border-2 border-cyan-400/40 hover:border-cyan-300 rounded-none p-5 shadow-[0_20px_50px_rgba(0,0,0,0.9)] backdrop-blur-2xl flex flex-col justify-between overflow-hidden cursor-pointer transition-all duration-300"
-          style={{ transform: 'translateZ(60px)' }}
-        >
-          <div className="flex items-center justify-between border-b border-white/20 pb-2 text-[10px] font-mono">
-            <span className="text-cyan-300 font-bold uppercase">
-              EDUCATION WIRE // MASTERCLASS
-            </span>
-            <span className="text-slate-400">LIVE SESSIONS</span>
-          </div>
-
-          <div className="my-1.5">
-            <span className="text-[10px] font-mono text-cyan-400 uppercase tracking-wider block font-bold">
-              {SHOWCASE_ITEMS[1].kicker}
-            </span>
-            <h3 className="text-base font-black font-serif uppercase tracking-tight text-white leading-tight group-hover:text-cyan-200">
-              {SHOWCASE_ITEMS[1].title}
-            </h3>
-          </div>
-
-          <div className="relative w-full h-56 bg-black border border-white/15 overflow-hidden my-auto">
-            <video
-              src="/show/workshop_promo.mp4"
-              muted
-              autoPlay
-              loop
-              playsInline
-              className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-            />
-          </div>
-
-          <div className="flex items-center justify-between pt-2 border-t border-white/10 text-xs font-mono text-slate-400">
-            <span className="text-cyan-300 group-hover:underline">▶ Watch Workshop Edit</span>
-            <span className="text-cyan-400 font-bold">PAGE 02</span>
-          </div>
-        </div>
-
-        {/* ============================================================ */}
-        {/* TILE 10 (ROW 2, COL 1): PRE-ORDER COMMERCIAL FILM CARD       */}
-        {/* ============================================================ */}
-        <div
-          onClick={() => handleTileClick(SHOWCASE_ITEMS[2])}
-          className="group absolute left-[520px] top-[860px] w-[580px] h-[450px] bg-[#040E20]/95 hover:bg-[#061530] border-2 border-cyan-400/40 hover:border-cyan-300 rounded-none p-5 shadow-[0_20px_50px_rgba(0,0,0,0.9)] backdrop-blur-2xl flex flex-col justify-between overflow-hidden cursor-pointer transition-all duration-300"
-          style={{ transform: 'translateZ(60px)' }}
-        >
-          <div className="flex items-center justify-between border-b border-white/20 pb-2 text-[10px] font-mono">
-            <span className="text-cyan-300 font-bold uppercase">
-              COMMERCIAL AD WIRE // PRODUCT
-            </span>
-            <span className="text-slate-400">+340% ROAS</span>
-          </div>
-
-          <div className="my-1.5">
-            <span className="text-[10px] font-mono text-cyan-400 uppercase tracking-wider block font-bold">
-              {SHOWCASE_ITEMS[2].kicker}
-            </span>
-            <h3 className="text-base font-black font-serif uppercase tracking-tight text-white leading-tight group-hover:text-cyan-200">
-              {SHOWCASE_ITEMS[2].title}
-            </h3>
-          </div>
-
-          <div className="relative w-full h-56 bg-black border border-white/15 overflow-hidden my-auto">
-            <video
-              src="/show/preorder_final_reel.mp4"
-              muted
-              autoPlay
-              loop
-              playsInline
-              className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-            />
-          </div>
-
-          <div className="flex items-center justify-between pt-2 border-t border-white/10 text-xs font-mono text-slate-400">
-            <span className="text-cyan-300 group-hover:underline">▶ Watch Pre-Order Film</span>
-            <span className="text-cyan-400 font-bold">PAGE 03</span>
-          </div>
-        </div>
-
-        {/* ============================================================ */}
-        {/* TILE 11 (ROW 2, COL 2-3 WIDE): SECTION C // CLASSIFIEDS FORM */}
-        {/* ============================================================ */}
-        <div
-          className="absolute left-[1120px] top-[860px] w-[1020px] h-[450px] bg-[#040E20]/95 border-2 border-cyan-400/50 rounded-none p-6 shadow-[0_25px_60px_rgba(0,0,0,0.9)] backdrop-blur-2xl flex flex-col justify-between overflow-hidden"
-          style={{ transform: 'translateZ(75px)' }}
-        >
-          {/* Newspaper Classifieds Masthead */}
-          <div className="flex items-center justify-between border-b-2 border-cyan-400/50 pb-2.5 text-xs font-mono">
-            <div className="flex items-center gap-2">
-              <span className="w-2.5 h-2.5 rounded-full bg-cyan-400 animate-pulse" />
-              <span className="text-cyan-300 font-bold uppercase tracking-wider">
-                SECTION C // PRESS CLASSIFIEDS & DIRECT DISPATCH
-              </span>
-            </div>
-            <Barcode className="w-8 h-5 text-slate-400" />
-          </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-12 gap-6 my-auto">
-            {/* Left Info Column */}
-            <div className="md:col-span-5 flex flex-col justify-between">
-              <div>
-                <span className="text-[10px] font-mono text-cyan-400 uppercase tracking-widest font-bold block mb-1">
-                  OFFICIAL INQUIRY DESK
-                </span>
-                <h3 className="text-2xl font-black font-serif uppercase tracking-tight text-white leading-tight mb-2">
-                  Commission Your <br />
-                  <span className="bg-gradient-to-r from-cyan-300 to-blue-400 bg-clip-text text-transparent">
-                    Next Masterpiece
-                  </span>
-                </h3>
-                <p className="text-xs text-slate-300 font-mono leading-relaxed mb-4">
-                  Initiate an editorial media sprint for cinematic reels, 3D CGI visuals, or complete visual branding.
-                </p>
-
-                <div className="space-y-2 text-xs font-mono">
-                  <a
-                    href="mailto:harshjsh02@gmail.com"
-                    className="flex items-center gap-2.5 p-2.5 bg-black/60 border border-white/15 text-slate-300 hover:text-white hover:border-cyan-400/40 transition-colors"
-                  >
-                    <Mail className="w-4 h-4 text-cyan-300" />
-                    <span>harshjsh02@gmail.com</span>
-                  </a>
-                  <div className="flex items-center gap-2.5 p-2.5 bg-black/60 border border-white/15 text-slate-300">
-                    <Sparkles className="w-4 h-4 text-blue-300" />
-                    <span>Designed & Built by Harsh Joshi</span>
+              <div className="grid grid-cols-12 gap-5">
+                {/* Lead Video / Image Frame */}
+                <div className="col-span-7">
+                  <div className="relative w-full h-64 bg-black border border-white/20 overflow-hidden shadow-lg">
+                    <video
+                      src={SHOWCASE_ARTICLES[0].mediaSrc}
+                      muted
+                      autoPlay
+                      loop
+                      playsInline
+                      className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
+                    />
+                    <div className="absolute inset-0 bg-[linear-gradient(rgba(18,16,16,0)_50%,rgba(0,0,0,0.35)_50%)] bg-[length:100%_4px] pointer-events-none opacity-40" />
+                    <div className="absolute bottom-2 left-2 px-2.5 py-1 bg-black/80 border border-white/20 text-[10px] font-mono text-cyan-300">
+                      ▶ CLICK TO PLAY MASTER 4K VIDEO
+                    </div>
                   </div>
-                </div>
-              </div>
-            </div>
-
-            {/* Right Classifieds Form */}
-            <div className="md:col-span-7 bg-black/50 border border-white/15 p-4">
-              {formSubmitted ? (
-                <div className="h-full flex flex-col items-center justify-center text-center p-4 space-y-2">
-                  <div className="w-12 h-12 bg-cyan-400/20 border border-cyan-400 text-cyan-300 flex items-center justify-center">
-                    <CheckCircle2 className="w-6 h-6" />
-                  </div>
-                  <span className="text-sm font-bold uppercase text-white font-mono">
-                    DISPATCH TRANSMITTED
-                  </span>
-                  <p className="text-[11px] text-slate-300 font-mono">
-                    Thank you! Harsh Joshi & Navra Studio will respond within 24 hours.
+                  <p className="text-[10px] font-mono text-slate-400 mt-1 italic leading-tight">
+                    {SHOWCASE_ARTICLES[0].caption}
                   </p>
                 </div>
-              ) : (
-                <form onSubmit={handleContactSubmit} className="space-y-2 text-[11px] font-mono">
-                  <div className="grid grid-cols-2 gap-2">
-                    <div>
-                      <label className="block text-cyan-300 uppercase mb-0.5 font-bold">
-                        Name / Organization
-                      </label>
+
+                {/* Lead Article Multi-Column Story Text */}
+                <div className="col-span-5 flex flex-col justify-between text-xs font-mono text-slate-300 leading-relaxed space-y-3">
+                  <p>
+                    <strong className="text-cyan-300 font-bold text-sm">{SHOWCASE_ARTICLES[0].dateline}</strong>
+                    {SHOWCASE_ARTICLES[0].col1}
+                  </p>
+                  <p className="text-slate-400">
+                    {SHOWCASE_ARTICLES[0].col2}
+                  </p>
+                  <div className="p-3 bg-blue-950/40 border-l-2 border-cyan-400 text-xs italic font-serif text-cyan-200">
+                    "{SHOWCASE_ARTICLES[0].quote}"
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            {/* ======================================================== */}
+            {/* FRONT PAGE LOWER HALF (3-COLUMN SUB-STORIES)             */}
+            {/* ======================================================== */}
+            <div className="grid grid-cols-3 gap-6 pt-2">
+              
+              {/* SUB-STORY A: WORKSHOP SESSIONS */}
+              <div 
+                onClick={() => handleArticleClick(SHOWCASE_ARTICLES[1])}
+                className="group cursor-pointer border-r border-white/20 pr-4 hover:bg-blue-950/20 p-2 transition-colors"
+              >
+                <span className="text-[9px] font-mono text-cyan-400 font-bold block mb-1 uppercase">
+                  {SHOWCASE_ARTICLES[1].kicker}
+                </span>
+                <h3 className="text-base font-black font-serif uppercase text-white leading-tight mb-2 group-hover:text-cyan-200">
+                  {SHOWCASE_ARTICLES[1].title}
+                </h3>
+                <div className="relative w-full h-32 bg-black border border-white/15 overflow-hidden mb-2">
+                  <video
+                    src={SHOWCASE_ARTICLES[1].mediaSrc}
+                    muted
+                    autoPlay
+                    loop
+                    playsInline
+                    className="w-full h-full object-cover group-hover:scale-105 transition-transform"
+                  />
+                  <div className="absolute bottom-1 left-1 px-1.5 py-0.5 bg-black/80 text-[8px] font-mono text-cyan-300">
+                    PLAY REEL
+                  </div>
+                </div>
+                <p className="text-[10px] font-mono text-slate-400 leading-tight">
+                  <strong className="text-cyan-300">{SHOWCASE_ARTICLES[1].dateline}</strong>
+                  {SHOWCASE_ARTICLES[1].col1}
+                </p>
+              </div>
+
+              {/* SUB-STORY B: PRE-ORDER CAMPAIGN */}
+              <div 
+                onClick={() => handleArticleClick(SHOWCASE_ARTICLES[2])}
+                className="group cursor-pointer border-r border-white/20 pr-4 hover:bg-blue-950/20 p-2 transition-colors"
+              >
+                <span className="text-[9px] font-mono text-cyan-400 font-bold block mb-1 uppercase">
+                  {SHOWCASE_ARTICLES[2].kicker}
+                </span>
+                <h3 className="text-base font-black font-serif uppercase text-white leading-tight mb-2 group-hover:text-cyan-200">
+                  {SHOWCASE_ARTICLES[2].title}
+                </h3>
+                <div className="relative w-full h-32 bg-black border border-white/15 overflow-hidden mb-2">
+                  <video
+                    src={SHOWCASE_ARTICLES[2].mediaSrc}
+                    muted
+                    autoPlay
+                    loop
+                    playsInline
+                    className="w-full h-full object-cover group-hover:scale-105 transition-transform"
+                  />
+                  <div className="absolute bottom-1 left-1 px-1.5 py-0.5 bg-black/80 text-[8px] font-mono text-cyan-300">
+                    PLAY AD
+                  </div>
+                </div>
+                <p className="text-[10px] font-mono text-slate-400 leading-tight">
+                  <strong className="text-cyan-300">{SHOWCASE_ARTICLES[2].dateline}</strong>
+                  {SHOWCASE_ARTICLES[2].col1}
+                </p>
+              </div>
+
+              {/* SUB-STORY C: FESTIVAL REELS */}
+              <div 
+                onClick={() => handleArticleClick(SHOWCASE_ARTICLES[3])}
+                className="group cursor-pointer hover:bg-blue-950/20 p-2 transition-colors"
+              >
+                <span className="text-[9px] font-mono text-cyan-400 font-bold block mb-1 uppercase">
+                  {SHOWCASE_ARTICLES[3].kicker}
+                </span>
+                <h3 className="text-base font-black font-serif uppercase text-white leading-tight mb-2 group-hover:text-cyan-200">
+                  {SHOWCASE_ARTICLES[3].title}
+                </h3>
+                <div className="relative w-full h-32 bg-black border border-white/15 overflow-hidden mb-2">
+                  <video
+                    src={SHOWCASE_ARTICLES[3].mediaSrc}
+                    muted
+                    autoPlay
+                    loop
+                    playsInline
+                    className="w-full h-full object-cover group-hover:scale-105 transition-transform"
+                  />
+                  <div className="absolute bottom-1 left-1 px-1.5 py-0.5 bg-black/80 text-[8px] font-mono text-cyan-300">
+                    PLAY FEST
+                  </div>
+                </div>
+                <p className="text-[10px] font-mono text-slate-400 leading-tight">
+                  <strong className="text-cyan-300">{SHOWCASE_ARTICLES[3].dateline}</strong>
+                  {SHOWCASE_ARTICLES[3].col1}
+                </p>
+              </div>
+
+            </div>
+          </div>
+
+          {/* Page 1 Footer Bar */}
+          <div className="flex items-center justify-between border-t-2 border-white/20 pt-2 text-[10px] font-mono text-slate-400">
+            <span>THE NAVRA CHRONICLE // FRONT PAGE</span>
+            <span className="text-cyan-400 font-bold">PAGE 01 • CONTINUED ON PAGE 02 →</span>
+          </div>
+        </div>
+
+        {/* ============================================================ */}
+        {/* PAGE 2: SECTION B (TECHNOLOGY, COMMERCE & CLASSIFIEDS)       */}
+        {/* ============================================================ */}
+        <div 
+          className="w-[1160px] h-full bg-[#040E20]/95 border-2 border-white/20 p-8 shadow-[0_25px_60px_rgba(0,0,0,0.9)] backdrop-blur-2xl flex flex-col justify-between"
+          style={{ transform: 'translateZ(40px)' }}
+        >
+          <div>
+            {/* Section B Header Bar */}
+            <div className="flex items-center justify-between border-b-2 border-white/20 pb-2 text-[11px] font-mono text-cyan-300 font-bold">
+              <span>SECTION B // ARTS, TECHNOLOGY & COMMERCE</span>
+              <span>NAVRA STUDIO INTERNATIONAL EDITION</span>
+              <span>PAGE 02 • VOL. 26</span>
+            </div>
+
+            {/* ======================================================== */}
+            {/* TOP ROW: 3D MOTION STORY & CINEMATIC ESSAY               */}
+            {/* ======================================================== */}
+            <div className="grid grid-cols-12 gap-6 my-4 border-b-2 border-white/20 pb-6">
+              
+              {/* Story 5: 3D Motion */}
+              <div 
+                onClick={() => handleArticleClick(SHOWCASE_ARTICLES[4])}
+                className="col-span-6 group cursor-pointer border-r border-white/20 pr-6 hover:bg-blue-950/20 p-2 transition-colors"
+              >
+                <div className="flex items-center justify-between text-[10px] font-mono text-cyan-400 font-bold mb-1">
+                  <span>{SHOWCASE_ARTICLES[4].kicker}</span>
+                  <span>60 FPS</span>
+                </div>
+                <h3 className="text-xl font-black font-serif uppercase text-white leading-tight mb-2 group-hover:text-cyan-200">
+                  {SHOWCASE_ARTICLES[4].title}
+                </h3>
+                <div className="relative w-full h-44 bg-black border border-white/15 overflow-hidden mb-2">
+                  <video
+                    src={SHOWCASE_ARTICLES[4].mediaSrc}
+                    muted
+                    autoPlay
+                    loop
+                    playsInline
+                    className="w-full h-full object-cover group-hover:scale-105 transition-transform"
+                  />
+                  <div className="absolute bottom-2 left-2 px-2 py-0.5 bg-black/80 text-[9px] font-mono text-cyan-300">
+                    ▶ PLAY 3D MOTION REEL
+                  </div>
+                </div>
+                <p className="text-[11px] font-mono text-slate-300 leading-relaxed">
+                  <strong className="text-cyan-300">{SHOWCASE_ARTICLES[4].dateline}</strong>
+                  {SHOWCASE_ARTICLES[4].col1}
+                </p>
+              </div>
+
+              {/* Story 6: Cinematic Walk & Color Science */}
+              <div 
+                onClick={() => handleArticleClick(SHOWCASE_ARTICLES[5])}
+                className="col-span-6 group cursor-pointer hover:bg-blue-950/20 p-2 transition-colors flex flex-col justify-between"
+              >
+                <div>
+                  <div className="flex items-center justify-between text-[10px] font-mono text-cyan-400 font-bold mb-1">
+                    <span>{SHOWCASE_ARTICLES[5].kicker}</span>
+                    <span>4K CINEMA</span>
+                  </div>
+                  <h3 className="text-xl font-black font-serif uppercase text-white leading-tight mb-2 group-hover:text-cyan-200">
+                    {SHOWCASE_ARTICLES[5].title}
+                  </h3>
+                  <div className="relative w-full h-44 bg-black border border-white/15 overflow-hidden mb-2">
+                    <video
+                      src={SHOWCASE_ARTICLES[5].mediaSrc}
+                      muted
+                      autoPlay
+                      loop
+                      playsInline
+                      className="w-full h-full object-cover group-hover:scale-105 transition-transform"
+                    />
+                    <div className="absolute bottom-2 left-2 px-2 py-0.5 bg-black/80 text-[9px] font-mono text-cyan-300">
+                      ▶ PLAY CINEMA FILM
+                    </div>
+                  </div>
+                  <p className="text-[11px] font-mono text-slate-300 leading-relaxed">
+                    <strong className="text-cyan-300">{SHOWCASE_ARTICLES[5].dateline}</strong>
+                    {SHOWCASE_ARTICLES[5].col1}
+                  </p>
+                </div>
+              </div>
+
+            </div>
+
+            {/* ======================================================== */}
+            {/* MIDDLE ROW: LUXURY ADVERTISEMENT & BRAND IDENTITY        */}
+            {/* ======================================================== */}
+            <div className="grid grid-cols-12 gap-6 my-4 border-b-2 border-white/20 pb-6">
+              
+              {/* Luxury Wedding Jewelry Newspaper Ad */}
+              <div 
+                onClick={() => handleArticleClick(SHOWCASE_ARTICLES[6])}
+                className="col-span-7 group cursor-pointer border-2 border-amber-400/40 bg-amber-950/10 p-4 hover:border-amber-300 transition-colors"
+              >
+                <div className="flex items-center justify-between border-b border-amber-400/30 pb-1.5 text-[10px] font-mono text-amber-300 font-bold mb-2">
+                  <span>★ OFFICIAL COMMERCIAL GAZETTE ADVERTISEMENT</span>
+                  <span className="px-2 py-0.5 bg-amber-500/20 text-amber-200">COUPON: NAVRA25</span>
+                </div>
+                <div className="grid grid-cols-12 gap-4 items-center">
+                  <div className="col-span-5 h-40 bg-black border border-white/20 overflow-hidden flex items-center justify-center">
+                    <img
+                      src={SHOWCASE_ARTICLES[6].mediaSrc}
+                      alt="Jewelry Ad"
+                      className="w-full h-full object-contain p-1 group-hover:scale-105 transition-transform"
+                    />
+                  </div>
+                  <div className="col-span-7 font-mono text-xs text-slate-300 leading-tight space-y-2">
+                    <h4 className="text-base font-black font-serif uppercase text-amber-200">
+                      {SHOWCASE_ARTICLES[6].title}
+                    </h4>
+                    <p className="text-[11px] text-slate-300">
+                      {SHOWCASE_ARTICLES[6].col1}
+                    </p>
+                    <div className="text-[10px] text-amber-300 font-bold pt-1">
+                      ▶ CLICK TO VIEW FULL COMMERCIAL POSTER
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              {/* Brand Design Standard Story */}
+              <div 
+                onClick={() => handleArticleClick(SHOWCASE_ARTICLES[7])}
+                className="col-span-5 group cursor-pointer hover:bg-blue-950/20 p-3 transition-colors border-l border-white/20"
+              >
+                <span className="text-[9px] font-mono text-cyan-400 font-bold block mb-1 uppercase">
+                  {SHOWCASE_ARTICLES[7].kicker}
+                </span>
+                <h4 className="text-base font-black font-serif uppercase text-white mb-2 group-hover:text-cyan-200">
+                  {SHOWCASE_ARTICLES[7].title}
+                </h4>
+                <div className="h-32 bg-black border border-white/15 overflow-hidden flex items-center justify-center mb-2">
+                  <img
+                    src={SHOWCASE_ARTICLES[7].mediaSrc}
+                    alt="Brand Identity"
+                    className="w-full h-full object-contain p-1 group-hover:scale-105 transition-transform"
+                  />
+                </div>
+                <p className="text-[10px] font-mono text-slate-400 leading-tight">
+                  {SHOWCASE_ARTICLES[7].col1}
+                </p>
+              </div>
+
+            </div>
+
+            {/* ======================================================== */}
+            {/* BOTTOM: OFFICIAL PRESS CLASSIFIEDS & CONTACT BUREAU      */}
+            {/* ======================================================== */}
+            <div className="border-2 border-cyan-400/50 bg-[#020C1B] p-5 my-2">
+              <div className="flex items-center justify-between border-b-2 border-cyan-400/40 pb-2 text-xs font-mono">
+                <div className="flex items-center gap-2">
+                  <span className="w-2.5 h-2.5 rounded-full bg-cyan-400 animate-pulse" />
+                  <span className="text-cyan-300 font-bold uppercase tracking-wider">
+                    SECTION C // OFFICIAL PRESS CLASSIFIEDS & DISPATCH BUREAU
+                  </span>
+                </div>
+                <Barcode className="w-8 h-4 text-slate-400" />
+              </div>
+
+              <div className="grid grid-cols-12 gap-6 mt-3">
+                <div className="col-span-5 flex flex-col justify-between text-xs font-mono">
+                  <div>
+                    <h4 className="text-lg font-black font-serif uppercase text-white mb-1">
+                      Commission a Media Production Sprint
+                    </h4>
+                    <p className="text-[11px] text-slate-300 leading-tight mb-3">
+                      Direct inquiries for promotional reels, 3D visual identities, and ad campaigns.
+                    </p>
+                    <div className="space-y-1.5 text-[11px]">
+                      <a href="mailto:harshjsh02@gmail.com" className="flex items-center gap-2 text-cyan-300 hover:underline">
+                        <Mail className="w-3.5 h-3.5" />
+                        <span>harshjsh02@gmail.com</span>
+                      </a>
+                      <div className="flex items-center gap-2 text-slate-400">
+                        <Sparkles className="w-3.5 h-3.5 text-blue-400" />
+                        <span>Designed & Built by Harsh Joshi</span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <div className="col-span-7 bg-black/60 border border-white/15 p-3">
+                  {formSubmitted ? (
+                    <div className="flex items-center justify-center p-4 text-center space-x-2 text-cyan-300 font-mono text-xs">
+                      <CheckCircle2 className="w-5 h-5 text-cyan-400" />
+                      <span>DISPATCH TRANSMITTED // BUREAU WILL REPLY IN 24H</span>
+                    </div>
+                  ) : (
+                    <form onSubmit={handleContactSubmit} className="space-y-2 text-[10px] font-mono">
+                      <div className="grid grid-cols-2 gap-2">
+                        <input
+                          required
+                          type="text"
+                          placeholder="Name / Brand"
+                          className="w-full px-2.5 py-1.5 bg-black/80 border border-white/20 text-white placeholder-slate-500 focus:outline-none focus:border-cyan-400"
+                        />
+                        <input
+                          required
+                          type="email"
+                          placeholder="Email Address"
+                          className="w-full px-2.5 py-1.5 bg-black/80 border border-white/20 text-white placeholder-slate-500 focus:outline-none focus:border-cyan-400"
+                        />
+                      </div>
                       <input
                         required
                         type="text"
-                        placeholder="John / Apex"
-                        className="w-full px-3 py-2 bg-black/70 border border-white/20 text-white placeholder-slate-500 focus:outline-none focus:border-cyan-400 transition-colors"
+                        placeholder="Project Brief & Requirements..."
+                        className="w-full px-2.5 py-1.5 bg-black/80 border border-white/20 text-white placeholder-slate-500 focus:outline-none focus:border-cyan-400"
                       />
-                    </div>
-                    <div>
-                      <label className="block text-cyan-300 uppercase mb-0.5 font-bold">
-                        Email Address
-                      </label>
-                      <input
-                        required
-                        type="email"
-                        placeholder="you@domain.com"
-                        className="w-full px-3 py-2 bg-black/70 border border-white/20 text-white placeholder-slate-500 focus:outline-none focus:border-cyan-400 transition-colors"
-                      />
-                    </div>
-                  </div>
-
-                  <div>
-                    <label className="block text-cyan-300 uppercase mb-0.5 font-bold">
-                      Project Brief & Deliverables
-                    </label>
-                    <textarea
-                      required
-                      rows={2}
-                      placeholder="Describe your video, reel, 3D, or campaign requirements..."
-                      className="w-full px-3 py-2 bg-black/70 border border-white/20 text-white placeholder-slate-500 focus:outline-none focus:border-cyan-400 transition-colors"
-                    />
-                  </div>
-
-                  <button
-                    type="submit"
-                    className="w-full py-2.5 bg-cyan-400 text-black font-black uppercase tracking-wider text-xs hover:bg-cyan-300 transition-all shadow-[0_0_15px_rgba(56,189,248,0.5)] flex items-center justify-center gap-1.5 cursor-pointer"
-                  >
-                    <span>Transmit Project Dispatch</span>
-                    <Send className="w-3.5 h-3.5" />
-                  </button>
-                </form>
-              )}
+                      <button
+                        type="submit"
+                        className="w-full py-2 bg-cyan-400 text-black font-black uppercase tracking-wider text-xs hover:bg-cyan-300 transition-colors flex items-center justify-center gap-1 cursor-pointer"
+                      >
+                        <span>Transmit Project Dispatch</span>
+                        <Send className="w-3 h-3" />
+                      </button>
+                    </form>
+                  )}
+                </div>
+              </div>
             </div>
           </div>
 
-          <div className="flex items-center justify-between pt-2.5 border-t-2 border-white/20 text-[10px] font-mono text-slate-500">
-            <span>NAVRA CHRONICLE // ALL RIGHTS RESERVED</span>
-            <span className="text-cyan-400 font-bold">PAGE 10 • NV® 2026</span>
+          {/* Page 2 Footer Bar */}
+          <div className="flex items-center justify-between border-t-2 border-white/20 pt-2 text-[10px] font-mono text-slate-400">
+            <span>NAVRA CHRONICLE // ALL RIGHTS RESERVED • HARSH JOSHI</span>
+            <span className="text-cyan-400 font-bold">PAGE 02 • END OF EDITION</span>
           </div>
         </div>
 
@@ -913,10 +782,10 @@ export default function MediaPage() {
       {/* ======================================================== */}
       {/* FULL-SCREEN ARTICLE & VIDEO CINEMA MODAL                 */}
       {/* ======================================================== */}
-      {selectedMedia && (
+      {selectedArticle && (
         <div 
           className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/85 backdrop-blur-2xl"
-          onClick={() => setSelectedMedia(null)}
+          onClick={() => setSelectedArticle(null)}
         >
           <div 
             className="relative w-full max-w-4xl bg-[#030D1E] border-2 border-cyan-400/50 p-6 sm:p-8 shadow-2xl overflow-hidden max-h-[90vh] flex flex-col"
@@ -925,14 +794,14 @@ export default function MediaPage() {
             <div className="flex items-center justify-between mb-4 pb-3 border-b-2 border-white/20">
               <div>
                 <span className="text-[10px] font-mono text-cyan-400 uppercase tracking-widest font-bold">
-                  [{selectedMedia.edition}] // {selectedMedia.client}
+                  [{selectedArticle.edition}] // {selectedArticle.kicker}
                 </span>
                 <h3 className="text-lg sm:text-2xl font-black font-serif uppercase text-white mt-0.5">
-                  {selectedMedia.title}
+                  {selectedArticle.title}
                 </h3>
               </div>
               <button
-                onClick={() => setSelectedMedia(null)}
+                onClick={() => setSelectedArticle(null)}
                 className="w-9 h-9 bg-white/10 hover:bg-white/20 flex items-center justify-center text-slate-300 hover:text-white transition-colors cursor-pointer focus:outline-none"
               >
                 <X className="w-5 h-5" />
@@ -940,9 +809,9 @@ export default function MediaPage() {
             </div>
 
             <div className="relative w-full aspect-video bg-black flex items-center justify-center border border-white/15 mb-4 overflow-hidden">
-              {selectedMedia.type === 'video' ? (
+              {selectedArticle.type === 'video' ? (
                 <video
-                  src={selectedMedia.mediaSrc}
+                  src={selectedArticle.mediaSrc}
                   controls
                   autoPlay
                   playsInline
@@ -950,8 +819,8 @@ export default function MediaPage() {
                 />
               ) : (
                 <img
-                  src={selectedMedia.mediaSrc}
-                  alt={selectedMedia.title}
+                  src={selectedArticle.mediaSrc}
+                  alt={selectedArticle.title}
                   className="w-full h-full object-contain p-2"
                 />
               )}
@@ -960,11 +829,11 @@ export default function MediaPage() {
             <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pt-2">
               <div>
                 <p className="text-xs sm:text-sm text-slate-300 font-mono mb-2">
-                  <strong className="text-cyan-300">{selectedMedia.dateline}</strong>
-                  {selectedMedia.description}
+                  <strong className="text-cyan-300">{selectedArticle.dateline}</strong>
+                  {selectedArticle.col1} {selectedArticle.col2}
                 </p>
                 <div className="flex flex-wrap items-center gap-1.5">
-                  {selectedMedia.tags.map((t) => (
+                  {selectedArticle.tags.map((t) => (
                     <span key={t} className="text-[10px] font-mono px-2 py-0.5 bg-blue-500/10 border border-cyan-400/20 text-cyan-300 uppercase">
                       {t}
                     </span>
@@ -973,10 +842,10 @@ export default function MediaPage() {
               </div>
 
               <button
-                onClick={() => setSelectedMedia(null)}
+                onClick={() => setSelectedArticle(null)}
                 className="inline-flex items-center gap-2 px-6 py-2 bg-cyan-400 text-black font-mono font-bold text-xs uppercase tracking-wider hover:bg-cyan-300 transition-all shrink-0 cursor-pointer"
               >
-                <span>Back to 3D Canvas</span>
+                <span>Back to Broadsheet</span>
                 <ArrowRight className="w-3.5 h-3.5" />
               </button>
             </div>
