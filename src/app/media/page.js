@@ -558,7 +558,7 @@ export default function MediaPage() {
       {/* ======================================================== */}
       <div
         ref={broadsheetRef}
-        className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[3100px] h-[2550px] will-change-transform flex gap-10 p-6"
+        className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[3100px] h-[2750px] will-change-transform flex gap-10 p-6"
         style={{
           transformStyle: 'preserve-3d',
         }}
@@ -567,14 +567,14 @@ export default function MediaPage() {
         {/* PAGE 1: FRONT PAGE BROADSHEET (LEFT NEWSPAPER SHEET)         */}
         {/* ============================================================ */}
         <div 
-          className="w-[1500px] h-full bg-[#F4F1EA] text-[#111827] border-4 border-[#1E293B] p-8 sm:p-10 shadow-[0_30px_90px_rgba(0,0,0,0.95)] flex flex-col justify-between"
+          className="w-[1500px] h-[2680px] bg-[#F4F1EA] text-[#111827] border-4 border-[#1E293B] p-8 sm:p-10 shadow-[0_30px_90px_rgba(0,0,0,0.95)] flex flex-col justify-between"
           style={{
             transform: 'translateZ(45px)',
             backgroundImage: 'radial-gradient(#111827 0.75px, transparent 0.75px)',
             backgroundSize: '20px 20px',
           }}
         >
-          <div>
+          <div className="space-y-4">
             {/* Top Newspaper Issue Bar */}
             <div className="flex items-center justify-between border-b-2 border-[#1E293B] pb-2 text-xs font-mono text-[#1E293B] font-bold">
               <span>VOL. XXVI // NO. 8802</span>
@@ -584,7 +584,7 @@ export default function MediaPage() {
             </div>
 
             {/* Grand Newspaper Masthead */}
-            <div className="py-5 text-center border-b-4 border-double border-[#1E293B] my-2">
+            <div className="py-4 text-center border-b-4 border-double border-[#1E293B]">
               <h1 className="text-7xl sm:text-8xl font-black uppercase tracking-tight text-[#0A0E17] leading-none">
                 THE NAVRA CHRONICLE
               </h1>
@@ -603,7 +603,7 @@ export default function MediaPage() {
             {/* ======================================================== */}
             <div 
               onClick={() => handleArticleClick(SHOWCASE_ARTICLES[0])}
-              className="group cursor-pointer border-b-2 border-[#1E293B] pb-6 my-4 transition-colors hover:bg-black/5 p-4 -mx-4"
+              className="group cursor-pointer border-b-2 border-[#1E293B] pb-5 transition-colors hover:bg-black/5 p-4 -mx-4"
             >
               <div className="flex items-center justify-between text-xs font-mono text-[#0284C7] font-bold mb-1.5">
                 <span className="bg-[#E0F2FE] px-2 py-0.5 border border-[#0284C7]/40 uppercase tracking-wider">
@@ -622,7 +622,7 @@ export default function MediaPage() {
               <div className="grid grid-cols-12 gap-6 items-start">
                 {/* Master Reel (Exact Vertical 9:16 Portrait Frame) */}
                 <div className="col-span-5">
-                  <div className="relative w-full aspect-[9/16] max-h-[460px] bg-black border-2 border-[#1E293B] overflow-hidden shadow-2xl mx-auto">
+                  <div className="relative w-full aspect-[9/16] max-h-[420px] bg-black border-2 border-[#1E293B] overflow-hidden shadow-2xl mx-auto">
                     <video
                       src={SHOWCASE_ARTICLES[0].mediaSrc}
                       muted
@@ -654,7 +654,7 @@ export default function MediaPage() {
                   <p className="text-[#4B5563] text-xs font-mono">
                     {SHOWCASE_ARTICLES[0].col3}
                   </p>
-                  <div className="p-4 bg-[#E0F2FE]/60 border-l-4 border-[#0284C7] text-sm italic font-serif text-[#0C4A6E]">
+                  <div className="p-3.5 bg-[#E0F2FE]/60 border-l-4 border-[#0284C7] text-sm italic font-serif text-[#0C4A6E]">
                     "{SHOWCASE_ARTICLES[0].quote}"
                   </div>
                   <div className="pt-2 border-t border-[#1E293B]/20 flex items-center justify-between text-xs font-mono text-[#0284C7] font-bold">
@@ -669,7 +669,7 @@ export default function MediaPage() {
             {/* ======================================================== */}
             {/* 2. MIDDLE SECTION: 3 VERTICAL PORTRAIT REEL COLUMNS      */}
             {/* ======================================================== */}
-            <div className="grid grid-cols-3 gap-6 py-4 border-b-2 border-[#1E293B]">
+            <div className="grid grid-cols-3 gap-6 py-3 border-b-2 border-[#1E293B]">
               
               {/* WORKSHOP PROMO (Portrait 9:16) */}
               <div 
@@ -680,10 +680,10 @@ export default function MediaPage() {
                   <span className="text-[10px] font-mono text-[#0284C7] font-bold block mb-1 uppercase bg-[#E0F2FE] px-2 py-0.5 w-max">
                     {SHOWCASE_ARTICLES[1].kicker}
                   </span>
-                  <h3 className="text-lg font-black uppercase text-[#0A0E17] leading-tight mb-2 group-hover:text-[#0284C7]">
+                  <h3 className="text-base font-black uppercase text-[#0A0E17] leading-tight mb-2 group-hover:text-[#0284C7]">
                     {SHOWCASE_ARTICLES[1].title}
                   </h3>
-                  <div className="relative w-full aspect-[9/16] max-h-[290px] bg-black border-2 border-[#1E293B] overflow-hidden mb-2 shadow-md">
+                  <div className="relative w-full aspect-[9/16] max-h-[250px] bg-black border-2 border-[#1E293B] overflow-hidden mb-2 shadow-md">
                     <video
                       src={SHOWCASE_ARTICLES[1].mediaSrc}
                       muted
@@ -715,10 +715,10 @@ export default function MediaPage() {
                   <span className="text-[10px] font-mono text-[#0284C7] font-bold block mb-1 uppercase bg-[#E0F2FE] px-2 py-0.5 w-max">
                     {SHOWCASE_ARTICLES[2].kicker}
                   </span>
-                  <h3 className="text-lg font-black uppercase text-[#0A0E17] leading-tight mb-2 group-hover:text-[#0284C7]">
+                  <h3 className="text-base font-black uppercase text-[#0A0E17] leading-tight mb-2 group-hover:text-[#0284C7]">
                     {SHOWCASE_ARTICLES[2].title}
                   </h3>
-                  <div className="relative w-full aspect-[9/16] max-h-[290px] bg-black border-2 border-[#1E293B] overflow-hidden mb-2 shadow-md">
+                  <div className="relative w-full aspect-[9/16] max-h-[250px] bg-black border-2 border-[#1E293B] overflow-hidden mb-2 shadow-md">
                     <video
                       src={SHOWCASE_ARTICLES[2].mediaSrc}
                       muted
@@ -750,10 +750,10 @@ export default function MediaPage() {
                   <span className="text-[10px] font-mono text-[#0284C7] font-bold block mb-1 uppercase bg-[#E0F2FE] px-2 py-0.5 w-max">
                     {SHOWCASE_ARTICLES[3].kicker}
                   </span>
-                  <h3 className="text-lg font-black uppercase text-[#0A0E17] leading-tight mb-2 group-hover:text-[#0284C7]">
+                  <h3 className="text-base font-black uppercase text-[#0A0E17] leading-tight mb-2 group-hover:text-[#0284C7]">
                     {SHOWCASE_ARTICLES[3].title}
                   </h3>
-                  <div className="relative w-full aspect-[9/16] max-h-[290px] bg-black border-2 border-[#1E293B] overflow-hidden mb-2 shadow-md">
+                  <div className="relative w-full aspect-[9/16] max-h-[250px] bg-black border-2 border-[#1E293B] overflow-hidden mb-2 shadow-md">
                     <video
                       src={SHOWCASE_ARTICLES[3].mediaSrc}
                       muted
@@ -781,7 +781,7 @@ export default function MediaPage() {
             {/* ======================================================== */}
             {/* 3. LOWER-MIDDLE SECTION: FESTIVALS (16:9 + PORTRAIT)     */}
             {/* ======================================================== */}
-            <div className="grid grid-cols-12 gap-6 py-4 border-b-2 border-[#1E293B]">
+            <div className="grid grid-cols-12 gap-6 py-3 border-b-2 border-[#1E293B]">
               
               {/* NAVRANG NAVRATRI (EXACT WIDE 16:9 LANDSCAPE FRAME) */}
               <div 
@@ -795,7 +795,7 @@ export default function MediaPage() {
                   <h3 className="text-base font-black uppercase text-[#0A0E17] leading-tight mb-2 group-hover:text-[#0284C7]">
                     {SHOWCASE_ARTICLES[4].title}
                   </h3>
-                  <div className="relative w-full aspect-[16/9] bg-black border-2 border-[#1E293B] overflow-hidden mb-2 shadow-md">
+                  <div className="relative w-full aspect-[16/9] max-h-[170px] bg-black border-2 border-[#1E293B] overflow-hidden mb-2 shadow-md">
                     <video
                       src={SHOWCASE_ARTICLES[4].mediaSrc}
                       muted
@@ -827,7 +827,7 @@ export default function MediaPage() {
                   <h3 className="text-xs font-black uppercase text-[#0A0E17] leading-tight mb-1.5 group-hover:text-[#0284C7]">
                     {SHOWCASE_ARTICLES[5].title}
                   </h3>
-                  <div className="relative w-full aspect-[9/16] max-h-[190px] bg-black border-2 border-[#1E293B] overflow-hidden mb-1.5 shadow-md">
+                  <div className="relative w-full aspect-[9/16] max-h-[170px] bg-black border-2 border-[#1E293B] overflow-hidden mb-1.5 shadow-md">
                     <video
                       src={SHOWCASE_ARTICLES[5].mediaSrc}
                       muted
@@ -855,7 +855,7 @@ export default function MediaPage() {
                   <h3 className="text-xs font-black uppercase text-[#0A0E17] leading-tight mb-1.5 group-hover:text-[#0284C7]">
                     {SHOWCASE_ARTICLES[6].title}
                   </h3>
-                  <div className="relative w-full aspect-[9/16] max-h-[190px] bg-black border-2 border-[#1E293B] overflow-hidden mb-1.5 shadow-md">
+                  <div className="relative w-full aspect-[9/16] max-h-[170px] bg-black border-2 border-[#1E293B] overflow-hidden mb-1.5 shadow-md">
                     <video
                       src={SHOWCASE_ARTICLES[6].mediaSrc}
                       muted
@@ -878,7 +878,7 @@ export default function MediaPage() {
             {/* ======================================================== */}
             <div 
               onClick={() => handleArticleClick(SHOWCASE_ARTICLES[7])}
-              className="group cursor-pointer border-b-2 border-[#1E293B] pb-3 my-3 hover:bg-black/5 p-3 -mx-3 transition-colors"
+              className="group cursor-pointer border-2 border-[#1E293B] bg-black/5 p-3 hover:bg-black/10 transition-colors shadow-sm"
             >
               <div className="flex items-center justify-between text-xs font-mono text-[#0284C7] font-bold mb-1.5">
                 <div className="flex items-center gap-2">
@@ -888,7 +888,7 @@ export default function MediaPage() {
                 <span className="bg-[#0284C7] text-white px-2 py-0.5 font-bold">★ OFFICIAL EVENT PASS</span>
               </div>
 
-              <div className="w-full aspect-[20/6] bg-black border-2 border-[#1E293B] overflow-hidden mb-2 shadow-lg">
+              <div className="w-full aspect-[20/6] max-h-[160px] bg-black border-2 border-[#1E293B] overflow-hidden mb-2 shadow-md">
                 <img
                   src={SHOWCASE_ARTICLES[7].mediaSrc}
                   alt="CTRL+N Event Ticket Pass"
@@ -896,14 +896,13 @@ export default function MediaPage() {
                 />
               </div>
 
-              <div className="grid grid-cols-12 gap-6 items-center">
-                <div className="col-span-8 text-xs font-serif text-[#374151] leading-relaxed">
+              <div className="grid grid-cols-12 gap-4 items-center">
+                <div className="col-span-8 text-xs font-serif text-[#374151] leading-snug">
                   <strong className="text-[#0284C7] font-mono font-bold">{SHOWCASE_ARTICLES[7].dateline}</strong>
-                  {SHOWCASE_ARTICLES[7].col1} {SHOWCASE_ARTICLES[7].col2}
+                  {SHOWCASE_ARTICLES[7].col1}
                 </div>
-                <div className="col-span-4 flex flex-col items-end justify-center font-mono text-xs text-[#1E293B] font-bold border-l-2 border-[#1E293B] pl-4">
+                <div className="col-span-4 flex flex-col items-end justify-center font-mono text-xs text-[#1E293B] font-bold border-l-2 border-[#1E293B] pl-3">
                   <span>DATE: APRIL 27 // 10:00 PM</span>
-                  <span>VENUE: MAIN SOUND STAGE</span>
                   <span className="text-[#0284C7]">STATUS: PASSES ACTIVE</span>
                 </div>
               </div>
@@ -912,7 +911,7 @@ export default function MediaPage() {
           </div>
 
           {/* Page 1 Footer Bar */}
-          <div className="flex items-center justify-between border-t-2 border-[#1E293B] pt-2.5 text-xs font-mono text-[#374151] font-bold">
+          <div className="flex items-center justify-between border-t-2 border-[#1E293B] pt-3 text-xs font-mono text-[#374151] font-bold mt-2">
             <span>THE NAVRA CHRONICLE // FRONT PAGE</span>
             <span className="text-[#0284C7] font-bold">PAGE 01 • CONTINUED ON PAGE 02 →</span>
           </div>
@@ -922,14 +921,14 @@ export default function MediaPage() {
         {/* PAGE 2: SECTION B (TECHNOLOGY, COMMERCE, ART & CLASSIFIEDS)  */}
         {/* ============================================================ */}
         <div 
-          className="w-[1500px] h-full bg-[#F4F1EA] text-[#111827] border-4 border-[#1E293B] p-8 sm:p-10 shadow-[0_30px_90px_rgba(0,0,0,0.95)] flex flex-col justify-between"
+          className="w-[1500px] h-[2680px] bg-[#F4F1EA] text-[#111827] border-4 border-[#1E293B] p-8 sm:p-10 shadow-[0_30px_90px_rgba(0,0,0,0.95)] flex flex-col justify-between"
           style={{
             transform: 'translateZ(45px)',
             backgroundImage: 'radial-gradient(#111827 0.75px, transparent 0.75px)',
             backgroundSize: '20px 20px',
           }}
         >
-          <div>
+          <div className="space-y-4">
             {/* Section B Header Bar */}
             <div className="flex items-center justify-between border-b-2 border-[#1E293B] pb-2 text-xs font-mono text-[#1E293B] font-bold">
               <span>SECTION B // ARTS, TECHNOLOGY, POP-CULTURE & COMMERCE</span>
@@ -938,7 +937,7 @@ export default function MediaPage() {
             </div>
 
             {/* Top Banner */}
-            <div className="py-3 text-center border-b-2 border-[#1E293B] my-2">
+            <div className="py-4 text-center border-b-2 border-[#1E293B]">
               <h2 className="text-3xl sm:text-4xl font-black uppercase tracking-tight text-[#0A0E17] leading-none">
                 TECHNOLOGY, VISUAL ARTS & COMMERCIAL COMMERCE
               </h2>
@@ -962,7 +961,7 @@ export default function MediaPage() {
                   <h3 className="text-2xl font-black uppercase text-[#0A0E17] leading-tight mb-2 group-hover:text-[#0284C7]">
                     {SHOWCASE_ARTICLES[8].title}
                   </h3>
-                  <div className="relative w-full aspect-[16/9] bg-black border-2 border-[#1E293B] overflow-hidden mb-2 shadow-xl">
+                  <div className="relative w-full aspect-[16/9] max-h-[250px] bg-black border-2 border-[#1E293B] overflow-hidden mb-2 shadow-xl">
                     <video
                       src={SHOWCASE_ARTICLES[8].mediaSrc}
                       muted
@@ -999,7 +998,7 @@ export default function MediaPage() {
                   <h3 className="text-lg font-black uppercase text-[#0A0E17] leading-tight mb-2 group-hover:text-[#0284C7]">
                     {SHOWCASE_ARTICLES[9].title}
                   </h3>
-                  <div className="relative w-full aspect-[9/16] max-h-[300px] bg-black border-2 border-[#1E293B] overflow-hidden mb-2 shadow-md">
+                  <div className="relative w-full aspect-[9/16] max-h-[250px] bg-black border-2 border-[#1E293B] overflow-hidden mb-2 shadow-md">
                     <video
                       src={SHOWCASE_ARTICLES[9].mediaSrc}
                       muted
@@ -1038,7 +1037,7 @@ export default function MediaPage() {
                   <h4 className="text-lg font-black uppercase text-[#0A0E17] mb-2 group-hover:text-[#0284C7]">
                     {SHOWCASE_ARTICLES[10].title}
                   </h4>
-                  <div className="w-full aspect-square max-h-[300px] bg-black border-2 border-[#1E293B] overflow-hidden flex items-center justify-center mb-2 shadow-md">
+                  <div className="w-full aspect-square max-h-[250px] bg-black border-2 border-[#1E293B] overflow-hidden flex items-center justify-center mb-2 shadow-md">
                     <img
                       src={SHOWCASE_ARTICLES[10].mediaSrc}
                       alt="Brand Identity"
@@ -1067,7 +1066,7 @@ export default function MediaPage() {
                   <h4 className="text-lg font-black uppercase text-[#0A0E17] mb-2 group-hover:text-[#0284C7]">
                     {SHOWCASE_ARTICLES[11].title}
                   </h4>
-                  <div className="w-full aspect-square max-h-[300px] bg-black border-2 border-[#1E293B] overflow-hidden flex items-center justify-center mb-2 shadow-md">
+                  <div className="w-full aspect-square max-h-[250px] bg-black border-2 border-[#1E293B] overflow-hidden flex items-center justify-center mb-2 shadow-md">
                     <img
                       src={SHOWCASE_ARTICLES[11].mediaSrc}
                       alt="Graphic Poster"
@@ -1091,9 +1090,9 @@ export default function MediaPage() {
             {/* ======================================================== */}
             <div 
               onClick={() => handleArticleClick(SHOWCASE_ARTICLES[12])}
-              className="group cursor-pointer border-4 border-[#B45309] bg-[#FFFBEB] p-5 my-3 hover:bg-[#FEF3C7] transition-colors shadow-md"
+              className="group cursor-pointer border-4 border-[#B45309] bg-[#FFFBEB] p-4 my-2 hover:bg-[#FEF3C7] transition-colors shadow-md"
             >
-              <div className="flex items-center justify-between border-b-2 border-[#B45309] pb-1.5 text-xs font-mono text-[#B45309] font-bold mb-3">
+              <div className="flex items-center justify-between border-b-2 border-[#B45309] pb-1.5 text-xs font-mono text-[#B45309] font-bold mb-2.5">
                 <div className="flex items-center gap-2">
                   <Sparkles className="w-4 h-4 text-[#B45309]" />
                   <span>★ OFFICIAL COMMERCIAL GAZETTE ADVERTISEMENT</span>
@@ -1101,15 +1100,15 @@ export default function MediaPage() {
                 <span className="bg-[#B45309] text-white px-3 py-0.5 font-bold">COUPON: NAVRA25 (25% OFF)</span>
               </div>
               <div className="grid grid-cols-12 gap-6 items-center">
-                <div className="col-span-4 aspect-square bg-black border-2 border-[#1E293B] overflow-hidden flex items-center justify-center shadow-lg">
+                <div className="col-span-4 aspect-square max-h-[190px] bg-black border-2 border-[#1E293B] overflow-hidden flex items-center justify-center shadow-lg">
                   <img
                     src={SHOWCASE_ARTICLES[12].mediaSrc}
                     alt="Luxury Wedding Jewelry"
                     className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
                   />
                 </div>
-                <div className="col-span-8 font-serif text-sm text-[#1F2937] leading-relaxed space-y-2">
-                  <h4 className="text-2xl font-black uppercase text-[#92400E]">
+                <div className="col-span-8 font-serif text-sm text-[#1F2937] leading-relaxed space-y-1.5">
+                  <h4 className="text-xl font-black uppercase text-[#92400E]">
                     {SHOWCASE_ARTICLES[12].title}
                   </h4>
                   <p className="text-xs text-[#374151]">
@@ -1119,7 +1118,7 @@ export default function MediaPage() {
                   <p className="text-xs text-[#4B5563]">
                     {SHOWCASE_ARTICLES[12].col2}
                   </p>
-                  <div className="pt-2 border-t border-[#B45309]/30 flex items-center justify-between text-xs font-mono text-[#B45309] font-bold">
+                  <div className="pt-1.5 border-t border-[#B45309]/30 flex items-center justify-between text-xs font-mono text-[#B45309] font-bold">
                     <span>▶ CLICK TO INSPECT COMMERCIAL CREATIVE</span>
                     <span>OFFER VALID UNTIL 23RD NOV</span>
                   </div>
@@ -1200,7 +1199,7 @@ export default function MediaPage() {
             {/* ======================================================== */}
             {/* 5. SECTION C (PRESS CLASSIFIEDS & DISPATCH BUREAU)       */}
             {/* ======================================================== */}
-            <div className="border-4 border-[#1E293B] bg-[#E2E8F0]/40 p-5 my-3">
+            <div className="border-4 border-[#1E293B] bg-[#E2E8F0]/40 p-4 my-2">
               <div className="flex items-center justify-between border-b-2 border-[#1E293B] pb-2 text-xs font-mono">
                 <div className="flex items-center gap-2">
                   <span className="w-2.5 h-2.5 rounded-full bg-[#0284C7] animate-pulse" />
@@ -1233,7 +1232,7 @@ export default function MediaPage() {
                   </div>
                 </div>
 
-                <div className="col-span-7 bg-[#F4F1EA] border-2 border-[#1E293B] p-4 shadow-inner">
+                <div className="col-span-7 bg-[#F4F1EA] border-2 border-[#1E293B] p-3.5 shadow-inner">
                   {formSubmitted ? (
                     <div className="flex items-center justify-center p-3 text-center space-x-2 text-[#0284C7] font-mono text-xs font-bold">
                       <CheckCircle2 className="w-5 h-5 text-[#0284C7]" />
@@ -1277,7 +1276,7 @@ export default function MediaPage() {
           </div>
 
           {/* Page 2 Footer Bar */}
-          <div className="flex items-center justify-between border-t-2 border-[#1E293B] pt-2.5 text-xs font-mono text-[#374151] font-bold">
+          <div className="flex items-center justify-between border-t-2 border-[#1E293B] pt-3 text-xs font-mono text-[#374151] font-bold mt-2">
             <span>NAVRA CHRONICLE // ALL RIGHTS RESERVED • HARSH JOSHI</span>
             <span className="text-[#0284C7] font-bold">PAGE 02 • END OF SPECIAL EDITION</span>
           </div>
