@@ -6,226 +6,160 @@ import gsap from 'gsap';
 import { 
   Play, 
   Sparkles, 
+  Disc, 
   Film, 
-  Layers, 
-  Zap, 
+  Sliders, 
   ArrowRight, 
+  ArrowDown, 
   Eye, 
   Volume2, 
-  Image as ImageIcon,
-  ExternalLink,
-  X
+  Maximize2,
+  X,
+  Radio,
+  Tv,
+  Check
 } from 'lucide-react';
 
-const CATEGORIES = ['All Projects', 'Cinematic Reels', 'Brand Design', '3D & Motion', 'Commercials'];
+const CATEGORIES = ['All Works', 'Cinematic Reels', 'Motion Design', 'Brand Posters', 'Commercials'];
 
 const SHOWCASE_PROJECTS = [
   {
     id: 1,
     title: 'Navra Signature Brand Showreel',
-    client: 'Navra Studio Creative Lab',
+    year: '1984 - 2026',
+    format: 'CD-ROM MASTER',
     category: 'Cinematic Reels',
     type: 'video',
     mediaSrc: '/show/finalreel_navra.mp4',
-    posterSrc: '/show/edit_1.png',
-    duration: '1:10',
-    resolution: '4K Cinema',
+    coverBg: 'from-blue-600 to-indigo-900',
+    spineColor: 'bg-blue-600',
     tags: ['Master Showreel', 'Cinematic Edit', 'Motion VFX'],
-    stats: 'Flagship Showreel',
-    gradient: 'from-blue-600/35 to-cyan-400/25',
-    description: 'The master creative showreel of Navra Studio showcasing high-end cinematic editing, sound design, dynamic transitions, and commercial storytelling.',
+    stats: 'Flagship Reel',
+    description: 'The master creative showreel of Navra Studio showcasing high-end cinematic editing, sound design, and commercial storytelling.',
   },
   {
     id: 2,
     title: 'Exclusive Pre-Order Campaign Film',
-    client: 'Commercial Product Launch',
+    year: 'COMMERCIAL',
+    format: 'DIGITAL CASSETTE',
     category: 'Commercials',
     type: 'video',
     mediaSrc: '/show/preorder_final_reel.mp4',
-    posterSrc: '/show/wedding_collection.png',
-    duration: '0:45',
-    resolution: '4K Ultra HD',
-    tags: ['Pre-Order Launch', 'Product Ad', 'Retention Hook'],
+    coverBg: 'from-cyan-600 to-blue-800',
+    spineColor: 'bg-cyan-500',
+    tags: ['Pre-Order Launch', 'Hook Editing', 'Commercial Ad'],
     stats: 'High-Converting',
-    gradient: 'from-indigo-600/35 to-cyan-500/20',
-    description: 'High-conversion product pre-order commercial reel featuring energetic pacing, kinetic title overlays, and promotional narrative structure.',
+    description: 'High-conversion product pre-order commercial reel featuring energetic pacing and kinetic title overlays.',
   },
   {
     id: 3,
-    title: 'Navrang Navratri Event Reel',
-    client: 'Festive & Cultural Experience',
+    title: 'Navrang Navratri Festival Reel',
+    year: 'LIVE EVENT',
+    format: 'VINYL SINGLE',
     category: 'Cinematic Reels',
     type: 'video',
     mediaSrc: '/show/navrang_navratri.mp4',
-    posterSrc: '/show/edit_1.png',
-    duration: '0:15',
-    resolution: '1080p HD',
-    tags: ['Event Reel', 'Motion Sync', 'Fast Pace'],
+    coverBg: 'from-fuchsia-700 to-indigo-950',
+    spineColor: 'bg-pink-500',
+    tags: ['Festival Reel', 'Music Sync', 'Fast Cut'],
     stats: '150K+ Views',
-    gradient: 'from-blue-600/30 to-cyan-500/20',
     description: 'High-energy cultural event promotional reel featuring dynamic music synchronization and festive visual pacing.',
   },
   {
-    id: 2,
-    title: 'Navratri Rangat Festival Promo',
-    client: 'Live Stage & Event Management',
+    id: 4,
+    title: 'Navratri Rangat Stage Promo',
+    year: 'EVENT PROMO',
+    format: 'CD AUDIO',
     category: 'Cinematic Reels',
     type: 'video',
     mediaSrc: '/show/navratri_rangat.mp4',
-    posterSrc: '/show/edit_2.png',
-    duration: '0:30',
-    resolution: '1080p HD',
-    tags: ['Color Grade', 'Audio Mastering', 'Event Promo'],
+    coverBg: 'from-sky-700 to-blue-900',
+    spineColor: 'bg-sky-400',
+    tags: ['Color Grade', 'Audio Master', 'Event Stage'],
     stats: '280K+ Views',
-    gradient: 'from-indigo-600/30 to-blue-500/20',
     description: 'Cinematic festival promotional video with festive color grading, rhythm cuts, and atmospheric sound design.',
   },
   {
-    id: 3,
-    title: 'Dynamic Motion Identity & Typography',
-    client: 'Navra Studio Creative Lab',
-    category: '3D & Motion',
+    id: 5,
+    title: 'Dynamic Motion & Kinetic Type',
+    year: 'VECTOR LAB',
+    format: 'FLOPPY DISK',
+    category: 'Motion Design',
     type: 'video',
     mediaSrc: '/show/motion_design.mp4',
-    posterSrc: '/show/we_agency.png',
-    duration: '0:20',
-    resolution: 'Full HD 60FPS',
-    tags: ['Motion Graphics', 'Kinetic Type', 'Visual ID'],
-    stats: 'Viral Reach',
-    gradient: 'from-cyan-600/30 to-teal-500/20',
+    coverBg: 'from-teal-700 to-slate-900',
+    spineColor: 'bg-teal-400',
+    tags: ['Kinetic Type', 'Vector Motion', 'Visual ID'],
+    stats: 'Viral Motion',
     description: 'Modern kinetic typography motion reel with stylized visual transitions and fluid vector animations.',
   },
   {
-    id: 4,
+    id: 6,
     title: 'Cinematic Sequence & Mood Film',
-    client: 'Visual Storytelling',
+    year: '35MM FILM',
+    format: 'ANAMORPHIC',
     category: 'Cinematic Reels',
     type: 'video',
     mediaSrc: '/show/walk_cinematic.mov',
-    posterSrc: '/show/wedding_collection.png',
-    duration: '0:45',
-    resolution: '4K Cinema',
+    coverBg: 'from-blue-900 to-slate-950',
+    spineColor: 'bg-blue-500',
     tags: ['Cinematic Film', 'Color Science', 'Pacing'],
     stats: 'Master Quality',
-    gradient: 'from-blue-700/30 to-sky-600/20',
     description: 'Atmospheric narrative visual sequence with custom color treatment and cinematic wide-angle framing.',
   },
   {
-    id: 5,
-    title: 'Luxury Gold & Diamond Wedding Collection',
-    client: 'Fine Jewelry Brand',
-    category: 'Commercials',
+    id: 7,
+    title: 'Luxury Wedding Jewelry Campaign',
+    year: 'COMMERCIAL',
+    format: 'PRINT & POSTER',
+    category: 'Brand Posters',
     type: 'image',
     mediaSrc: '/show/wedding_collection.png',
-    posterSrc: '/show/wedding_collection.png',
-    duration: 'Poster / Ad',
-    resolution: '1080x1080 HQ',
+    coverBg: 'from-amber-600 to-blue-950',
+    spineColor: 'bg-amber-400',
     tags: ['Social Ad', 'Jewelry Branding', 'Commercial Design'],
     stats: '+340% ROAS',
-    gradient: 'from-amber-600/25 to-blue-600/20',
     description: 'Premium luxury commercial creative developed for high-converting social media advertising and campaign promotions.',
   },
   {
-    id: 6,
-    title: 'Creative Agency Brand Identity Design',
-    client: 'Navra Studio Brand System',
-    category: 'Brand Design',
+    id: 8,
+    title: 'Agency Visual Identity Poster',
+    year: 'BRAND SYSTEM',
+    format: 'ART POSTER',
+    category: 'Brand Posters',
     type: 'image',
     mediaSrc: '/show/we_agency.png',
-    posterSrc: '/show/we_agency.png',
-    duration: 'Visual ID',
-    resolution: '1080x1080 HQ',
+    coverBg: 'from-cyan-800 to-indigo-950',
+    spineColor: 'bg-cyan-400',
     tags: ['Brand Identity', 'Typography', 'Graphic Layout'],
     stats: 'Brand Standard',
-    gradient: 'from-cyan-600/25 to-blue-800/20',
     description: 'Comprehensive agency visual identity artwork featuring modern typography hierarchy and brand color synergy.',
   },
-  {
-    id: 7,
-    title: 'Commercial Digital Art & Visual Poster',
-    client: 'Creative Visual Lab',
-    category: 'Brand Design',
-    type: 'image',
-    mediaSrc: '/show/edit_1.png',
-    posterSrc: '/show/edit_1.png',
-    duration: 'Graphic Art',
-    resolution: 'Poster HD',
-    tags: ['Graphic Art', 'Photo Manipulation', 'Digital Edit'],
-    stats: 'Featured Art',
-    gradient: 'from-blue-600/25 to-indigo-600/20',
-    description: 'Stylized character visual art and photo manipulation crafted for promotional storytelling and digital merchandise.',
-  },
-  {
-    id: 8,
-    title: 'Wide-Format Digital Banner & Header Design',
-    client: 'Digital Marketing Campaign',
-    category: 'Commercials',
-    type: 'image',
-    mediaSrc: '/show/edit_4.png',
-    posterSrc: '/show/edit_4.png',
-    duration: 'Web Banner',
-    resolution: '2000x647 Ultra-Wide',
-    tags: ['Web Banner', 'Advertising', 'Composition'],
-    stats: '99.4% CTR',
-    gradient: 'from-sky-600/25 to-teal-700/20',
-    description: 'High-impact wide-format digital campaign header designed for multi-channel digital distribution.',
-  },
 ];
 
-const CAPABILITIES = [
-  {
-    icon: Film,
-    title: 'Cinematic Video Editing',
-    desc: 'Precision story pacing, multi-cam synchronization, and high-end narrative flow tailored for maximum audience retention.',
-    tag: 'EDITING',
-  },
-  {
-    icon: Layers,
-    title: '3D Motion Design & VFX',
-    desc: 'Fluid simulations, 3D product renders, dynamic title sequences, and vector SVG motion systems.',
-    tag: 'CGI & MOTION',
-  },
-  {
-    icon: Zap,
-    title: 'Viral Social Reels & Ads',
-    desc: 'High-energy, short-form video creative built with algorithmic retention hooks for TikTok, IG, and YouTube Shorts.',
-    tag: 'SHORT FORM',
-  },
-  {
-    icon: Volume2,
-    title: 'Sound Design & Audio Mastering',
-    desc: 'Immersive sound effects, bespoke musical rhythm synchronization, and broadcast-ready voice polish.',
-    tag: 'AUDIO FX',
-  },
-];
-
-const WORKFLOW_STEPS = [
-  { num: '01', title: 'Creative Brief & Concept', desc: 'Moodboards, visual references, audio curation, and script breakdown.' },
-  { num: '02', title: 'Production & Asset Crafting', desc: 'Filming, 3D asset modeling, motion vector setup, and visual staging.' },
-  { num: '03', title: 'Post-Production & VFX', desc: 'Precision editing, anamorphic color grading, sound design, and typography.' },
-  { num: '04', title: 'Final Master Delivery', desc: 'High-bitrate exports optimized for broadcast, YouTube, Instagram, and web.' },
-];
-
-export default function MediaPage() {
-  const [activeCategory, setActiveCategory] = useState('All Projects');
+export default function RetroMediaPage() {
+  const [activeCategory, setActiveCategory] = useState('All Works');
   const [selectedMedia, setSelectedMedia] = useState(null);
+  const [selectedPaintColor, setSelectedPaintColor] = useState('#38BDF8');
   const pageRef = useRef(null);
 
-  const filteredProjects = activeCategory === 'All Projects'
+  const filteredProjects = activeCategory === 'All Works'
     ? SHOWCASE_PROJECTS
     : SHOWCASE_PROJECTS.filter((p) => p.category === activeCategory);
 
   useEffect(() => {
     const ctx = gsap.context(() => {
-      gsap.from('.media-hero-content > *', {
-        y: 30,
+      // Hero headline entrance
+      gsap.from('.retro-hero-anim', {
+        y: 35,
         opacity: 0,
         duration: 0.9,
         stagger: 0.15,
         ease: 'power3.out',
       });
 
-      gsap.from('.showcase-card', {
+      // CD cases floating animation
+      gsap.from('.retro-cd-case', {
         y: 40,
         opacity: 0,
         duration: 0.8,
@@ -238,87 +172,73 @@ export default function MediaPage() {
   }, [activeCategory]);
 
   return (
-    <div ref={pageRef} className="relative w-full min-h-screen text-white">
+    <div ref={pageRef} className="relative w-full min-h-screen text-slate-100 font-sans">
       
       {/* ======================================================== */}
-      {/* 1. HERO SECTION (Over the Animated SVGator Gradient Canvas) */}
+      {/* 1. RETRO 80s/90s HERO SECTION (Inspired by Reference Video) */}
       {/* ======================================================== */}
-      <section className="relative w-full min-h-[85vh] flex flex-col justify-center items-center px-4 sm:px-6 lg:px-8 max-w-6xl mx-auto pt-24 sm:pt-28 pb-16">
+      <section className="relative w-full min-h-[90vh] flex flex-col justify-center items-center px-4 sm:px-6 lg:px-8 max-w-5xl mx-auto pt-24 sm:pt-32 pb-16 text-center">
         
-        <div className="media-hero-content flex flex-col items-center text-center max-w-3xl mx-auto">
-          
-          {/* Accent Badge */}
-          <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-blue-500/10 border border-cyan-400/30 backdrop-blur-xl shadow-lg mb-6">
-            <Sparkles className="w-4 h-4 text-cyan-300 animate-pulse" />
-            <span className="text-xs font-mono tracking-widest text-cyan-300 uppercase font-semibold">
-              Media Production & Visual Branding
-            </span>
-          </div>
+        {/* Monospace Sub-header */}
+        <div className="retro-hero-anim inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-blue-900/30 border border-cyan-400/30 backdrop-blur-md mb-6">
+          <Sparkles className="w-4 h-4 text-cyan-300 animate-pulse" />
+          <span className="text-xs font-mono tracking-[0.25em] text-cyan-300 uppercase font-semibold">
+            ANIMATION & EFFECTS
+          </span>
+        </div>
 
-          {/* Master Heading */}
-          <h1 className="text-3xl sm:text-5xl md:text-6xl font-black tracking-tight text-white drop-shadow-xl leading-tight mb-6">
-            Cinematic Motion, <br />
-            <span className="bg-gradient-to-r from-cyan-300 via-blue-400 to-sky-200 bg-clip-text text-transparent">
-              Visual Identity & Digital Craft
-            </span>
-          </h1>
+        {/* Master Serif Headline (Retro 80s Editorial Typography) */}
+        <h1 className="retro-hero-anim text-4xl sm:text-6xl md:text-7xl font-serif text-[#F8FAFC] tracking-tight leading-[1.1] mb-6 drop-shadow-2xl">
+          Scrolling into the Future <br />
+          <span className="font-serif italic font-normal text-cyan-300 drop-shadow-[0_0_25px_rgba(56,189,248,0.4)]">
+            with Retro '80s Vibes
+          </span>
+        </h1>
 
-          {/* Subtitle */}
-          <p className="text-sm sm:text-base md:text-lg text-slate-300 font-light leading-relaxed mb-8 max-w-2xl">
-            From high-energy promotional reels and 3D visual identities to commercial ad campaigns and post-production workflows — explore authentic works crafted by Navra Studio.
-          </p>
+        {/* Subtitle */}
+        <p className="retro-hero-anim text-sm sm:text-base md:text-lg text-slate-300 font-light max-w-2xl leading-relaxed mb-10">
+          Discover a decade of creative innovation, high-energy edits, and groundbreaking visual designs that left an enduring impact and shaped the future.
+        </p>
 
-          {/* Interactive Action Buttons */}
-          <div className="flex flex-wrap items-center justify-center gap-4">
-            <a
-              href="#showcase-grid"
-              className="group inline-flex items-center gap-2.5 px-8 py-3.5 rounded-full bg-gradient-to-r from-blue-600 to-cyan-500 text-white font-bold text-sm tracking-wide shadow-[0_0_30px_rgba(37,99,235,0.5)] hover:shadow-[0_0_40px_rgba(6,182,212,0.8)] transition-all duration-300 hover:scale-105"
-            >
-              <span>Explore My Edits & Portfolio</span>
-              <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
-            </a>
-
-            <Link
-              href="/contact"
-              className="inline-flex items-center gap-2 px-6 py-3.5 rounded-full bg-black/40 hover:bg-black/60 border border-white/20 text-white font-medium text-sm transition-all duration-300 backdrop-blur-xl hover:border-cyan-400/40"
-            >
-              <span>Book a Production Sprint</span>
-            </Link>
-          </div>
-
+        {/* Retro Down-Arrow Scroll Pill */}
+        <div className="retro-hero-anim flex flex-col items-center gap-4">
+          <a
+            href="#cd-showcase"
+            className="w-12 h-12 rounded-full bg-cyan-400/20 border-2 border-cyan-400 text-cyan-300 hover:bg-cyan-400 hover:text-black flex items-center justify-center transition-all duration-300 shadow-[0_0_20px_rgba(56,189,248,0.5)] hover:scale-110"
+          >
+            <ArrowDown className="w-5 h-5 animate-bounce" />
+          </a>
         </div>
 
       </section>
 
       {/* ======================================================== */}
-      {/* 2. AUTHENTIC SHOWCASE & MEDIA GALLERY                    */}
+      {/* 2. THE CD JEWEL CASE & VINYL MEDIA SHOWCASE (Your Edits!) */}
       {/* ======================================================== */}
-      <section id="showcase-grid" className="relative z-10 w-full max-w-6xl px-4 sm:px-6 lg:px-8 mx-auto pt-8 pb-24">
+      <section id="cd-showcase" className="relative z-10 w-full max-w-6xl px-4 sm:px-6 lg:px-8 mx-auto pt-16 pb-24">
         
         {/* Section Header */}
-        <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-10 pb-6 border-b border-white/10">
+        <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-12 pb-6 border-b border-white/10">
           <div>
-            <div className="flex items-center gap-3 mb-2">
-              <Film className="w-5 h-5 text-cyan-400" />
-              <span className="text-xs font-mono tracking-widest text-cyan-300 uppercase">
-                Authentic Portfolio Works
-              </span>
+            <div className="flex items-center gap-2 text-cyan-400 text-xs font-mono tracking-widest uppercase mb-2">
+              <Disc className="w-4 h-4 animate-spin" style={{ animationDuration: '8s' }} />
+              <span>THE ARCHIVE & COLLECTION</span>
             </div>
-            <h2 className="text-2xl sm:text-3xl font-bold text-white tracking-wide">
-              Showcase of Edits, Videos & Graphic Campaigns
+            <h2 className="text-3xl sm:text-4xl font-serif text-white tracking-wide">
+              Selected Works on CD & Tape
             </h2>
           </div>
 
-          {/* Category Filter Pills */}
+          {/* Category Filter Pills (Retro 90s Button Style) */}
           <div className="flex flex-wrap items-center gap-2">
             {CATEGORIES.map((cat) => (
               <button
                 key={cat}
                 onClick={() => setActiveCategory(cat)}
-                className={`px-4 py-1.5 rounded-full text-xs font-mono transition-all duration-300 cursor-pointer focus:outline-none ${
+                className={`px-4 py-1.5 rounded-lg text-xs font-mono uppercase tracking-wider transition-all duration-200 cursor-pointer border ${
                   activeCategory === cat
-                    ? 'bg-gradient-to-r from-blue-600 to-cyan-500 text-white font-bold shadow-[0_0_15px_rgba(56,189,248,0.5)]'
-                    : 'bg-black/40 text-slate-300 hover:text-white border border-white/10 hover:border-cyan-400/30'
+                    ? 'bg-cyan-400 text-black font-bold border-cyan-300 shadow-[0_0_15px_rgba(56,189,248,0.6)]'
+                    : 'bg-black/60 text-slate-300 border-white/15 hover:border-cyan-400/50'
                 }`}
               >
                 {cat}
@@ -327,84 +247,71 @@ export default function MediaPage() {
           </div>
         </div>
 
-        {/* Media Cards Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-8 mb-20">
+        {/* CD Jewel Cases Grid */}
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-10 mb-24">
           {filteredProjects.map((proj) => (
             <div
               key={proj.id}
               onClick={() => setSelectedMedia(proj)}
-              className="showcase-card group relative rounded-3xl bg-black/45 hover:bg-black/65 border border-white/10 hover:border-cyan-400/50 backdrop-blur-2xl overflow-hidden transition-all duration-300 hover:-translate-y-1.5 shadow-[0_15px_35px_rgba(0,0,0,0.6)] hover:shadow-[0_20px_45px_rgba(6,182,212,0.25)] cursor-pointer flex flex-col justify-between"
+              className="retro-cd-case group relative flex flex-col sm:flex-row items-center gap-6 p-6 rounded-3xl bg-black/60 border border-cyan-500/30 backdrop-blur-2xl hover:border-cyan-400 hover:shadow-[0_0_35px_rgba(6,182,212,0.3)] transition-all duration-300 cursor-pointer overflow-hidden"
             >
-              {/* Card Media Preview Header */}
-              <div className="relative w-full h-64 bg-slate-950 flex items-center justify-center overflow-hidden">
+              {/* CD Jewel Case Mockup Container */}
+              <div className="relative w-48 h-48 sm:w-52 sm:h-52 shrink-0 flex items-center justify-center">
                 
-                {proj.type === 'video' ? (
-                  <>
-                    {/* Video element on hover */}
-                    <video
-                      src={proj.mediaSrc}
-                      muted
-                      loop
-                      playsInline
-                      className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 opacity-85 group-hover:opacity-100"
-                      onMouseEnter={(e) => e.target.play().catch(() => {})}
-                      onMouseLeave={(e) => { e.target.pause(); e.target.currentTime = 0; }}
-                    />
+                {/* Transparent Acrylic CD Case Frame */}
+                <div className="relative w-44 h-44 rounded-xl bg-slate-900 border-2 border-white/30 shadow-2xl overflow-hidden flex flex-col justify-between p-3 group-hover:scale-105 transition-transform duration-500">
+                  
+                  {/* CD Spine bar */}
+                  <div className={`absolute left-0 top-0 bottom-0 w-3 ${proj.spineColor} opacity-90`} />
 
-                    {/* Centered Glowing Play Icon */}
-                    <div className="absolute inset-0 flex items-center justify-center pointer-events-none group-hover:opacity-0 transition-opacity duration-300 bg-black/30">
-                      <div className="w-16 h-16 rounded-full bg-cyan-500/20 border border-cyan-400/40 backdrop-blur-md flex items-center justify-center shadow-xl">
-                        <Play className="w-6 h-6 fill-cyan-300 text-cyan-300 ml-1" />
-                      </div>
-                    </div>
-                  </>
-                ) : (
-                  <>
-                    <img
-                      src={proj.mediaSrc}
-                      alt={proj.title}
-                      className="w-full h-full object-contain p-2 group-hover:scale-105 transition-transform duration-700"
-                    />
-                    <div className="absolute inset-0 flex items-center justify-center pointer-events-none opacity-0 group-hover:opacity-100 transition-opacity duration-300 bg-black/40">
-                      <div className="w-14 h-14 rounded-full bg-cyan-500/20 border border-cyan-400/40 backdrop-blur-md flex items-center justify-center shadow-xl">
-                        <ImageIcon className="w-6 h-6 text-cyan-300" />
-                      </div>
-                    </div>
-                  </>
-                )}
+                  {/* Plastic Shine Gradient Overlay */}
+                  <div className="absolute inset-0 bg-gradient-to-tr from-white/0 via-white/15 to-white/0 pointer-events-none" />
 
-                {/* Duration / Resolution Badge */}
-                <div className="absolute top-4 left-4 flex items-center gap-2 pointer-events-none">
-                  <span className="px-2.5 py-1 rounded-md bg-black/70 border border-white/15 text-[10px] font-mono text-cyan-300 backdrop-blur-md">
-                    {proj.resolution}
-                  </span>
-                  <span className="px-2.5 py-1 rounded-md bg-black/70 border border-white/15 text-[10px] font-mono text-slate-300 backdrop-blur-md">
-                    {proj.duration}
-                  </span>
+                  {/* Artwork Preview inside case */}
+                  <div className={`w-full h-full rounded-lg bg-gradient-to-br ${proj.coverBg} flex flex-col justify-between p-3 ml-1`}>
+                    <div className="flex justify-between items-start">
+                      <span className="text-[9px] font-mono font-bold tracking-widest text-cyan-200 uppercase bg-black/40 px-1.5 py-0.5 rounded">
+                        {proj.format}
+                      </span>
+                      <span className="text-[9px] font-mono text-white/80">
+                        {proj.year}
+                      </span>
+                    </div>
+
+                    {/* Centered CD Hole / Play icon */}
+                    <div className="w-12 h-12 rounded-full border-2 border-white/60 bg-black/60 backdrop-blur-md self-center flex items-center justify-center shadow-lg group-hover:bg-cyan-400 group-hover:text-black group-hover:border-white transition-colors">
+                      <Play className="w-5 h-5 fill-current ml-0.5" />
+                    </div>
+
+                    <p className="text-xs font-bold text-white line-clamp-1">
+                      {proj.title}
+                    </p>
+                  </div>
                 </div>
 
-                {/* Metric Badge */}
-                <div className="absolute bottom-4 right-4 pointer-events-none">
-                  <span className="px-3 py-1 rounded-full bg-blue-600/80 border border-cyan-400/40 text-[10px] font-mono text-white font-bold backdrop-blur-md flex items-center gap-1.5 shadow-lg">
-                    <Eye className="w-3 h-3 text-cyan-200" />
-                    {proj.stats}
-                  </span>
+                {/* Disc Sliding out on Hover */}
+                <div className="absolute right-0 w-36 h-36 rounded-full bg-gradient-to-tr from-cyan-400 via-blue-600 to-indigo-900 border-2 border-white/50 shadow-2xl flex items-center justify-center translate-x-3 group-hover:translate-x-10 transition-transform duration-500 -z-10 group-hover:rotate-45">
+                  <div className="w-12 h-12 rounded-full bg-black/80 border border-white/60 flex items-center justify-center">
+                    <div className="w-4 h-4 rounded-full bg-cyan-300" />
+                  </div>
                 </div>
+
               </div>
 
-              {/* Card Body */}
-              <div className="p-6 sm:p-7 flex flex-col justify-between flex-1">
+              {/* Case Details / Info */}
+              <div className="flex flex-col justify-between flex-1 text-left">
                 <div>
-                  <div className="flex items-center justify-between mb-2">
-                    <span className="text-xs font-mono text-cyan-400 uppercase tracking-wider font-semibold">
-                      {proj.client}
+                  <div className="flex items-center gap-2 mb-1.5">
+                    <span className="text-xs font-mono text-cyan-400 uppercase font-semibold">
+                      {proj.format}
                     </span>
-                    <span className="text-[10px] font-mono text-slate-400 px-2 py-0.5 rounded border border-white/10">
-                      {proj.category}
+                    <span className="text-slate-500">•</span>
+                    <span className="text-xs font-mono text-slate-400">
+                      {proj.year}
                     </span>
                   </div>
 
-                  <h3 className="text-xl font-bold text-white mb-2 group-hover:text-cyan-200 transition-colors">
+                  <h3 className="text-xl font-serif font-bold text-white mb-2 group-hover:text-cyan-200 transition-colors">
                     {proj.title}
                   </h3>
 
@@ -413,146 +320,210 @@ export default function MediaPage() {
                   </p>
                 </div>
 
-                {/* Deliverable Tags */}
-                <div className="pt-4 border-t border-white/10 flex items-center justify-between">
-                  <div className="flex flex-wrap items-center gap-1.5">
+                <div className="pt-3 border-t border-white/10 flex items-center justify-between">
+                  <div className="flex flex-wrap gap-1.5">
                     {proj.tags.map((t) => (
-                      <span key={t} className="text-[10px] font-mono px-2 py-0.5 rounded bg-blue-500/10 border border-cyan-400/20 text-cyan-300">
+                      <span key={t} className="text-[10px] font-mono px-2 py-0.5 rounded bg-blue-500/15 border border-cyan-400/25 text-cyan-300">
                         {t}
                       </span>
                     ))}
                   </div>
 
-                  <span className="text-xs font-mono text-cyan-400 group-hover:translate-x-1 transition-transform flex items-center gap-1">
-                    {proj.type === 'video' ? 'Play Video' : 'View Design'} <ArrowRight className="w-3 h-3" />
+                  <span className="text-xs font-mono font-bold text-cyan-400 group-hover:translate-x-1 transition-transform flex items-center gap-1">
+                    Play Track <ArrowRight className="w-3.5 h-3.5" />
                   </span>
                 </div>
               </div>
+
             </div>
           ))}
         </div>
 
         {/* ======================================================== */}
-        {/* 3. CORE CAPABILITIES (4-Grid Breakdown)                  */}
+        {/* 3. RETRO CLASSIC OS / MS-PAINT CREATIVE WORKSPACE        */}
         {/* ======================================================== */}
         <div className="mb-24">
-          <div className="text-center max-w-2xl mx-auto mb-12">
-            <span className="text-xs font-mono tracking-widest text-cyan-400 uppercase font-semibold">
-              Full-Spectrum Deliverables
-            </span>
-            <h2 className="text-2xl sm:text-4xl font-bold text-white mt-2">
-              Capabilities Engineered for Impact
-            </h2>
-          </div>
+          
+          {/* Classic 90s Window Wrapper */}
+          <div className="rounded-2xl bg-[#CBD5E1] border-4 border-t-white border-l-white border-r-[#64748B] border-b-[#64748B] shadow-2xl overflow-hidden text-slate-900">
+            
+            {/* Retro Window Title Bar */}
+            <div className="bg-gradient-to-r from-[#1E40AF] to-[#38BDF8] px-4 py-2 flex items-center justify-between text-white select-none">
+              <div className="flex items-center gap-2">
+                <Tv className="w-4 h-4 text-cyan-200" />
+                <span className="text-xs font-mono font-bold tracking-wider">
+                  NAVRA_MEDIA_STUDIO_V1.0.EXE
+                </span>
+              </div>
+              
+              {/* Window Controls [ - ] [ □ ] [ X ] */}
+              <div className="flex items-center gap-1">
+                <button className="w-5 h-5 bg-[#CBD5E1] text-black border border-t-white border-l-white border-r-[#64748B] border-b-[#64748B] text-xs font-mono font-bold flex items-center justify-center active:scale-95">_</button>
+                <button className="w-5 h-5 bg-[#CBD5E1] text-black border border-t-white border-l-white border-r-[#64748B] border-b-[#64748B] text-xs font-mono font-bold flex items-center justify-center active:scale-95">□</button>
+                <button className="w-5 h-5 bg-[#CBD5E1] text-black border border-t-white border-l-white border-r-[#64748B] border-b-[#64748B] text-xs font-mono font-bold flex items-center justify-center active:scale-95">✕</button>
+              </div>
+            </div>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-            {CAPABILITIES.map((cap) => {
-              const Icon = cap.icon;
-              return (
-                <div
-                  key={cap.title}
-                  className="p-6 rounded-2xl bg-black/40 border border-cyan-500/20 backdrop-blur-xl hover:border-cyan-400/40 transition-all duration-300 hover:-translate-y-1 shadow-lg flex flex-col justify-between"
-                >
-                  <div>
-                    <div className="w-12 h-12 rounded-xl bg-blue-500/15 border border-cyan-400/25 flex items-center justify-center mb-5">
-                      <Icon className="w-6 h-6 text-cyan-300" />
-                    </div>
-                    <span className="text-[9px] font-mono text-cyan-300 tracking-widest uppercase px-2 py-0.5 rounded bg-blue-500/10 border border-cyan-400/20">
-                      {cap.tag}
-                    </span>
-                    <h3 className="text-lg font-bold text-white mt-3 mb-2">
-                      {cap.title}
-                    </h3>
-                    <p className="text-xs sm:text-sm text-slate-300 font-light leading-relaxed">
-                      {cap.desc}
-                    </p>
+            {/* Menu Bar (File, Edit, View, Render, Help) */}
+            <div className="bg-[#E2E8F0] px-4 py-1 border-b border-[#94A3B8] flex items-center gap-6 text-xs font-mono text-slate-700">
+              <span className="cursor-pointer hover:bg-blue-600 hover:text-white px-1">File</span>
+              <span className="cursor-pointer hover:bg-blue-600 hover:text-white px-1">Edit</span>
+              <span className="cursor-pointer hover:bg-blue-600 hover:text-white px-1">View</span>
+              <span className="cursor-pointer hover:bg-blue-600 hover:text-white px-1">Special VFX</span>
+              <span className="cursor-pointer hover:bg-blue-600 hover:text-white px-1">Master 4K</span>
+            </div>
+
+            {/* Workspace Body */}
+            <div className="p-4 sm:p-6 bg-[#020C1B] text-white flex flex-col lg:flex-row gap-6">
+              
+              {/* Left Toolbox */}
+              <div className="w-full lg:w-48 bg-[#0F172A] border border-cyan-500/30 p-3 rounded-xl flex flex-col justify-between">
+                <div>
+                  <span className="text-[10px] font-mono text-cyan-400 tracking-wider uppercase block mb-3 font-semibold">
+                    CREATIVE TOOLBOX
+                  </span>
+                  
+                  {/* Tool Icons Grid */}
+                  <div className="grid grid-cols-2 gap-2 mb-4">
+                    {['4K Edit', 'Color Grade', '3D Motion', 'VFX Synth', 'Audio Sync', 'Hook Script'].map((tool, idx) => (
+                      <div
+                        key={tool}
+                        className={`p-2 rounded bg-black/60 border text-[10px] font-mono text-center cursor-pointer transition-all ${
+                          idx === 0 ? 'border-cyan-400 text-cyan-300 bg-blue-900/40' : 'border-white/10 text-slate-300 hover:border-cyan-400/40'
+                        }`}
+                      >
+                        {tool}
+                      </div>
+                    ))}
                   </div>
                 </div>
-              );
-            })}
-          </div>
-        </div>
 
-        {/* ======================================================== */}
-        {/* 4. PRODUCTION TIMELINE & WORKFLOW                        */}
-        {/* ======================================================== */}
-        <div className="p-8 sm:p-10 rounded-3xl bg-black/40 border border-cyan-500/25 backdrop-blur-2xl shadow-2xl mb-24">
-          <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 mb-8 pb-6 border-b border-white/10">
-            <div>
-              <span className="text-xs font-mono tracking-widest text-cyan-300 uppercase">
-                Methodology
-              </span>
-              <h2 className="text-2xl sm:text-3xl font-bold text-white mt-1">
-                How We Produce Media Assets
-              </h2>
-            </div>
-            <span className="text-xs font-mono text-slate-400">
-              End-to-End Creative Pipeline
-            </span>
-          </div>
-
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-            {WORKFLOW_STEPS.map((step) => (
-              <div key={step.num} className="flex flex-col">
-                <span className="text-3xl sm:text-4xl font-black font-mono text-cyan-400/40 mb-2">
-                  {step.num}
-                </span>
-                <h4 className="text-base font-bold text-white mb-1.5">
-                  {step.title}
-                </h4>
-                <p className="text-xs sm:text-sm text-slate-400 font-light leading-relaxed">
-                  {step.desc}
-                </p>
+                {/* Color Swatches */}
+                <div>
+                  <span className="text-[10px] font-mono text-slate-400 tracking-wider uppercase block mb-2">
+                    BRAND PALETTE
+                  </span>
+                  <div className="flex flex-wrap gap-1.5">
+                    {['#38BDF8', '#2563EB', '#1D4ED8', '#F472B6', '#FBBF24', '#06B6D4'].map((c) => (
+                      <button
+                        key={c}
+                        onClick={() => setSelectedPaintColor(c)}
+                        style={{ backgroundColor: c }}
+                        className={`w-6 h-6 rounded-md border transition-transform ${
+                          selectedPaintColor === c ? 'scale-110 border-white ring-2 ring-cyan-400' : 'border-black'
+                        }`}
+                      />
+                    ))}
+                  </div>
+                </div>
               </div>
-            ))}
+
+              {/* Main Monitor Display inside Retro Window */}
+              <div className="flex-1 rounded-xl bg-black border border-cyan-500/30 overflow-hidden flex flex-col">
+                <div className="relative w-full aspect-video bg-gradient-to-br from-blue-950 to-slate-950 flex items-center justify-center p-4">
+                  <video
+                    src="/show/finalreel_navra.mp4"
+                    controls
+                    loop
+                    className="w-full h-full object-contain rounded-lg shadow-2xl"
+                  />
+                </div>
+                
+                {/* Timeline status bar */}
+                <div className="p-3 bg-[#0A192F] border-t border-cyan-500/20 flex flex-col sm:flex-row sm:items-center justify-between text-xs font-mono text-cyan-300 gap-2">
+                  <div className="flex items-center gap-2">
+                    <span className="w-2.5 h-2.5 rounded-full bg-red-500 animate-ping" />
+                    <span>REC • 4K ULTRA HD MASTER RENDER</span>
+                  </div>
+                  <span className="text-slate-400">FPS: 60.00 • BITRATE: 120 Mbps</span>
+                </div>
+              </div>
+
+            </div>
+
           </div>
+
         </div>
 
         {/* ======================================================== */}
-        {/* 5. CALL TO ACTION BANNER                                 */}
+        {/* 4. CASCADING RETRO POP-UP WINDOWS (From the Video Ending) */}
         {/* ======================================================== */}
-        <div className="relative rounded-3xl p-8 sm:p-12 bg-gradient-to-r from-blue-900/40 via-cyan-900/30 to-blue-900/40 border border-cyan-400/30 backdrop-blur-2xl shadow-[0_20px_50px_rgba(0,0,0,0.8)] text-center flex flex-col items-center">
-          <div className="w-14 h-14 rounded-2xl bg-cyan-500/20 border border-cyan-400/40 flex items-center justify-center mb-6 shadow-lg">
-            <Sparkles className="w-7 h-7 text-cyan-300" />
+        <div className="relative py-16 flex flex-col items-center justify-center overflow-hidden">
+          
+          <div className="relative w-full max-w-2xl min-h-[380px] flex items-center justify-center">
+            
+            {/* Background Cascading Shadow Windows (The Windows 95 Cascade Stack) */}
+            <div className="absolute top-0 right-4 sm:right-12 w-64 p-3 rounded-lg bg-[#CBD5E1] border-2 border-t-white border-l-white border-r-[#64748B] border-b-[#64748B] shadow-lg opacity-40 -rotate-3 pointer-events-none">
+              <div className="bg-blue-800 text-white text-[10px] font-mono px-2 py-0.5 mb-2">Reminder</div>
+              <p className="text-xs font-mono text-slate-800">Be creative & innovate.</p>
+            </div>
+
+            <div className="absolute top-8 left-2 sm:left-8 w-64 p-3 rounded-lg bg-[#CBD5E1] border-2 border-t-white border-l-white border-r-[#64748B] border-b-[#64748B] shadow-lg opacity-60 rotate-2 pointer-events-none">
+              <div className="bg-pink-600 text-white text-[10px] font-mono px-2 py-0.5 mb-2">Inspiration</div>
+              <p className="text-xs font-mono text-slate-800">Elevate your visual brand.</p>
+            </div>
+
+            {/* Foreground Master Dialog Window */}
+            <div className="relative z-20 w-full p-6 sm:p-8 rounded-2xl bg-[#E2E8F0] border-4 border-t-white border-l-white border-r-[#64748B] border-b-[#64748B] shadow-[0_25px_60px_rgba(0,0,0,0.9)] text-slate-900 text-center">
+              
+              {/* Window Header */}
+              <div className="bg-gradient-to-r from-[#1D4ED8] via-[#2563EB] to-[#F472B6] px-4 py-2 rounded-t-lg -mx-6 -mt-6 sm:-mx-8 sm:-mt-8 mb-6 flex items-center justify-between text-white">
+                <span className="text-xs font-mono font-bold tracking-wider">
+                  EXPLORE • NAVRA STUDIO
+                </span>
+                <span className="text-xs font-mono">✕</span>
+              </div>
+
+              <h2 className="text-2xl sm:text-4xl font-serif font-bold text-slate-900 mb-3">
+                So what's next? It's your turn to shape the future.
+              </h2>
+              <p className="text-xs sm:text-sm text-slate-600 font-light max-w-md mx-auto mb-8">
+                Partner with Navra Studio for custom media production, commercial edits, and digital storytelling campaigns.
+              </p>
+
+              <div className="flex flex-wrap items-center justify-center gap-4">
+                <Link
+                  href="/contact"
+                  className="px-8 py-3.5 rounded-lg bg-[#1E293B] hover:bg-black text-white font-mono font-bold text-xs uppercase tracking-widest border-2 border-t-[#64748B] border-l-[#64748B] border-r-black border-b-black shadow-lg hover:scale-105 transition-all"
+                >
+                  START CREATING →
+                </Link>
+
+                <a
+                  href="#cd-showcase"
+                  className="px-6 py-3.5 rounded-lg bg-[#CBD5E1] hover:bg-[#94A3B8] text-slate-900 font-mono text-xs uppercase tracking-wider border-2 border-t-white border-l-white border-r-[#64748B] border-b-[#64748B] transition-all"
+                >
+                  REPLAY SHOWCASE
+                </a>
+              </div>
+
+            </div>
+
           </div>
 
-          <h2 className="text-2xl sm:text-4xl font-extrabold text-white mb-4">
-            Ready to Elevate Your Visual Content?
-          </h2>
-          <p className="text-sm sm:text-base text-slate-300 font-light max-w-xl mb-8">
-            Let us craft high-impact promotional videos, CGI animations, and visual branding engineered for your growth targets.
-          </p>
-
-          <Link
-            href="/contact"
-            className="inline-flex items-center gap-3 px-9 py-4 rounded-full bg-gradient-to-r from-blue-600 to-cyan-500 text-white font-bold text-sm tracking-wide shadow-[0_0_35px_rgba(37,99,235,0.6)] hover:shadow-[0_0_50px_rgba(6,182,212,0.9)] transition-all duration-300 hover:scale-105"
-          >
-            <span>Initiate Media Project Brief</span>
-            <ArrowRight className="w-4 h-4" />
-          </Link>
         </div>
 
       </section>
 
       {/* ======================================================== */}
-      {/* 6. INTERACTIVE MEDIA LIGHTBOX / VIDEO PLAYER MODAL       */}
+      {/* 5. INTERACTIVE VIDEO PLAYER LIGHTBOX MODAL               */}
       {/* ======================================================== */}
       {selectedMedia && (
         <div 
-          className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/85 backdrop-blur-2xl"
+          className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/90 backdrop-blur-2xl"
           onClick={() => setSelectedMedia(null)}
         >
           <div 
-            className="relative w-full max-w-4xl rounded-3xl bg-[#041024] border border-cyan-400/40 p-6 sm:p-8 shadow-2xl overflow-hidden max-h-[90vh] flex flex-col"
+            className="relative w-full max-w-4xl rounded-3xl bg-[#041024] border-2 border-cyan-400/50 p-6 sm:p-8 shadow-2xl overflow-hidden max-h-[90vh] flex flex-col"
             onClick={(e) => e.stopPropagation()}
           >
             {/* Modal Header */}
             <div className="flex items-center justify-between mb-4 pb-3 border-b border-white/10">
               <div>
                 <span className="text-xs font-mono text-cyan-400 uppercase font-semibold">
-                  {selectedMedia.client}
+                  {selectedMedia.format} • {selectedMedia.year}
                 </span>
-                <h3 className="text-xl sm:text-2xl font-bold text-white">
+                <h3 className="text-xl sm:text-2xl font-serif font-bold text-white">
                   {selectedMedia.title}
                 </h3>
               </div>
@@ -600,9 +571,9 @@ export default function MediaPage() {
 
               <Link
                 href="/contact"
-                className="inline-flex items-center gap-2 px-6 py-2.5 rounded-full bg-gradient-to-r from-blue-600 to-cyan-500 text-white font-bold text-xs font-mono shadow-md hover:scale-105 transition-transform shrink-0"
+                className="inline-flex items-center gap-2 px-6 py-2.5 rounded-lg bg-cyan-400 text-black font-mono font-bold text-xs uppercase shadow-md hover:scale-105 transition-transform shrink-0"
               >
-                <span>Request Similar Project</span>
+                <span>Request Project</span>
                 <ArrowRight className="w-3.5 h-3.5" />
               </Link>
             </div>
