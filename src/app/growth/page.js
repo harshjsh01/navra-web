@@ -526,6 +526,9 @@ export default function DigitalGrowthPage() {
     rightArmRef.current = rightArm;
 
     // Feet planted firmly on ground
+    const hoofGeo = new THREE.SphereGeometry(0.24, 16, 16);
+    hoofGeo.scale(1.1, 0.8, 1.2);
+
     const leftFoot = new THREE.Mesh(hoofGeo, hoofMat);
     leftFoot.position.set(-0.45, -1.15, 0.2);
     chopperGroup.add(leftFoot);
