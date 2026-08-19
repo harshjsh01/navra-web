@@ -33,55 +33,53 @@ import {
   Ship,
   Compass,
   Anchor,
-  Wind
+  Wind,
+  Shield,
+  HelpCircle
 } from 'lucide-react';
 
-const CHOPPER_QUOTES = {
-  pet: [
-    "Shut up you jerk! Saying I'm cute doesn't make me happy at all, you bastard! 🌸 (blushes and wiggles!)",
-    "Kono yaro~! Don't think flattering me will give you a discount on marketing! 💖 (happily dancing)",
-    "Ehehehe... Stop petting me, I'm a fierce pirate doctor of growth! 🩺✨"
+const CHOPPER_DIALOGUES = {
+  compliment: [
+    "Shut up you jerk! Saying I'm a genius doctor doesn't make me happy at all, you bastard! 🌸 (wiggles happily with pink cheeks!)",
+    "Kono yaro~! Don't think praising my marketing funnels will make me smile, you idiot! 💖 (does the iconic Chopper shy dance!)",
+    "Ehehehe... Stop it! I'm not flattered at all, you baka! 🌸✨ (waving arms excitedly)",
+    "Quit complimenting me, you fool! Doctor Chopper doesn't care about flattery! 🩺 (flustered wiggle dance!)"
   ],
   poke_head: [
-    "Ouch! Watch the antlers! Doctor Chopper is formulating a 500% ROAS cure! 🦌",
-    "Hey! That tickled Dr. Hiriluk's hat! Let's conquer the Grand Line of Google Search! 👑",
-    "Boink! Brain Point activated! Found 50 untapped viral ad angles! 🧠"
+    "Ouch! Watch Dr. Hiriluk's hat! My brain is formulating a 500% ROAS cure! 🦌",
+    "Hey! That tickled my antlers! Ready to conquer the Grand Line of Google Search? 👑",
+    "Boink! Brain Point activated! Scope! I just spotted 50 untapped viral ad keywords! 🧠✨"
   ],
   poke_belly: [
-    "Hehehe! Stop tickling! That's where I keep my emergency Cotton Candy supply! 🍭",
-    "Giggle! Conversion rates are shooting up faster than the Knock Up Stream! 🌊",
-    "Hahaha! If you tickle me again, I'll turn into Heavy Point and 10x your CTR! 🥊"
-  ],
-  drag: [
-    "Wheeeeee! Are we flying to the Thousand Sunny? Watch out for the Navy funnels! ⛵",
-    "Whoa whoa! Doctor Chopper is exploring the high seas of your marketing page! 🗺️",
-    "Hold on tight! Luffy would love this revenue scaling! 🍖"
+    "Hehehe! Stop tickling! That's where I store my emergency Cotton Candy! 🍭",
+    "Giggle! ROAS is ticklish! Conversion rates are shooting up past the Knock Up Stream! 🌊",
+    "Hahaha! Keep tickling and I'll turn into Heavy Point and 10x your click velocity! 🥊"
   ],
   cotton_candy: [
-    "SUGOI!! COTTON CANDY!! 🍭✨ It's so fluffy and sweet! +10,000 Marketing XP!",
-    "Cotton Candy Lover Chopper mode activated! Conversion energy at 1000%! 🌈",
-    "OM NOM NOM! Delicious! Now let's crush Meta & TikTok ad algorithms! 🚀"
+    "SUGOI!! COTTON CANDY!! 🍭✨ It's so fluffy and sweet! My marketing powers increased by 10,000 Berries!",
+    "Cotton Candy Lover Chopper mode activated! Conversion rates boosted to 1,000%! 🌈",
+    "OM NOM NOM! Delicious! Now let's crush Meta and TikTok ad algorithms! 🚀"
   ],
   rumble_ball: [
     "RUMBLE BALL!! 💊 TRANSFORMATION: MARKETING POINT ACTIVATED! ⚡",
     "POWER OVERWHELMING! ROAS Multiplier boosted to astronomical highs! 🌟",
-    "Doctor Chopper's special prescription: Instant 4.5x conversion boost! 💥"
+    "Doctor Chopper's special prescription: Instant 4.5x conversion boost across all funnels! 💥"
   ]
 };
 
 export default function DigitalGrowthPage() {
-  const fullCanvasRef = useRef(null);
+  const stageCanvasRef = useRef(null);
   const audioContextRef = useRef(null);
 
-  // Chopper UI state
-  const [speechBubble, setSpeechBubble] = useState("Konnichiwa! 🦌 I'm TONY TONY CHOPPER, your Pirate Doctor of Growth! Drag me, feed me cotton candy, or let's cure your ad spend!");
-  const [mascotXP, setMascotXP] = useState(250);
+  // Chopper UI & Dialogue state
+  const [speechBubble, setSpeechBubble] = useState("Konnichiwa! 🦌 I'm TONY TONY CHOPPER, your Pirate Doctor of Digital Growth! Come test our revenue funnels or feed me cotton candy!");
+  const [mascotXP, setMascotXP] = useState(280);
   const [growthEnergy, setGrowthEnergy] = useState(95);
   const [soundEnabled, setSoundEnabled] = useState(true);
   const [customTalkText, setCustomTalkText] = useState('');
   const [isSpeaking, setIsSpeaking] = useState(false);
-  const [isBlushingDance, setIsBlushingDance] = useState(false);
-  const [bubbleScreenPos, setBubbleScreenPos] = useState({ x: 300, y: 300 });
+  const [isShyDancing, setIsShyDancing] = useState(false);
+  const [chopperStation, setChopperStation] = useState('helm'); // 'helm', 'calculator', 'services'
 
   // ROI Calculator state
   const [monthlySpend, setMonthlySpend] = useState(8000);
@@ -89,7 +87,7 @@ export default function DigitalGrowthPage() {
   const [conversionRate, setConversionRate] = useState(3.5);
   const [formSubmitted, setFormSubmitted] = useState(false);
 
-  // Three.js world refs
+  // Three.js scene refs
   const sceneRef = useRef(null);
   const cameraRef = useRef(null);
   const rendererRef = useRef(null);
@@ -103,27 +101,12 @@ export default function DigitalGrowthPage() {
   const tongueMeshRef = useRef(null);
   const leftEarRef = useRef(null);
   const rightEarRef = useRef(null);
-  const leftAntlerRef = useRef(null);
-  const rightAntlerRef = useRef(null);
-  const leftCheekRef = useRef(null);
-  const rightCheekRef = useRef(null);
-  const bodyMeshRef = useRef(null);
-  const auraLightRef = useRef(null);
-  const sakuraPetalsRef = useRef([]);
+  const leftArmRef = useRef(null);
+  const rightArmRef = useRef(null);
+  const shadowMeshRef = useRef(null);
 
-  // Free Roaming & Drag & Physics State
-  const mascotWorldPos = useRef({
-    x: 1.5,
-    y: 0.2,
-    z: 0,
-    targetX: 1.5,
-    targetY: 0.2,
-    targetZ: 0,
-    isDragging: false,
-    roamTimer: 0
-  });
-
-  const mouseScreenPos = useRef({ normX: 0, normY: 0 });
+  // Physics & Animation Tracking
+  const mousePos = useRef({ normX: 0, normY: 0 });
   const springPhysics = useRef({
     headBounce: 0,
     headBounceVel: 0,
@@ -133,7 +116,7 @@ export default function DigitalGrowthPage() {
     mouthTarget: 0,
     earWiggle: 0,
     earWiggleVel: 0,
-    danceWiggle: 0,
+    armWave: 0,
     superchargeFactor: 0,
     blinkTimer: 0,
     isBlinking: false
@@ -161,20 +144,20 @@ export default function DigitalGrowthPage() {
 
       if (type === 'cute_chirp') {
         osc.type = 'triangle';
-        osc.frequency.setValueAtTime(580, now);
-        osc.frequency.exponentialRampToValueAtTime(1100, now + 0.12);
-        osc.frequency.exponentialRampToValueAtTime(750, now + 0.25);
+        osc.frequency.setValueAtTime(620, now);
+        osc.frequency.exponentialRampToValueAtTime(1200, now + 0.12);
+        osc.frequency.exponentialRampToValueAtTime(800, now + 0.25);
         gain.gain.setValueAtTime(0.25, now);
         gain.gain.exponentialRampToValueAtTime(0.01, now + 0.28);
         osc.start(now);
         osc.stop(now + 0.28);
       } else if (type === 'giggle') {
         osc.type = 'sine';
-        osc.frequency.setValueAtTime(650, now);
-        osc.frequency.linearRampToValueAtTime(950, now + 0.08);
-        osc.frequency.linearRampToValueAtTime(700, now + 0.15);
-        osc.frequency.linearRampToValueAtTime(1050, now + 0.22);
-        gain.gain.setValueAtTime(0.22, now);
+        osc.frequency.setValueAtTime(700, now);
+        osc.frequency.linearRampToValueAtTime(1050, now + 0.08);
+        osc.frequency.linearRampToValueAtTime(750, now + 0.15);
+        osc.frequency.linearRampToValueAtTime(1150, now + 0.22);
+        gain.gain.setValueAtTime(0.2, now);
         gain.gain.exponentialRampToValueAtTime(0.01, now + 0.28);
         osc.start(now);
         osc.stop(now + 0.28);
@@ -192,7 +175,7 @@ export default function DigitalGrowthPage() {
     }
   };
 
-  // Cute Chopper speech synthesis
+  // Female/Cute Japanese Anime Voice (Ikue Ōtani style)
   const speakChopper = (text) => {
     setSpeechBubble(text);
     if (!soundEnabled || typeof window === 'undefined' || !('speechSynthesis' in window)) {
@@ -201,7 +184,28 @@ export default function DigitalGrowthPage() {
 
     window.speechSynthesis.cancel();
     const utterance = new SpeechSynthesisUtterance(text);
-    utterance.pitch = 1.98; // Very cute high-pitched Chopper voice
+
+    // Pick a cute female anime voice
+    const voices = window.speechSynthesis.getVoices();
+    const femaleVoice = voices.find(v => 
+      v.name.includes('Kyoko') || 
+      v.name.includes('Otoya') || 
+      v.name.includes('Yuri') || 
+      v.name.includes('Samantha') || 
+      v.name.includes('Jenny') || 
+      v.name.includes('Zira') || 
+      v.name.includes('Karen') || 
+      v.name.includes('Female') || 
+      v.name.includes('Google US English') ||
+      (v.lang && v.lang.startsWith('ja') && !v.name.includes('Male')) ||
+      v.name.includes('Victoria')
+    );
+
+    if (femaleVoice) {
+      utterance.voice = femaleVoice;
+    }
+
+    utterance.pitch = 1.98; // Cute high pitch (Ikue Ōtani tone)
     utterance.rate = 1.25;  // Energetic anime cadence
     
     utterance.onstart = () => {
@@ -218,21 +222,21 @@ export default function DigitalGrowthPage() {
     window.speechSynthesis.speak(utterance);
   };
 
-  // ==========================================
-  // THREE.JS 3D CHOPPER PROCEDURAL MODEL
-  // ==========================================
+  // ===================================================
+  // THREE.JS 3D GROUNDED TONY TONY CHOPPER STAGE SETUP
+  // ===================================================
   useEffect(() => {
-    const canvas = fullCanvasRef.current;
+    const canvas = stageCanvasRef.current;
     if (!canvas) return;
 
-    let width = window.innerWidth;
-    let height = window.innerHeight;
+    const width = canvas.clientWidth;
+    const height = canvas.clientHeight;
 
     const scene = new THREE.Scene();
     sceneRef.current = scene;
 
-    const camera = new THREE.PerspectiveCamera(45, width / height, 0.1, 100);
-    camera.position.set(0, 0, 9);
+    const camera = new THREE.PerspectiveCamera(40, width / height, 0.1, 100);
+    camera.position.set(0, 0.6, 5.8);
     cameraRef.current = camera;
 
     const renderer = new THREE.WebGLRenderer({
@@ -244,33 +248,41 @@ export default function DigitalGrowthPage() {
     renderer.setSize(width, height);
     renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
     renderer.toneMapping = THREE.ACESFilmicToneMapping;
-    renderer.toneMappingExposure = 1.3;
+    renderer.toneMappingExposure = 1.35;
     rendererRef.current = renderer;
 
-    // Anime Studio Lighting
-    const ambientLight = new THREE.AmbientLight(0xfff5ea, 1.5);
+    // Studio Lighting (Golden Sun & Ocean Rim)
+    const ambientLight = new THREE.AmbientLight(0xffeedd, 1.5);
     scene.add(ambientLight);
 
     const sunKey = new THREE.DirectionalLight(0xfff0aa, 3.8);
     sunKey.position.set(5, 7, 5);
     scene.add(sunKey);
 
-    const cyanSkyRim = new THREE.DirectionalLight(0x38bdf8, 3.5);
-    cyanSkyRim.position.set(-5, 2, -3);
-    scene.add(cyanSkyRim);
+    const cyanRim = new THREE.DirectionalLight(0x06b6d4, 3.2);
+    cyanRim.position.set(-5, 2, -3);
+    scene.add(cyanRim);
 
-    const sakuraGlow = new THREE.PointLight(0xf472b6, 2.5, 8);
-    sakuraGlow.position.set(0, 0, 2);
-    scene.add(sakuraGlow);
-    auraLightRef.current = sakuraGlow;
+    // Realistic Ground Contact Shadow
+    const shadowGeo = new THREE.PlaneGeometry(2.4, 1.2);
+    const shadowMat = new THREE.MeshBasicMaterial({
+      color: 0x020617,
+      transparent: true,
+      opacity: 0.65,
+    });
+    const shadowMesh = new THREE.Mesh(shadowGeo, shadowMat);
+    shadowMesh.rotation.x = -Math.PI / 2;
+    shadowMesh.position.set(0, -1.35, 0);
+    scene.add(shadowMesh);
+    shadowMeshRef.current = shadowMesh;
 
-    // 3D Master Chopper Group
+    // 3D Master Chopper Group (Firmly grounded on deck)
     const chopperGroup = new THREE.Group();
-    chopperGroup.scale.set(0.85, 0.85, 0.85);
+    chopperGroup.position.set(0, -0.15, 0);
     scene.add(chopperGroup);
     chopperGroupRef.current = chopperGroup;
 
-    // Material Palette (Authentic Chopper Colors)
+    // Authentic Material Palette
     const furMat = new THREE.MeshStandardMaterial({
       color: 0x925838, // Tan Reindeer Fur
       roughness: 0.45,
@@ -284,11 +296,11 @@ export default function DigitalGrowthPage() {
     });
 
     const blueNoseMat = new THREE.MeshStandardMaterial({
-      color: 0x0284c7, // Iconic Bright Blue Reindeer Nose!
+      color: 0x0284c7, // Bright Blue Reindeer Nose!
       roughness: 0.2,
       metalness: 0.1,
       emissive: 0x0369a1,
-      emissiveIntensity: 0.3
+      emissiveIntensity: 0.35
     });
 
     const hatPinkMat = new THREE.MeshStandardMaterial({
@@ -298,86 +310,83 @@ export default function DigitalGrowthPage() {
     });
 
     const hatBrimCyanMat = new THREE.MeshStandardMaterial({
-      color: 0x06b6d4, // Cyan/Blue Hat Band & Rim
+      color: 0x06b6d4, // Cyan Hat Band & Rim
       roughness: 0.3,
       metalness: 0.1
     });
 
     const whiteCrossMat = new THREE.MeshBasicMaterial({ color: 0xffffff });
     const antlerMat = new THREE.MeshStandardMaterial({
-      color: 0x543622, // Dark Woody Antlers
+      color: 0x4a2c16, // Dark Woody Antlers
       roughness: 0.6,
       metalness: 0.05
     });
 
     const eyeWhiteMat = new THREE.MeshBasicMaterial({ color: 0xffffff });
     const pupilMat = new THREE.MeshBasicMaterial({ color: 0x0f172a });
-    const blushMat = new THREE.MeshBasicMaterial({ color: 0xf43f5e, transparent: true, opacity: 0.75 });
+    const blushMat = new THREE.MeshBasicMaterial({ color: 0xf43f5e, transparent: true, opacity: 0.8 });
     const maroonPantsMat = new THREE.MeshStandardMaterial({ color: 0x991b1b, roughness: 0.5 });
     const hoofMat = new THREE.MeshStandardMaterial({ color: 0x18181b, roughness: 0.3 });
 
-    // 1. Chubby Reindeer Body
-    const bodyGeo = new THREE.SphereGeometry(0.85, 32, 32);
+    // 1. Chubby Reindeer Body (Standing firmly)
+    const bodyGeo = new THREE.SphereGeometry(0.88, 32, 32);
     bodyGeo.scale(1.0, 1.15, 0.95);
     const bodyMesh = new THREE.Mesh(bodyGeo, furMat);
-    bodyMesh.position.set(0, -0.4, 0);
+    bodyMesh.position.set(0, -0.35, 0);
     chopperGroup.add(bodyMesh);
-    bodyMeshRef.current = bodyMesh;
 
     // Maroon Pants
-    const pantsGeo = new THREE.CylinderGeometry(0.72, 0.75, 0.45, 24);
+    const pantsGeo = new THREE.CylinderGeometry(0.74, 0.76, 0.45, 24);
     const pantsMesh = new THREE.Mesh(pantsGeo, maroonPantsMat);
-    pantsMesh.position.set(0, -0.75, 0);
+    pantsMesh.position.set(0, -0.72, 0);
     chopperGroup.add(pantsMesh);
 
     // Blue Doctor's Backpack on Back
-    const packGeo = new THREE.BoxGeometry(0.7, 0.7, 0.35);
+    const packGeo = new THREE.BoxGeometry(0.72, 0.72, 0.36);
     const packMat = new THREE.MeshStandardMaterial({ color: 0x2563eb, roughness: 0.4 });
     const packMesh = new THREE.Mesh(packGeo, packMat);
-    packMesh.position.set(0, -0.3, -0.6);
+    packMesh.position.set(0, -0.28, -0.6);
     chopperGroup.add(packMesh);
 
     // 2. Large Cute Chopper Head
     const headGroup = new THREE.Group();
-    headGroup.position.set(0, 0.85, 0);
+    headGroup.position.set(0, 0.88, 0);
     chopperGroup.add(headGroup);
     headGroupRef.current = headGroup;
 
-    const headGeo = new THREE.SphereGeometry(0.95, 32, 32);
+    const headGeo = new THREE.SphereGeometry(0.98, 32, 32);
     headGeo.scale(1.15, 1.02, 1.05);
     const headMesh = new THREE.Mesh(headGeo, furMat);
     headGroup.add(headMesh);
 
     // Muzzle
-    const muzzleGeo = new THREE.SphereGeometry(0.52, 24, 24);
+    const muzzleGeo = new THREE.SphereGeometry(0.54, 24, 24);
     muzzleGeo.scale(1.1, 0.75, 0.75);
     const muzzleMesh = new THREE.Mesh(muzzleGeo, muzzleMat);
-    muzzleMesh.position.set(0, -0.22, 0.7);
+    muzzleMesh.position.set(0, -0.22, 0.72);
     headGroup.add(muzzleMesh);
 
     // Iconic Blue Reindeer Nose
     const noseGeo = new THREE.SphereGeometry(0.12, 16, 16);
     noseGeo.scale(1.2, 0.9, 1.0);
     const noseMesh = new THREE.Mesh(noseGeo, blueNoseMat);
-    noseMesh.position.set(0, -0.06, 1.15);
+    noseMesh.position.set(0, -0.06, 1.18);
     headGroup.add(noseMesh);
 
     // Blush Cheeks
     const cheekGeo = new THREE.SphereGeometry(0.2, 16, 16);
     const leftCheek = new THREE.Mesh(cheekGeo, blushMat);
-    leftCheek.position.set(-0.65, -0.16, 0.78);
+    leftCheek.position.set(-0.68, -0.16, 0.8);
     headGroup.add(leftCheek);
-    leftCheekRef.current = leftCheek;
 
     const rightCheek = new THREE.Mesh(cheekGeo, blushMat);
-    rightCheek.position.set(0.65, -0.16, 0.78);
+    rightCheek.position.set(0.68, -0.16, 0.8);
     headGroup.add(rightCheek);
-    rightCheekRef.current = rightCheek;
 
     // 3. Sparkling Anime Eyes
     const createEye = (isLeft) => {
       const eyeCont = new THREE.Group();
-      eyeCont.position.set(isLeft ? -0.4 : 0.4, 0.16, 0.82);
+      eyeCont.position.set(isLeft ? -0.4 : 0.4, 0.16, 0.84);
 
       const white = new THREE.Mesh(new THREE.SphereGeometry(0.34, 32, 32), eyeWhiteMat);
       white.scale.set(1, 1.18, 0.55);
@@ -411,7 +420,7 @@ export default function DigitalGrowthPage() {
 
     // 4. Smiling Mouth & Tongue
     const mouthGroup = new THREE.Group();
-    mouthGroup.position.set(0, -0.34, 0.9);
+    mouthGroup.position.set(0, -0.34, 0.92);
     headGroup.add(mouthGroup);
     mouthMeshRef.current = mouthGroup;
 
@@ -433,47 +442,40 @@ export default function DigitalGrowthPage() {
 
     // 5. ICONIC PINK DOCTOR'S HAT WITH WHITE CROSS & CYAN BRIM
     const hatGroup = new THREE.Group();
-    hatGroup.position.set(0, 0.65, 0.05);
+    hatGroup.position.set(0, 0.68, 0.05);
     headGroup.add(hatGroup);
 
-    // Tall Pink Cylinder / Crown
-    const hatCrownGeo = new THREE.CylinderGeometry(0.72, 0.78, 0.95, 32);
-    const hatCrown = new THREE.Mesh(hatCrownGeo, hatPinkMat);
+    const hatCrown = new THREE.Mesh(new THREE.CylinderGeometry(0.74, 0.8, 0.98, 32), hatPinkMat);
     hatGroup.add(hatCrown);
 
-    // Cyan Brim
-    const brimGeo = new THREE.CylinderGeometry(1.15, 1.15, 0.08, 32);
-    const brimMesh = new THREE.Mesh(brimGeo, hatBrimCyanMat);
-    brimMesh.position.set(0, -0.45, 0);
+    const brimMesh = new THREE.Mesh(new THREE.CylinderGeometry(1.2, 1.2, 0.08, 32), hatBrimCyanMat);
+    brimMesh.position.set(0, -0.46, 0);
     hatGroup.add(brimMesh);
 
-    // White Medical Cross '+' on Front of Hat
-    const crossV = new THREE.Mesh(new THREE.BoxGeometry(0.14, 0.52, 0.08), whiteCrossMat);
-    crossV.position.set(0, 0.05, 0.76);
+    // White Cross on Hat
+    const crossV = new THREE.Mesh(new THREE.BoxGeometry(0.15, 0.54, 0.08), whiteCrossMat);
+    crossV.position.set(0, 0.05, 0.78);
     hatGroup.add(crossV);
 
-    const crossH = new THREE.Mesh(new THREE.BoxGeometry(0.48, 0.14, 0.08), whiteCrossMat);
-    crossH.position.set(0, 0.05, 0.76);
+    const crossH = new THREE.Mesh(new THREE.BoxGeometry(0.5, 0.15, 0.08), whiteCrossMat);
+    crossH.position.set(0, 0.05, 0.78);
     hatGroup.add(crossH);
 
     // 6. REINDEER ANTLERS
     const createAntler = (isLeft) => {
       const antlerGroup = new THREE.Group();
-      antlerGroup.position.set(isLeft ? -0.85 : 0.85, 0.75, 0);
+      antlerGroup.position.set(isLeft ? -0.88 : 0.88, 0.75, 0);
       antlerGroup.rotation.set(-0.1, 0, isLeft ? 0.45 : -0.45);
 
-      // Main Stem
       const mainStem = new THREE.Mesh(new THREE.CylinderGeometry(0.08, 0.11, 0.85, 12), antlerMat);
       mainStem.position.set(0, 0.4, 0);
       antlerGroup.add(mainStem);
 
-      // Front Branch
       const branch1 = new THREE.Mesh(new THREE.CylinderGeometry(0.06, 0.08, 0.45, 12), antlerMat);
       branch1.position.set(isLeft ? -0.15 : 0.15, 0.45, 0.15);
       branch1.rotation.set(0.4, 0, isLeft ? -0.6 : 0.6);
       antlerGroup.add(branch1);
 
-      // Top Prongs
       const prong1 = new THREE.Mesh(new THREE.ConeGeometry(0.06, 0.35, 12), antlerMat);
       prong1.position.set(isLeft ? 0.08 : -0.08, 0.85, 0);
       antlerGroup.add(prong1);
@@ -481,12 +483,8 @@ export default function DigitalGrowthPage() {
       return antlerGroup;
     };
 
-    const leftAntler = createAntler(true);
-    const rightAntler = createAntler(false);
-    headGroup.add(leftAntler);
-    headGroup.add(rightAntler);
-    leftAntlerRef.current = leftAntler;
-    rightAntlerRef.current = rightAntler;
+    headGroup.add(createAntler(true));
+    headGroup.add(createAntler(false));
 
     // 7. Fluffy Reindeer Ears
     const createEar = (isLeft) => {
@@ -513,90 +511,42 @@ export default function DigitalGrowthPage() {
     leftEarRef.current = leftEar;
     rightEarRef.current = rightEar;
 
-    // 8. Cute Hooves / Paws
-    const hoofGeo = new THREE.SphereGeometry(0.24, 16, 16);
-    hoofGeo.scale(1.1, 0.8, 1.2);
-    const leftPaw = new THREE.Mesh(hoofGeo, hoofMat);
-    leftPaw.position.set(-0.95, -0.4, 0.4);
-    chopperGroup.add(leftPaw);
+    // 8. Animated Arms / Hooves (For waving & shy dance)
+    const armGeo = new THREE.SphereGeometry(0.26, 16, 16);
+    armGeo.scale(1.1, 0.85, 1.25);
 
-    const rightPaw = new THREE.Mesh(hoofGeo, hoofMat);
-    rightPaw.position.set(0.95, -0.4, 0.4);
-    chopperGroup.add(rightPaw);
+    const leftArm = new THREE.Mesh(armGeo, hoofMat);
+    leftArm.position.set(-1.05, -0.38, 0.35);
+    chopperGroup.add(leftArm);
+    leftArmRef.current = leftArm;
 
+    const rightArm = new THREE.Mesh(armGeo, hoofMat);
+    rightArm.position.set(1.05, -0.38, 0.35);
+    chopperGroup.add(rightArm);
+    rightArmRef.current = rightArm;
+
+    // Feet planted firmly on ground
     const leftFoot = new THREE.Mesh(hoofGeo, hoofMat);
-    leftFoot.position.set(-0.45, -1.15, 0.25);
+    leftFoot.position.set(-0.45, -1.15, 0.2);
     chopperGroup.add(leftFoot);
 
     const rightFoot = new THREE.Mesh(hoofGeo, hoofMat);
-    rightFoot.position.set(0.45, -1.15, 0.25);
+    rightFoot.position.set(0.45, -1.15, 0.2);
     chopperGroup.add(rightFoot);
 
-    // 9. Floating Sakura Petals (Drifting in the sea breeze)
-    const petals = [];
-    const petalGeo = new THREE.PlaneGeometry(0.18, 0.26);
-    const petalMat = new THREE.MeshBasicMaterial({ color: 0xfb7185, side: THREE.DoubleSide, transparent: true, opacity: 0.85 });
-    for (let i = 0; i < 18; i++) {
-      const petal = new THREE.Mesh(petalGeo, petalMat);
-      petal.position.set((Math.random() - 0.5) * 12, (Math.random() - 0.5) * 8, (Math.random() - 0.5) * 4);
-      scene.add(petal);
-      petals.push(petal);
-    }
-    sakuraPetalsRef.current = petals;
-
     // ==========================================
-    // PROCEDURAL ANIMATION LOOP
+    // PROCEDURAL LIVING STAGE ANIMATION LOOP
     // ==========================================
     let animId;
     let clock = new THREE.Clock();
 
     const animate = () => {
       const time = clock.getElapsedTime();
-      const mPos = mascotWorldPos.current;
       const sp = springPhysics.current;
 
-      // Roaming logic across the living page
-      if (!mPos.isDragging) {
-        mPos.roamTimer += 0.016;
-        if (mPos.roamTimer > 5.5) {
-          mPos.roamTimer = 0;
-          const rangeX = window.innerWidth > 1024 ? 3.0 : 1.6;
-          mPos.targetX = (Math.random() - 0.5) * rangeX * 2;
-          mPos.targetY = -0.3 + (Math.random() - 0.5) * 1.8;
-        }
-      }
-
-      // Smooth Position Lerp
-      mPos.x += (mPos.targetX - mPos.x) * 0.04;
-      mPos.y += (mPos.targetY - mPos.y) * 0.04;
-      mPos.z += (mPos.targetZ - mPos.z) * 0.04;
-
-      // Floating bob & Chopper's Happy Shy Dance
-      const floatOffset = Math.sin(time * 3.0) * 0.1;
-      const danceOffset = isBlushingDance ? Math.sin(time * 12) * 0.3 : 0;
-      chopperGroup.position.set(mPos.x + danceOffset, mPos.y + floatOffset, mPos.z);
-
-      // Banking rotation
-      const vx = mPos.targetX - mPos.x;
-      chopperGroup.rotation.y = (isBlushingDance ? Math.sin(time * 10) * 0.5 : Math.sin(time * 1.5) * 0.12) + (vx * 0.35);
-      chopperGroup.rotation.z = isBlushingDance ? Math.sin(time * 12) * 0.2 : -vx * 0.15;
-
-      // 2D Screen Position for Floating Speech Bubble
-      const screenV = new THREE.Vector3(mPos.x, mPos.y + 1.9 + floatOffset, mPos.z);
-      screenV.project(camera);
-      const screenX = ((screenV.x + 1) * width) / 2;
-      const screenY = ((-screenV.y + 1) * height) / 2;
-      setBubbleScreenPos({
-        x: Math.max(120, Math.min(width - 120, screenX)),
-        y: Math.max(80, Math.min(height - 120, screenY))
-      });
-
-      // Spring Physics
+      // Spring physics
       sp.headBounceVel += (-sp.headBounce * 20 - sp.headBounceVel * 4) * 0.016;
       sp.headBounce += sp.headBounceVel * 0.016;
-
-      sp.bodySquishVel += ((1 - sp.bodySquish) * 24 - sp.bodySquishVel * 5) * 0.016;
-      sp.bodySquish += sp.bodySquishVel * 0.016;
 
       sp.earWiggleVel += (-sp.earWiggle * 28 - sp.earWiggleVel * 4) * 0.016;
       sp.earWiggle += sp.earWiggleVel * 0.016;
@@ -611,25 +561,40 @@ export default function DigitalGrowthPage() {
         }
       }
 
-      // Breathing
-      const breath = Math.sin(time * 3.5) * 0.035;
-      if (bodyMeshRef.current) {
-        bodyMeshRef.current.scale.set(1.0 + breath * 0.5, (1.15 + breath) * sp.bodySquish, 0.95 - breath * 0.3);
+      // Breathing & Idle stance
+      const breath = Math.sin(time * 3.5) * 0.03;
+
+      // Chopper's Famous Wiggle Shy Dance ("Kono yaro~!")
+      if (isShyDancing) {
+        const danceSpeed = time * 14;
+        chopperGroup.position.x = Math.sin(danceSpeed) * 0.25;
+        chopperGroup.rotation.y = Math.sin(danceSpeed * 0.8) * 0.45;
+        chopperGroup.rotation.z = Math.sin(danceSpeed) * 0.18;
+        if (leftArmRef.current && rightArmRef.current) {
+          leftArmRef.current.position.y = -0.1 + Math.sin(danceSpeed * 1.2) * 0.25;
+          rightArmRef.current.position.y = -0.1 - Math.sin(danceSpeed * 1.2) * 0.25;
+        }
+      } else {
+        chopperGroup.position.x = Math.sin(time * 1.5) * 0.05;
+        chopperGroup.rotation.y = Math.sin(time * 1.2) * 0.1 + (mousePos.current.normX * 0.35);
+        chopperGroup.rotation.z = 0;
+        if (leftArmRef.current && rightArmRef.current) {
+          leftArmRef.current.position.y = -0.38 + Math.sin(time * 3) * 0.04;
+          rightArmRef.current.position.y = -0.38 - Math.sin(time * 3) * 0.04;
+        }
       }
 
       // Head cursor tracking
       if (headGroupRef.current) {
-        const relMouseX = mouseScreenPos.current.normX - (mPos.x / 4);
-        const relMouseY = mouseScreenPos.current.normY - (mPos.y / 3);
-        headGroupRef.current.position.y = 0.85 + sp.headBounce + breath * 0.5;
-        headGroupRef.current.rotation.y = relMouseX * 0.65;
-        headGroupRef.current.rotation.x = -relMouseY * 0.45;
+        headGroupRef.current.position.y = 0.88 + sp.headBounce + breath * 0.5;
+        headGroupRef.current.rotation.y = mousePos.current.normX * 0.55;
+        headGroupRef.current.rotation.x = -mousePos.current.normY * 0.35;
       }
 
       // Eye pupil tracking
       if (leftPupilRef.current && rightPupilRef.current) {
-        const pupilX = mouseScreenPos.current.normX * 0.07;
-        const pupilY = -mouseScreenPos.current.normY * 0.05;
+        const pupilX = mousePos.current.normX * 0.07;
+        const pupilY = -mousePos.current.normY * 0.05;
         leftPupilRef.current.position.set(pupilX, pupilY, 0.18);
         rightPupilRef.current.position.set(pupilX, pupilY, 0.18);
 
@@ -638,13 +603,13 @@ export default function DigitalGrowthPage() {
         if (rightEyeRef.current) rightEyeRef.current.scale.set(1, blinkScaleY, 1);
       }
 
-      // Ears & Antlers Twitch
+      // Ears Twitch
       if (leftEarRef.current && rightEarRef.current) {
         leftEarRef.current.rotation.z = 0.55 + Math.sin(time * 4) * 0.08 + sp.earWiggle;
         rightEarRef.current.rotation.z = -0.55 - Math.sin(time * 4) * 0.08 - sp.earWiggle;
       }
 
-      // Speech visemes
+      // Talking mouth visemes
       if (mouthMeshRef.current) {
         if (isSpeaking) {
           const viseme = (Math.sin(time * 22) * 0.5 + 0.5) * 1.5;
@@ -656,22 +621,6 @@ export default function DigitalGrowthPage() {
         }
       }
 
-      // Floating Sakura Petals
-      sakuraPetalsRef.current.forEach((petal, idx) => {
-        petal.position.x += Math.sin(time * 0.5 + idx) * 0.01 - 0.015;
-        petal.position.y -= 0.012;
-        petal.rotation.x += 0.02;
-        petal.rotation.y += 0.03;
-        if (petal.position.y < -5) petal.position.y = 5;
-        if (petal.position.x < -7) petal.position.x = 7;
-      });
-
-      // Aura light follows Chopper
-      if (auraLightRef.current) {
-        auraLightRef.current.position.set(mPos.x, mPos.y + 0.5, mPos.z + 2);
-        auraLightRef.current.intensity = 2.5 + Math.sin(time * 6) * 0.6 + sp.superchargeFactor * 4;
-      }
-
       renderer.render(scene, camera);
       animId = requestAnimationFrame(animate);
     };
@@ -679,11 +628,12 @@ export default function DigitalGrowthPage() {
     animate();
 
     const handleResize = () => {
-      width = window.innerWidth;
-      height = window.innerHeight;
-      camera.aspect = width / height;
+      if (!canvas) return;
+      const w = canvas.clientWidth;
+      const h = canvas.clientHeight;
+      camera.aspect = w / h;
       camera.updateProjectionMatrix();
-      renderer.setSize(width, height);
+      renderer.setSize(w, h);
     };
 
     window.addEventListener('resize', handleResize);
@@ -693,67 +643,34 @@ export default function DigitalGrowthPage() {
       window.removeEventListener('resize', handleResize);
       renderer.dispose();
     };
-  }, [isSpeaking, isBlushingDance]);
+  }, [isSpeaking, isShyDancing]);
 
-  // Global mouse move & drag handling
-  useEffect(() => {
-    const handleGlobalMouseMove = (e) => {
-      mouseScreenPos.current.normX = (e.clientX / window.innerWidth) * 2 - 1;
-      mouseScreenPos.current.normY = -(e.clientY / window.innerHeight) * 2 + 1;
-
-      if (mascotWorldPos.current.isDragging) {
-        const aspect = window.innerWidth / window.innerHeight;
-        mascotWorldPos.current.targetX = mouseScreenPos.current.normX * (aspect * 4.0);
-        mascotWorldPos.current.targetY = mouseScreenPos.current.normY * 3.8;
-      }
-    };
-
-    const handleGlobalMouseUp = () => {
-      if (mascotWorldPos.current.isDragging) {
-        mascotWorldPos.current.isDragging = false;
-        springPhysics.current.bodySquish = 0.8;
-        springPhysics.current.bodySquishVel = 12;
-      }
-    };
-
-    window.addEventListener('mousemove', handleGlobalMouseMove);
-    window.addEventListener('mouseup', handleGlobalMouseUp);
-
-    return () => {
-      window.removeEventListener('mousemove', handleGlobalMouseMove);
-      window.removeEventListener('mouseup', handleGlobalMouseUp);
-    };
-  }, []);
-
-  // Pick up Chopper
-  const handleChopperMouseDown = (e) => {
-    e.stopPropagation();
-    mascotWorldPos.current.isDragging = true;
-    playSoundEffect('giggle');
-    springPhysics.current.bodySquish = 1.25;
-    addXP(10);
-    const line = CHOPPER_QUOTES.drag[Math.floor(Math.random() * CHOPPER_QUOTES.drag.length)];
-    speakChopper(line);
+  const handleMouseMove = (e) => {
+    const rect = stageCanvasRef.current?.getBoundingClientRect();
+    if (!rect) return;
+    mousePos.current.normX = ((e.clientX - rect.left) / rect.width) * 2 - 1;
+    mousePos.current.normY = -(((e.clientY - rect.top) / rect.height) * 2 - 1);
   };
 
-  // Pet Chopper -> Triggers his iconic happy shy blushing dance!
-  const handlePetChopper = () => {
-    setIsBlushingDance(true);
+  // Praise Chopper -> Triggers his iconic blushing dance!
+  const handlePraiseChopper = () => {
+    setIsShyDancing(true);
     playSoundEffect('cute_chirp');
     springPhysics.current.headBounce = 0.25;
     addXP(35);
     setGrowthEnergy((prev) => Math.min(100, prev + 15));
 
     confetti({
-      particleCount: 40,
+      particleCount: 45,
       spread: 80,
-      origin: { x: bubbleScreenPos.x / window.innerWidth, y: bubbleScreenPos.y / window.innerHeight },
+      origin: { y: 0.5 },
       colors: ['#f472b6', '#fbbf24', '#38bdf8']
     });
 
-    const line = CHOPPER_QUOTES.pet[Math.floor(Math.random() * CHOPPER_QUOTES.pet.length)];
+    const lines = CHOPPER_DIALOGUES.compliment;
+    const line = lines[Math.floor(Math.random() * lines.length)];
     speakChopper(line);
-    setTimeout(() => setIsBlushingDance(false), 3500);
+    setTimeout(() => setIsShyDancing(false), 3800);
   };
 
   // Feed Cotton Candy
@@ -770,7 +687,8 @@ export default function DigitalGrowthPage() {
       colors: ['#f472b6', '#38bdf8', '#fbbf24']
     });
 
-    const line = CHOPPER_QUOTES.cotton_candy[Math.floor(Math.random() * CHOPPER_QUOTES.cotton_candy.length)];
+    const lines = CHOPPER_DIALOGUES.cotton_candy;
+    const line = lines[Math.floor(Math.random() * lines.length)];
     speakChopper(line);
   };
 
@@ -788,29 +706,29 @@ export default function DigitalGrowthPage() {
       colors: ['#fbbf24', '#f59e0b', '#00f2fe', '#ec4899']
     });
 
-    const line = CHOPPER_QUOTES.rumble_ball[Math.floor(Math.random() * CHOPPER_QUOTES.rumble_ball.length)];
+    const lines = CHOPPER_DIALOGUES.rumble_ball;
+    const line = lines[Math.floor(Math.random() * lines.length)];
     speakChopper(line);
-    setTimeout(() => {
-      springPhysics.current.superchargeFactor = 0;
-    }, 3000);
   };
 
-  // Custom talk submit
-  const handleCustomSpeechSubmit = (e) => {
-    e.preventDefault();
-    if (!customTalkText.trim()) return;
-    speakChopper(customTalkText);
-    setCustomTalkText('');
-  };
-
-  // Dynamic context-aware Chopper reactions when user plays with sliders!
+  // Context-aware slider reactions (Funny & different every time!)
   const handleSpendChange = (val) => {
     setMonthlySpend(val);
-    if (Math.random() > 0.6) {
-      if (val > 30000) {
-        speakChopper(`WHOA! $${val.toLocaleString()}?! Are we buying the Thousand Sunny with that ad budget?! ⛵💰`);
-      } else if (val < 5000) {
-        speakChopper(`A lean budget of $${val.toLocaleString()}! Doctor Chopper will squeeze maximum ROAS out of every single Berry! 🩺`);
+    const rand = Math.random();
+    if (rand > 0.6) {
+      if (val >= 45000) {
+        const lines = [
+          `EEEEK! $${val.toLocaleString()}?! Are we buying a whole fleet of Thousand Sunny ships?! ⛵💰`,
+          `50,000 Berries?! Luffy is gonna try to buy meat with that ad budget! 🍖 Keep him away from the checkout!`,
+          `Nami just fainted from seeing a $${val.toLocaleString()} budget! Ka-ching! 🍊✨`
+        ];
+        speakChopper(lines[Math.floor(Math.random() * lines.length)]);
+      } else if (val <= 3000) {
+        const lines = [
+          `A modest $${val.toLocaleString()} budget! Doctor Chopper will formulate high-ROAS medicine for every single Berry! 🩺`,
+          `Nami approves of this budget! Let's get 5x returns before we sail deeper! 🍊`
+        ];
+        speakChopper(lines[Math.floor(Math.random() * lines.length)]);
       }
     }
   };
@@ -818,15 +736,33 @@ export default function DigitalGrowthPage() {
   const handleAovChange = (val) => {
     setAov(val);
     if (Math.random() > 0.65) {
-      speakChopper(`$${val} per order! Ka-ching! That's enough to buy a mountain of Cotton Candy! 🍭✨`);
+      const lines = [
+        `$${val} per order! That's enough to buy a mountain of Cotton Candy! 🍭✨`,
+        `Ka-ching! Nami's eyes are glowing with Berry symbols! (¥_¥) 💰`,
+        `High ticket order value of $${val}! Our retargeting funnels are locking in! 🎯`
+      ];
+      speakChopper(lines[Math.floor(Math.random() * lines.length)]);
     }
   };
 
   const handleCroChange = (val) => {
     setConversionRate(val);
     if (Math.random() > 0.65) {
-      speakChopper(`${val}% conversion rate?! That's higher than the Knock Up Stream! We're sailing to the top of Google! 🌊🚀`);
+      const lines = [
+        `A ${val}% conversion rate?! That's higher than the Knock Up Stream! We're sailing to Skypiea! 🌊🚀`,
+        `Doctor Chopper diagnosis: Your checkout has zero bounce friction! Super healthy! 🩺✨`,
+        `Zoro could never get lost in a funnel this optimized! 8x ROAS incoming! ⚔️`
+      ];
+      speakChopper(lines[Math.floor(Math.random() * lines.length)]);
     }
+  };
+
+  // Custom speech submit
+  const handleCustomSpeechSubmit = (e) => {
+    e.preventDefault();
+    if (!customTalkText.trim()) return;
+    speakChopper(customTalkText);
+    setCustomTalkText('');
   };
 
   // ROI math
@@ -841,7 +777,7 @@ export default function DigitalGrowthPage() {
     setFormSubmitted(true);
     playSoundEffect('cute_chirp');
     confetti({ particleCount: 80, spread: 100 });
-    speakChopper("A new patient with low ROAS?! Stand back! Doctor Chopper's growth sprint will heal your business! 🩺💖");
+    speakChopper("A new patient with weak ROAS?! Stand back! Doctor Chopper's growth sprint will heal your business! 🩺💖");
     setTimeout(() => setFormSubmitted(false), 5000);
   };
 
@@ -849,95 +785,57 @@ export default function DigitalGrowthPage() {
     <div className="relative min-h-screen w-full text-slate-100 selection:bg-pink-500 selection:text-black overflow-x-hidden font-sans pb-32">
       
       {/* ======================================================== */}
-      {/* FULLSCREEN 3D CHOPPER CANVAS (LIVES ACROSS THE ENTIRE PAGE)*/}
-      {/* ======================================================== */}
-      <canvas 
-        ref={fullCanvasRef}
-        className="fixed inset-0 w-full h-full pointer-events-none z-20"
-      />
-
-      {/* Floating 2D Speech Bubble following Chopper */}
-      <div 
-        className="fixed z-30 pointer-events-none transition-all duration-150 -translate-x-1/2 -translate-y-full"
-        style={{
-          left: `${bubbleScreenPos.x}px`,
-          top: `${bubbleScreenPos.y}px`,
-        }}
-      >
-        <div className="max-w-xs sm:max-w-sm px-4 py-3 rounded-2xl bg-gradient-to-r from-[#1e1b4b]/95 via-[#0f172a]/95 to-[#3b0764]/95 border-2 border-pink-400 text-pink-100 text-xs font-mono font-bold leading-tight shadow-[0_10px_35px_rgba(236,72,153,0.35)] backdrop-blur-xl text-center">
-          <span>{speechBubble}</span>
-          <div className="absolute -bottom-2.5 left-1/2 -translate-x-1/2 w-0 h-0 border-l-6 border-l-transparent border-r-6 border-r-transparent border-t-6 border-t-pink-400" />
-        </div>
-      </div>
-
-      {/* Invisible Draggable Hitbox on Chopper */}
-      <div
-        onMouseDown={handleChopperMouseDown}
-        onClick={handlePetChopper}
-        title="Click & Drag TONY TONY CHOPPER!"
-        className="fixed z-30 w-36 h-48 -translate-x-1/2 -translate-y-1/2 cursor-grab active:cursor-grabbing hover:bg-pink-400/10 rounded-full transition-colors pointer-events-auto"
-        style={{
-          left: `${bubbleScreenPos.x}px`,
-          top: `${bubbleScreenPos.y + 110}px`,
-        }}
-      />
-
-      {/* ======================================================== */}
-      {/* THEME BACKGROUND: STRAW HAT SHIP (THOUSAND SUNNY) SCENERY */}
+      {/* HOME PAGE SKY & THOUSAND SUNNY PIRATE SHIP SCENERY       */}
       {/* ======================================================== */}
       <div className="fixed inset-0 pointer-events-none -z-10 overflow-hidden select-none">
         
-        {/* Sky Gradient matching Home Page */}
+        {/* Navy/Sapphire Sky matching Home */}
         <div className="absolute inset-0 bg-gradient-to-b from-[#0f244a] via-[#091833] to-[#020c1b]" />
 
-        {/* Straw Hat Pirate Ship (Thousand Sunny / Going Merry Silhouette Sailing on Waves) */}
+        {/* Straw Hat Pirate Ship (Thousand Sunny) Sailing in the Background */}
         <svg viewBox="0 0 1440 900" preserveAspectRatio="xMidYMid slice" className="w-full h-full opacity-60">
           <defs>
             <linearGradient id="oceanGrad" x1="0%" y1="0%" x2="0%" y2="100%">
-              <stop offset="0%" stopColor="#0284c7" stopOpacity="0.4" />
+              <stop offset="0%" stopColor="#0284c7" stopOpacity="0.45" />
               <stop offset="100%" stopColor="#020c1b" stopOpacity="0.95" />
             </linearGradient>
           </defs>
 
-          {/* Distant Grand Line Island & Ocean Waves */}
-          <path d="M-50 480 Q 250 380 600 450 T 1200 420 Q 1380 390 1500 480 L 1500 900 L -50 900 Z" fill="url(#oceanGrad)" />
+          {/* Ocean Waves */}
+          <path d="M-50 460 Q 250 360 600 430 T 1200 400 Q 1380 370 1500 460 L 1500 900 L -50 900 Z" fill="url(#oceanGrad)" />
 
-          {/* STRAW HAT SHIP (THOUSAND SUNNY) SAILING */}
-          <g transform="translate(180, 420) scale(0.65)">
-            {/* Ship Hull */}
+          {/* STRAW HAT PIRATE SHIP (THOUSAND SUNNY) */}
+          <g transform="translate(140, 390) scale(0.75)">
+            {/* Hull */}
             <path d="M 0 60 Q 80 100 240 85 L 260 40 L 20 40 Z" fill="#78350f" stroke="#b45309" strokeWidth="4" />
-            {/* Lion Figurehead / Sun Crest */}
-            <circle cx="270" cy="35" r="24" fill="#fbbf24" stroke="#d97706" strokeWidth="3" />
-            <circle cx="270" cy="35" r="14" fill="#f59e0b" />
-            {/* Main Mast & Straw Hat Jolly Roger Sail */}
-            <line x1="120" y1="40" x2="120" y2="-120" stroke="#451a03" strokeWidth="6" />
-            <path d="M 30 -110 Q 120 -80 210 -110 L 195 -10 Q 120 15 45 -10 Z" fill="#fef3c7" stroke="#d97706" strokeWidth="3" />
-            {/* Straw Hat Pirate Jolly Roger Skull */}
-            <circle cx="120" cy="-55" r="16" fill="#0f172a" />
-            <ellipse cx="120" cy="-68" rx="22" ry="6" fill="#fbbf24" />
-            <rect x="110" y="-74" width="20" height="8" rx="3" fill="#fbbf24" />
-            <rect x="110" y="-70" width="20" height="2" fill="#dc2626" />
-            {/* Jolly Roger Crossed Bones */}
-            <line x1="95" y1="-75" x2="145" y2="-35" stroke="#0f172a" strokeWidth="4" />
-            <line x1="145" y1="-75" x2="95" y2="-35" stroke="#0f172a" strokeWidth="4" />
-            {/* Ocean Wake Ripples */}
-            <path d="M -20 75 Q 40 85 100 75 Q 160 85 220 75" fill="none" stroke="#38bdf8" strokeWidth="3" opacity="0.7" />
+            {/* Lion Mane Figurehead */}
+            <circle cx="270" cy="35" r="26" fill="#fbbf24" stroke="#d97706" strokeWidth="3" />
+            <circle cx="270" cy="35" r="15" fill="#f59e0b" />
+            {/* Main Mast & Jolly Roger Sail */}
+            <line x1="120" y1="40" x2="120" y2="-130" stroke="#451a03" strokeWidth="7" />
+            <path d="M 25 -120 Q 120 -90 215 -120 L 200 -10 Q 120 18 40 -10 Z" fill="#fef3c7" stroke="#d97706" strokeWidth="3" />
+            {/* Straw Hat Skull */}
+            <circle cx="120" cy="-60" r="18" fill="#0f172a" />
+            <ellipse cx="120" cy="-74" rx="24" ry="7" fill="#fbbf24" />
+            <rect x="108" y="-80" width="24" height="8" rx="3" fill="#fbbf24" />
+            <rect x="108" y="-76" width="24" height="2.5" fill="#dc2626" />
+            <line x1="95" y1="-80" x2="145" y2="-40" stroke="#0f172a" strokeWidth="4" />
+            <line x1="145" y1="-80" x2="95" y2="-40" stroke="#0f172a" strokeWidth="4" />
           </g>
 
           {/* Drifting Cherry Blossom Petals from Drum Island */}
-          {[120, 320, 560, 820, 1100, 1340].map((x, i) => (
-            <circle key={i} cx={x} cy={180 + (i * 45) % 200} r="4" fill="#f472b6" opacity="0.6" />
+          {[100, 280, 520, 780, 1050, 1320].map((x, i) => (
+            <circle key={i} cx={x} cy={160 + (i * 50) % 220} r="4" fill="#f472b6" opacity="0.65" />
           ))}
         </svg>
-
       </div>
 
       <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-8">
         
         {/* ======================================================== */}
-        {/* TOP HERO & INTRO HEADER                                   */}
+        {/* TOP HERO & DOCTOR CHOPPER INTRO                           */}
         {/* ======================================================== */}
-        <div className="text-center max-w-4xl mx-auto mb-8">
+        <div className="text-center max-w-4xl mx-auto mb-6">
           
           <div className="inline-flex items-center gap-2 px-5 py-2 rounded-full bg-gradient-to-r from-pink-500/20 via-blue-500/20 to-amber-500/20 border border-pink-400/40 text-pink-300 text-xs font-mono font-bold mb-4 uppercase tracking-widest shadow-[0_0_25px_rgba(236,72,153,0.25)]">
             <Sparkles className="w-4 h-4 text-amber-400 animate-spin" />
@@ -949,42 +847,78 @@ export default function DigitalGrowthPage() {
           </h1>
           
           <p className="text-slate-300 text-sm sm:text-lg mt-3 leading-relaxed max-w-2xl mx-auto">
-            Meet <strong className="text-pink-300">Tony Tony Chopper</strong>, our Pirate Doctor of Digital Growth! Drag him around, feed him cotton candy, or watch him diagnose and scale your revenue funnels.
+            Meet <strong className="text-pink-300">Tony Tony Chopper</strong>, our resident Pirate Doctor of Digital Growth! Standing firmly on deck to diagnose and scale your revenue funnels.
           </p>
-
-          {/* Floating Action Pills (Cotton Candy, Rumble Ball, Pet) */}
-          <div className="mt-6 flex flex-wrap items-center justify-center gap-3">
-            <button
-              onClick={handleFeedCottonCandy}
-              className="px-4 py-2 rounded-full bg-gradient-to-r from-pink-500 to-rose-500 text-white font-mono text-xs font-bold hover:scale-105 transition-all shadow-[0_0_20px_rgba(236,72,153,0.4)] flex items-center gap-1.5 cursor-pointer"
-            >
-              <Candy className="w-4 h-4 text-white" />
-              <span>Feed Cotton Candy 🍭 (+50 XP)</span>
-            </button>
-
-            <button
-              onClick={handleRumbleBall}
-              className="px-4 py-2 rounded-full bg-gradient-to-r from-amber-500 to-orange-500 text-white font-mono text-xs font-bold hover:scale-105 transition-all shadow-[0_0_20px_rgba(245,158,11,0.4)] flex items-center gap-1.5 cursor-pointer"
-            >
-              <Pill className="w-4 h-4 text-white" />
-              <span>Rumble Ball 💊 (Supercharge ROAS)</span>
-            </button>
-
-            <button
-              onClick={handlePetChopper}
-              className="px-4 py-2 rounded-full bg-gradient-to-r from-cyan-500 to-blue-600 text-white font-mono text-xs font-bold hover:scale-105 transition-all shadow-[0_0_20px_rgba(6,182,212,0.4)] flex items-center gap-1.5 cursor-pointer"
-            >
-              <Heart className="w-4 h-4 fill-current text-white animate-pulse" />
-              <span>Praise Chopper 🌸 (Happy Dance)</span>
-            </button>
-          </div>
 
         </div>
 
         {/* ======================================================== */}
-        {/* INTERACTIVE ROI & GROWTH CALCULATOR                      */}
+        {/* GROUNDED 3D CHOPPER INTERACTIVE DECK STAGE               */}
         {/* ======================================================== */}
-        <div className="my-14 p-8 sm:p-10 rounded-3xl bg-gradient-to-br from-[#0c2044]/95 via-[#08152e]/95 to-[#040b17]/95 border-2 border-cyan-400/50 shadow-[0_20px_60px_rgba(0,242,254,0.15)] backdrop-blur-xl">
+        <div className="my-8 max-w-4xl mx-auto">
+          <div className="relative p-6 sm:p-8 rounded-3xl bg-gradient-to-b from-[#0e244d]/95 to-[#061226]/95 border-2 border-pink-400/50 shadow-[0_20px_60px_rgba(236,72,153,0.2)] backdrop-blur-xl flex flex-col items-center">
+            
+            {/* Speech Bubble attached directly above Chopper */}
+            <div className="relative max-w-lg mb-2 px-6 py-3.5 rounded-2xl bg-gradient-to-r from-[#1e1b4b]/95 via-[#0f172a]/95 to-[#3b0764]/95 border-2 border-pink-400 text-pink-100 text-xs sm:text-sm font-mono font-bold leading-snug shadow-xl text-center">
+              <span>{speechBubble}</span>
+              <div className="absolute -bottom-2.5 left-1/2 -translate-x-1/2 w-0 h-0 border-l-6 border-l-transparent border-r-6 border-r-transparent border-t-6 border-t-pink-400" />
+            </div>
+
+            {/* 3D Chopper Canvas (Firmly Grounded on Wooden Deck) */}
+            <div 
+              onMouseMove={handleMouseMove}
+              className="relative w-full h-[380px] sm:h-[440px] flex items-center justify-center cursor-pointer group"
+            >
+              <canvas ref={stageCanvasRef} className="w-full h-full" />
+
+              {/* Direct Clickable Targets on Chopper */}
+              <div 
+                onClick={handlePraiseChopper}
+                title="Praise Chopper (Triggers Happy Shy Dance!)"
+                className="absolute top-[18%] left-1/2 -translate-x-1/2 w-48 h-44 rounded-full cursor-pointer z-20 hover:bg-pink-400/10 transition-colors"
+              />
+
+              {/* Hint pill */}
+              <div className="absolute top-2 left-4 flex items-center gap-1.5 px-3.5 py-1.5 rounded-full bg-black/60 border border-pink-400/40 text-[10px] font-mono text-pink-300 pointer-events-none backdrop-blur-md shadow-lg">
+                <MousePointerClick className="w-3.5 h-3.5 text-amber-400 animate-bounce" />
+                <span>TAP CHOPPER TO PRAISE HIM!</span>
+              </div>
+            </div>
+
+            {/* Interactive Action Bar under Chopper */}
+            <div className="w-full grid grid-cols-1 sm:grid-cols-3 gap-3 mt-3">
+              <button
+                onClick={handleFeedCottonCandy}
+                className="py-3 px-3 rounded-2xl bg-gradient-to-r from-pink-500/25 to-rose-500/25 border-2 border-pink-400 text-pink-200 font-mono text-xs font-bold hover:bg-pink-500 hover:text-white transition-all flex items-center justify-center gap-2 cursor-pointer shadow-lg"
+              >
+                <Candy className="w-4 h-4 text-pink-300" />
+                <span>Feed Cotton Candy 🍭</span>
+              </button>
+
+              <button
+                onClick={handleRumbleBall}
+                className="py-3 px-3 rounded-2xl bg-gradient-to-r from-amber-500/25 to-orange-500/25 border-2 border-amber-400 text-amber-200 font-mono text-xs font-bold hover:bg-amber-500 hover:text-black transition-all flex items-center justify-center gap-2 cursor-pointer shadow-lg"
+              >
+                <Pill className="w-4 h-4 text-amber-300" />
+                <span>Rumble Ball 💊 (Boost ROAS)</span>
+              </button>
+
+              <button
+                onClick={handlePraiseChopper}
+                className="py-3 px-3 rounded-2xl bg-gradient-to-r from-cyan-500/25 to-blue-500/25 border-2 border-cyan-400 text-cyan-200 font-mono text-xs font-bold hover:bg-cyan-500 hover:text-black transition-all flex items-center justify-center gap-2 cursor-pointer shadow-lg"
+              >
+                <Heart className="w-4 h-4 text-cyan-300 fill-current animate-pulse" />
+                <span>"You're Cute!" 🌸 (Dance)</span>
+              </button>
+            </div>
+
+          </div>
+        </div>
+
+        {/* ======================================================== */}
+        {/* INTERACTIVE ROI CALCULATOR (CHOPPER'S DIAGNOSIS LAB)     */}
+        {/* ======================================================== */}
+        <div className="my-16 p-8 sm:p-10 rounded-3xl bg-gradient-to-br from-[#0c2044]/95 via-[#08152e]/95 to-[#040b17]/95 border-2 border-cyan-400/50 shadow-[0_20px_60px_rgba(0,242,254,0.15)] backdrop-blur-xl">
           <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 mb-8 border-b border-white/15 pb-6">
             <div>
               <span className="text-xs font-mono text-amber-400 font-bold uppercase tracking-widest flex items-center gap-2">
@@ -1001,7 +935,7 @@ export default function DigitalGrowthPage() {
           </div>
 
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-8">
-            {/* Sliders */}
+            {/* Sliders Area */}
             <div className="lg:col-span-7 space-y-6">
               
               {/* Monthly Ad Spend */}
@@ -1022,7 +956,7 @@ export default function DigitalGrowthPage() {
                 <div className="flex justify-between text-[10px] font-mono text-slate-400 mt-1.5">
                   <span>$1,000</span>
                   <span>$30,000</span>
-                  <span>$60,000+ (Grand Line)</span>
+                  <span>$60,000+ (Grand Line Fleet)</span>
                 </div>
               </div>
 
@@ -1108,7 +1042,7 @@ export default function DigitalGrowthPage() {
         </div>
 
         {/* ======================================================== */}
-        {/* FULL-FUNNEL SERVICES                                     */}
+        {/* FULL-FUNNEL SERVICES (CHOPPER'S TRANSFORMATIONS)         */}
         {/* ======================================================== */}
         <div className="my-16">
           <div className="text-center max-w-2xl mx-auto mb-10">
@@ -1122,15 +1056,15 @@ export default function DigitalGrowthPage() {
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
             
-            {/* Card 1: Paid Social */}
+            {/* Card 1: Heavy Point Paid Social */}
             <div 
-              onClick={() => speakChopper("My Heavy Point ad creatives will crush Meta and TikTok algorithms! 🥊💥")}
+              onClick={() => speakChopper("HEAVY POINT! I'm gonna punch those Meta and TikTok ad algorithms into the sea! 🥊💥")}
               className="p-6 rounded-3xl bg-gradient-to-b from-[#0e2142]/90 to-[#071328]/90 border-2 border-cyan-500/30 hover:border-pink-400 hover:scale-105 transition-all group backdrop-blur-xl shadow-xl cursor-pointer"
             >
               <div className="w-14 h-14 rounded-2xl bg-cyan-500/20 border border-cyan-400 flex items-center justify-center text-cyan-300 mb-4 shadow-lg">
                 <Target className="w-7 h-7" />
               </div>
-              <h4 className="text-xl font-black uppercase text-white mb-2">Paid Social & Performance</h4>
+              <h4 className="text-xl font-black uppercase text-white mb-2">Paid Social (Heavy Point)</h4>
               <p className="text-xs text-slate-300 font-serif leading-relaxed">
                 Algorithmic ad creatives on Meta, TikTok, and Google Ads designed with aggressive hooks and retention curves.
               </p>
@@ -1139,15 +1073,15 @@ export default function DigitalGrowthPage() {
               </div>
             </div>
 
-            {/* Card 2: SEO */}
+            {/* Card 2: Brain Point SEO */}
             <div 
-              onClick={() => speakChopper("Brain Point activated! We found the secret high-volume keywords on Google! 🧠✨")}
+              onClick={() => speakChopper("BRAIN POINT ACTIVATED! Scope! Found the exact ranking signals Google algorithms want! 🧠✨")}
               className="p-6 rounded-3xl bg-gradient-to-b from-[#0e2142]/90 to-[#071328]/90 border-2 border-blue-500/30 hover:border-pink-400 hover:scale-105 transition-all group backdrop-blur-xl shadow-xl cursor-pointer"
             >
               <div className="w-14 h-14 rounded-2xl bg-blue-500/20 border border-blue-400 flex items-center justify-center text-blue-300 mb-4 shadow-lg">
                 <TrendingUp className="w-7 h-7" />
               </div>
-              <h4 className="text-xl font-black uppercase text-white mb-2">SEO & Organic Domination</h4>
+              <h4 className="text-xl font-black uppercase text-white mb-2">SEO (Brain Point)</h4>
               <p className="text-xs text-slate-300 font-serif leading-relaxed">
                 Technical SEO architecture, semantic keyword clusters, and programmatic indexing to rank #1 organically.
               </p>
@@ -1156,15 +1090,15 @@ export default function DigitalGrowthPage() {
               </div>
             </div>
 
-            {/* Card 3: CRO */}
+            {/* Card 3: Kung Fu Point CRO */}
             <div 
-              onClick={() => speakChopper("Doctor Chopper diagnosis: Your checkout speed needs this Rumble Ball cure! 💊⚡")}
+              onClick={() => speakChopper("WATAAA! 🥋 Kung Fu Point! Kicking high bounce rates and cart abandonment out of your store!")}
               className="p-6 rounded-3xl bg-gradient-to-b from-[#0e2142]/90 to-[#071328]/90 border-2 border-emerald-500/30 hover:border-pink-400 hover:scale-105 transition-all group backdrop-blur-xl shadow-xl cursor-pointer"
             >
               <div className="w-14 h-14 rounded-2xl bg-emerald-500/20 border border-emerald-400 flex items-center justify-center text-emerald-300 mb-4 shadow-lg">
                 <Zap className="w-7 h-7" />
               </div>
-              <h4 className="text-xl font-black uppercase text-white mb-2">CRO & Funnel Engineering</h4>
+              <h4 className="text-xl font-black uppercase text-white mb-2">CRO (Kung Fu Point)</h4>
               <p className="text-xs text-slate-300 font-serif leading-relaxed">
                 Sub-second landing page speeds, A/B tested checkout flows, and psychology-backed conversion triggers.
               </p>
@@ -1175,13 +1109,13 @@ export default function DigitalGrowthPage() {
 
             {/* Card 4: Viral UGC */}
             <div 
-              onClick={() => speakChopper("Look at me, I'm a famous viral reindeer pirate! Let's make your brand viral! 🌸📹")}
+              onClick={() => speakChopper("Look at me, I'm the world's most viral 100-Berry pirate pet! ...WAIT, I'M A DOCTOR, NOT A PET! 😭🌸")}
               className="p-6 rounded-3xl bg-gradient-to-b from-[#0e2142]/90 to-[#071328]/90 border-2 border-pink-500/30 hover:border-pink-400 hover:scale-105 transition-all group backdrop-blur-xl shadow-xl cursor-pointer"
             >
               <div className="w-14 h-14 rounded-2xl bg-pink-500/20 border border-pink-400 flex items-center justify-center text-pink-300 mb-4 shadow-lg">
                 <Share2 className="w-7 h-7" />
               </div>
-              <h4 className="text-xl font-black uppercase text-white mb-2">Viral UGC & Influencer Lab</h4>
+              <h4 className="text-xl font-black uppercase text-white mb-2">Viral UGC Lab</h4>
               <p className="text-xs text-slate-300 font-serif leading-relaxed">
                 Direct creator whitelisting, viral reel scripting, and authentic creator testimonials that drive trust.
               </p>
@@ -1194,7 +1128,7 @@ export default function DigitalGrowthPage() {
         </div>
 
         {/* ======================================================== */}
-        {/* CONSULTATION & DISPATCH INQUIRY FORM                     */}
+        {/* CONSULTATION & INQUIRY FORM                              */}
         {/* ======================================================== */}
         <div id="consultation" className="my-16 p-8 sm:p-10 rounded-3xl bg-gradient-to-br from-[#0a1e3f] to-[#040a17] border-2 border-pink-400/50 shadow-2xl">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
