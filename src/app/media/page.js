@@ -24,6 +24,7 @@ import {
   Radio,
   Music,
   Tv,
+  Ticket,
   Maximize2
 } from 'lucide-react';
 
@@ -190,9 +191,32 @@ const SHOWCASE_ARTICLES = [
     quote: 'Capturing the heartbeat of celebration.',
     tags: ['STAGE CUT', 'AUDIO MASTER', 'CROWD ENERGY']
   },
-  // 8. Cinematic Walk (16:9 Landscape Cinema)
+  // 8. CTRL+N Ticket Event Banner (Page 1 Bottom)
   {
     id: 8,
+    title: 'CTRL+N (NEW BEGINNINGS) // OFFICIAL EVENT PASS & CONCERT DISPATCH',
+    highlightWord: 'EVENT PASS',
+    kicker: 'SPECIAL TICKET GAZETTE // APRIL 27',
+    client: 'CTRL+N LIVE TOUR',
+    byline: 'By Event Operations Desk',
+    category: 'Brand & Print',
+    type: 'image',
+    aspect: 'banner',
+    mediaSrc: '/show/edit_4.png',
+    posterSrc: '/show/edit_4.png',
+    edition: 'PAGE 01 • TICKETING BUREAU',
+    duration: 'OFFICIAL TICKET',
+    resolution: '2000x647 PANORAMA',
+    caption: 'Fig 1.8 — Official admission ticket and barcode pass for CTRL+N Live Experience (April 27, 10:00 PM).',
+    dateline: 'TICKET DESK — ',
+    col1: 'Admission passes for CTRL+N New Beginnings are now officially released across authorized digital counters. Features barcode tracking and holographic stamp styling.',
+    col2: 'Live audio visual stages, indie performances, and exclusive studio merchandise will be available for all pass holders.',
+    quote: 'Your gateway to the next creative chapter.',
+    tags: ['CTRL+N', 'TICKET PASS', 'LIVE EVENT']
+  },
+  // 9. Cinematic Walk (16:9 Landscape Cinema)
+  {
+    id: 9,
     title: 'ATMOSPHERIC CINEMATIC SEQUENCE CAPTURES VISUAL POETRY',
     highlightWord: 'CINEMA CRITIQUE',
     kicker: 'VISUAL ESSAY // COLOR SCIENCE',
@@ -213,9 +237,9 @@ const SHOWCASE_ARTICLES = [
     quote: 'Light, shadow, and pacing unite to form unforgettable visual stories.',
     tags: ['ANAMORPHIC', '4K CINEMA', 'LUT GRADING']
   },
-  // 9. 3D Motion CGI (9:16 Portrait)
+  // 10. 3D Motion CGI (9:16 Portrait)
   {
-    id: 9,
+    id: 10,
     title: '3D MOTION CGI & KINETIC TYPOGRAPHY REACH NEW FRONTIERS',
     highlightWord: 'DIGITAL INNOVATION',
     kicker: 'TECHNOLOGY REPORT // VECTOR LAB',
@@ -236,9 +260,9 @@ const SHOWCASE_ARTICLES = [
     quote: 'Typography in motion is the heartbeat of contemporary digital brand systems.',
     tags: ['3D MOTION', 'KINETIC TYPE', 'VECTOR CGI']
   },
-  // 10. Agency Brand Identity (1:1 Square)
+  // 11. Agency Brand Identity (1:1 Square)
   {
-    id: 10,
+    id: 11,
     title: 'AGENCY BRAND IDENTITY SYSTEM SETS NEW VISUAL STANDARD',
     highlightWord: 'BRAND ARCHIVE',
     kicker: 'GRAPHIC DESIGN // IDENTITY',
@@ -247,8 +271,8 @@ const SHOWCASE_ARTICLES = [
     category: 'Brand & Print',
     type: 'image',
     aspect: 'square',
-    mediaSrc: '/show/we_agency.png',
-    posterSrc: '/show/we_agency.png',
+    mediaSrc: '/show/we.png',
+    posterSrc: '/show/we.png',
     edition: 'PAGE 02 • IDENTITY',
     duration: 'BRAND ID',
     resolution: '1080x1080 SQUARE',
@@ -259,32 +283,9 @@ const SHOWCASE_ARTICLES = [
     quote: 'Consistent identity architecture builds long-term brand equity.',
     tags: ['BRAND IDENTITY', 'TYPOGRAPHY', 'DESIGN SYSTEM']
   },
-  // 11. Studio Software UI Interface (1:1 Square)
-  {
-    id: 11,
-    title: 'STUDIO SOFTWARE UI & INTERACTION INTERFACE UNVEILED',
-    highlightWord: 'WEB INTERFACE',
-    kicker: 'SOFTWARE ENGINEERING // UI ARCHIVE',
-    client: 'NAVRA ENGINE',
-    byline: 'By Systems Architect',
-    category: 'Brand & Print',
-    type: 'image',
-    aspect: 'square',
-    mediaSrc: '/show/screenshot_ui.png',
-    posterSrc: '/show/screenshot_ui.png',
-    edition: 'PAGE 02 • SOFTWARE DESK',
-    duration: 'INTERFACE',
-    resolution: 'SQUARE HQ',
-    caption: 'Fig 2.4 — Live production viewport and HUD navigation architecture.',
-    dateline: 'TECH WIRE — ',
-    col1: 'A deep look into the bespoke engineering behind Navra Studio web applications, incorporating 3D Canvas rendering, GSAP timelines, and real-time state management.',
-    col2: 'Designed for fluid interactions and zero layout shift.',
-    quote: 'Where cinematic aesthetics meet high-performance software code.',
-    tags: ['SOFTWARE UI', 'NEXT.JS', '3D CANVAS']
-  },
   // 12. Graphic Design Poster (1:1 Square)
   {
-    id: 20,
+    id: 12,
     title: 'EXPERIMENTAL GRAPHIC POSTER & TYPOGRAPHIC COLLAGE',
     highlightWord: 'POSTER ART',
     kicker: 'PRINT DESIGN // POSTER ART',
@@ -298,35 +299,35 @@ const SHOWCASE_ARTICLES = [
     edition: 'PAGE 02 • POSTER ART',
     duration: 'POSTER ART',
     resolution: '2048x2048 SQUARE',
-    caption: 'Fig 2.5 — Large-format typographic poster exploring layered geometry and contrast.',
+    caption: 'Fig 2.4 — Large-format typographic poster exploring layered geometry and contrast.',
     dateline: 'PRINT DESK — ',
     col1: 'An experimental print broadside testing the boundaries of negative space, bold geometric framing, and asymmetric layouts.',
     col2: 'Crafted for exhibition prints and collector broadsides.',
     quote: 'Pushing print typography into the digital future.',
     tags: ['POSTER ART', 'TYPOGRAPHY', 'PRINT DESIGN']
   },
-  // 13. Studio Editorial Panorama Banner (Ultra-Wide 20:6)
+  // 13. Luxury Wedding Jewelry Gazette Ad (Page 2 Middle)
   {
     id: 13,
-    title: 'COMMERCIAL SHOOT EDITORIAL LOOKBOOK PANORAMA',
-    highlightWord: 'STUDIO SHOOT',
-    kicker: 'COMMERCIAL PHOTOGRAPHY // PANORAMA SUITE',
-    client: 'NAVRA FASHION LAB',
-    byline: 'By Fashion Editorial Team',
-    category: 'Brand & Print',
+    title: 'ROYAL WEDDING JEWELRY COLLECTION ANNOUNCES 25% SAVINGS',
+    highlightWord: 'COMMERCIAL AD',
+    kicker: 'SPECIAL COMMERCIAL GAZETTE',
+    client: 'FINE JEWELRY BROADSIDE',
+    byline: 'Sponsored Commercial Feature',
+    category: 'Commercials',
     type: 'image',
-    aspect: 'banner',
-    mediaSrc: '/show/edit_4.png',
-    posterSrc: '/show/edit_4.png',
-    edition: 'PAGE 02 • PANORAMA',
-    duration: 'STUDIO EDIT',
-    resolution: '2000x647 ULTRA-WIDE',
-    caption: 'Fig 2.6 — Studio wide lighting and color pass for high-fashion commercial lookbook.',
-    dateline: 'FASHION DESK — ',
-    col1: 'Balancing skin tones with dramatic ambient backlighting to create a memorable luxury lookbook.',
-    col2: 'Engineered for print catalogs and high-DPI digital storefronts.',
-    quote: 'Flawless styling meets authentic emotional resonance.',
-    tags: ['FASHION', 'COMMERCIAL', 'PANORAMA']
+    aspect: 'square',
+    mediaSrc: '/show/wedding_collection.png',
+    posterSrc: '/show/wedding_collection.png',
+    edition: 'PAGE 02 • ADVERTISEMENT',
+    duration: 'PRINT AD',
+    resolution: '1080x1080 SQUARE',
+    caption: 'Fig 2.5 — Commercial ad creative for the Luxury Gold & Diamond Wedding Collection.',
+    dateline: 'COMMERCIAL DESK — ',
+    col1: 'Explore our latest wedding collection in gold and diamond at an exclusive 25% discount available until 23rd November.',
+    col2: 'Crafted with timeless elegance and certified purity. Visit authorized showrooms or reserve exclusive collection pieces online.',
+    quote: 'Elegance refined. Tradition celebrated with royal gold craftsmanship.',
+    tags: ['JEWELRY AD', '25% OFF', 'LUXURY BRAND']
   },
   // 14. Concept Art 03 (9:16 Portrait)
   {
@@ -344,7 +345,7 @@ const SHOWCASE_ARTICLES = [
     edition: 'PAGE 02 • ART DIRECTION',
     duration: 'CONCEPT ART',
     resolution: '1080x1920 PORTRAIT',
-    caption: 'Fig 2.7 — Vector abstract concept artwork developed for brand moodboards.',
+    caption: 'Fig 2.6 — Vector abstract concept artwork developed for brand moodboards.',
     dateline: 'ART WIRE — ',
     col1: 'Form exploration utilizing mathematical curves and gradient fills to establish visual motifs for client pitch decks.',
     col2: 'Serves as the foundation for multi-platform motion packages.',
@@ -363,11 +364,11 @@ const SHOWCASE_ARTICLES = [
     type: 'video',
     aspect: 'portrait',
     mediaSrc: '/show/logo_coming_soon.mp4',
-    posterSrc: '/show/we_agency.png',
+    posterSrc: '/show/we.png',
     edition: 'PAGE 02 • LOGO WIRE',
     duration: '0:15',
     resolution: '1080x1920 PORTRAIT',
-    caption: 'Fig 2.8 — Futuristic kinetic logo teaser utilizing glowing vector lines.',
+    caption: 'Fig 2.7 — Futuristic kinetic logo teaser utilizing glowing vector lines.',
     dateline: 'DESIGN LAB — ',
     col1: 'Featuring sleek cybernetic lighting and kinetic vector expansion, the upcoming studio logo identity teaser sets the tone for future digital releases.',
     col2: 'A masterclass in minimal tension building and high-contrast digital elegance.',
@@ -390,35 +391,12 @@ const SHOWCASE_ARTICLES = [
     edition: 'PAGE 02 • POP CULTURE',
     duration: 'VIRAL AD',
     resolution: '856x1080 PORTRAIT',
-    caption: 'Fig 2.9 — Playful pop-art creative experiment engineered for viral organic sharing.',
+    caption: 'Fig 2.8 — Playful pop-art creative experiment engineered for viral organic sharing.',
     dateline: 'CREATIVE WIRE — ',
     col1: 'Testing high-engagement humor formats that blend irreverent pop-art tropes with razor-sharp vector finishing.',
     col2: 'Demonstrates how brands can humanize their voice and build passionate communities.',
     quote: 'Humor and wit command viral brand loyalty.',
     tags: ['POP ART', 'VIRAL AD', 'CREATIVE LAB']
-  },
-  // 17. Luxury Wedding Jewelry Gazette Ad (1:1 Square)
-  {
-    id: 17,
-    title: 'ROYAL WEDDING JEWELRY COLLECTION ANNOUNCES 25% SAVINGS',
-    highlightWord: 'COMMERCIAL AD',
-    kicker: 'SPECIAL COMMERCIAL GAZETTE',
-    client: 'FINE JEWELRY BROADSIDE',
-    byline: 'Sponsored Commercial Feature',
-    category: 'Commercials',
-    type: 'image',
-    aspect: 'square',
-    mediaSrc: '/show/wedding_collection.png',
-    posterSrc: '/show/wedding_collection.png',
-    edition: 'PAGE 02 • ADVERTISEMENT',
-    duration: 'PRINT AD',
-    resolution: '1080x1080 SQUARE',
-    caption: 'Fig 2.10 — Commercial ad creative for the Luxury Gold & Diamond Wedding Collection.',
-    dateline: 'COMMERCIAL DESK — ',
-    col1: 'Explore our latest wedding collection in gold and diamond at an exclusive 25% discount available until 23rd November.',
-    col2: 'Crafted with timeless elegance and certified purity. Visit authorized showrooms or reserve exclusive collection pieces online.',
-    quote: 'Elegance refined. Tradition celebrated with royal gold craftsmanship.',
-    tags: ['JEWELRY AD', '25% OFF', 'LUXURY BRAND']
   },
 ];
 
@@ -644,7 +622,7 @@ export default function MediaPage() {
               <div className="grid grid-cols-12 gap-6 items-start">
                 {/* Master Reel (Exact Vertical 9:16 Portrait Frame) */}
                 <div className="col-span-5">
-                  <div className="relative w-full aspect-[9/16] max-h-[480px] bg-black border-2 border-[#1E293B] overflow-hidden shadow-2xl mx-auto">
+                  <div className="relative w-full aspect-[9/16] max-h-[460px] bg-black border-2 border-[#1E293B] overflow-hidden shadow-2xl mx-auto">
                     <video
                       src={SHOWCASE_ARTICLES[0].mediaSrc}
                       muted
@@ -679,6 +657,11 @@ export default function MediaPage() {
                   <div className="p-4 bg-[#E0F2FE]/60 border-l-4 border-[#0284C7] text-sm italic font-serif text-[#0C4A6E]">
                     "{SHOWCASE_ARTICLES[0].quote}"
                   </div>
+                  <div className="pt-2 border-t border-[#1E293B]/20 flex items-center justify-between text-xs font-mono text-[#0284C7] font-bold">
+                    <span>★ RETENTION: 88.4%</span>
+                    <span>★ ANAMORPHIC COLOR GRADE</span>
+                    <span>★ 60 FPS MASTER</span>
+                  </div>
                 </div>
               </div>
             </div>
@@ -700,7 +683,7 @@ export default function MediaPage() {
                   <h3 className="text-lg font-black uppercase text-[#0A0E17] leading-tight mb-2 group-hover:text-[#0284C7]">
                     {SHOWCASE_ARTICLES[1].title}
                   </h3>
-                  <div className="relative w-full aspect-[9/16] max-h-[300px] bg-black border-2 border-[#1E293B] overflow-hidden mb-2 shadow-md">
+                  <div className="relative w-full aspect-[9/16] max-h-[290px] bg-black border-2 border-[#1E293B] overflow-hidden mb-2 shadow-md">
                     <video
                       src={SHOWCASE_ARTICLES[1].mediaSrc}
                       muted
@@ -717,6 +700,9 @@ export default function MediaPage() {
                     <strong className="text-[#0284C7] font-mono font-bold">{SHOWCASE_ARTICLES[1].dateline}</strong>
                     {SHOWCASE_ARTICLES[1].col1}
                   </p>
+                  <p className="text-[11px] font-serif text-[#4B5563] mt-2 border-t border-[#1E293B]/20 pt-1">
+                    {SHOWCASE_ARTICLES[1].col2}
+                  </p>
                 </div>
               </div>
 
@@ -732,7 +718,7 @@ export default function MediaPage() {
                   <h3 className="text-lg font-black uppercase text-[#0A0E17] leading-tight mb-2 group-hover:text-[#0284C7]">
                     {SHOWCASE_ARTICLES[2].title}
                   </h3>
-                  <div className="relative w-full aspect-[9/16] max-h-[300px] bg-black border-2 border-[#1E293B] overflow-hidden mb-2 shadow-md">
+                  <div className="relative w-full aspect-[9/16] max-h-[290px] bg-black border-2 border-[#1E293B] overflow-hidden mb-2 shadow-md">
                     <video
                       src={SHOWCASE_ARTICLES[2].mediaSrc}
                       muted
@@ -749,6 +735,9 @@ export default function MediaPage() {
                     <strong className="text-[#0284C7] font-mono font-bold">{SHOWCASE_ARTICLES[2].dateline}</strong>
                     {SHOWCASE_ARTICLES[2].col1}
                   </p>
+                  <p className="text-[11px] font-serif text-[#4B5563] mt-2 border-t border-[#1E293B]/20 pt-1">
+                    {SHOWCASE_ARTICLES[2].col2}
+                  </p>
                 </div>
               </div>
 
@@ -764,7 +753,7 @@ export default function MediaPage() {
                   <h3 className="text-lg font-black uppercase text-[#0A0E17] leading-tight mb-2 group-hover:text-[#0284C7]">
                     {SHOWCASE_ARTICLES[3].title}
                   </h3>
-                  <div className="relative w-full aspect-[9/16] max-h-[300px] bg-black border-2 border-[#1E293B] overflow-hidden mb-2 shadow-md">
+                  <div className="relative w-full aspect-[9/16] max-h-[290px] bg-black border-2 border-[#1E293B] overflow-hidden mb-2 shadow-md">
                     <video
                       src={SHOWCASE_ARTICLES[3].mediaSrc}
                       muted
@@ -781,15 +770,18 @@ export default function MediaPage() {
                     <strong className="text-[#0284C7] font-mono font-bold">{SHOWCASE_ARTICLES[3].dateline}</strong>
                     {SHOWCASE_ARTICLES[3].col1}
                   </p>
+                  <p className="text-[11px] font-serif text-[#4B5563] mt-2 border-t border-[#1E293B]/20 pt-1">
+                    {SHOWCASE_ARTICLES[3].col2}
+                  </p>
                 </div>
               </div>
 
             </div>
 
             {/* ======================================================== */}
-            {/* 3. LOWER SECTION: FESTIVALS (WIDE 16:9 + PORTRAIT REELS)  */}
+            {/* 3. LOWER-MIDDLE SECTION: FESTIVALS (16:9 + PORTRAIT)     */}
             {/* ======================================================== */}
-            <div className="grid grid-cols-12 gap-6 py-4">
+            <div className="grid grid-cols-12 gap-6 py-4 border-b-2 border-[#1E293B]">
               
               {/* NAVRANG NAVRATRI (EXACT WIDE 16:9 LANDSCAPE FRAME) */}
               <div 
@@ -845,7 +837,7 @@ export default function MediaPage() {
                       className="w-full h-full object-cover group-hover:scale-105 transition-transform"
                     />
                   </div>
-                  <p className="text-[10px] font-serif text-[#4B5563] leading-tight line-clamp-3">
+                  <p className="text-[10px] font-serif text-[#4B5563] leading-tight">
                     {SHOWCASE_ARTICLES[5].col1}
                   </p>
                 </div>
@@ -873,13 +865,50 @@ export default function MediaPage() {
                       className="w-full h-full object-cover group-hover:scale-105 transition-transform"
                     />
                   </div>
-                  <p className="text-[10px] font-serif text-[#4B5563] leading-tight line-clamp-3">
+                  <p className="text-[10px] font-serif text-[#4B5563] leading-tight">
                     {SHOWCASE_ARTICLES[6].col1}
                   </p>
                 </div>
               </div>
 
             </div>
+
+            {/* ======================================================== */}
+            {/* 4. BOTTOM SECTION: CTRL+N TICKET BANNER & EVENT PASS     */}
+            {/* ======================================================== */}
+            <div 
+              onClick={() => handleArticleClick(SHOWCASE_ARTICLES[7])}
+              className="group cursor-pointer border-b-2 border-[#1E293B] pb-3 my-3 hover:bg-black/5 p-3 -mx-3 transition-colors"
+            >
+              <div className="flex items-center justify-between text-xs font-mono text-[#0284C7] font-bold mb-1.5">
+                <div className="flex items-center gap-2">
+                  <Ticket className="w-4 h-4 text-[#0284C7]" />
+                  <span className="uppercase">{SHOWCASE_ARTICLES[7].kicker}</span>
+                </div>
+                <span className="bg-[#0284C7] text-white px-2 py-0.5 font-bold">★ OFFICIAL EVENT PASS</span>
+              </div>
+
+              <div className="w-full aspect-[20/6] bg-black border-2 border-[#1E293B] overflow-hidden mb-2 shadow-lg">
+                <img
+                  src={SHOWCASE_ARTICLES[7].mediaSrc}
+                  alt="CTRL+N Event Ticket Pass"
+                  className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                />
+              </div>
+
+              <div className="grid grid-cols-12 gap-6 items-center">
+                <div className="col-span-8 text-xs font-serif text-[#374151] leading-relaxed">
+                  <strong className="text-[#0284C7] font-mono font-bold">{SHOWCASE_ARTICLES[7].dateline}</strong>
+                  {SHOWCASE_ARTICLES[7].col1} {SHOWCASE_ARTICLES[7].col2}
+                </div>
+                <div className="col-span-4 flex flex-col items-end justify-center font-mono text-xs text-[#1E293B] font-bold border-l-2 border-[#1E293B] pl-4">
+                  <span>DATE: APRIL 27 // 10:00 PM</span>
+                  <span>VENUE: MAIN SOUND STAGE</span>
+                  <span className="text-[#0284C7]">STATUS: PASSES ACTIVE</span>
+                </div>
+              </div>
+            </div>
+
           </div>
 
           {/* Page 1 Footer Bar */}
@@ -922,20 +951,20 @@ export default function MediaPage() {
               
               {/* CINEMATIC WALK (EXACT 16:9 WIDESCREEN CINEMA FRAME) */}
               <div 
-                onClick={() => handleArticleClick(SHOWCASE_ARTICLES[7])}
+                onClick={() => handleArticleClick(SHOWCASE_ARTICLES[8])}
                 className="col-span-8 group cursor-pointer border-r-2 border-[#1E293B] pr-6 hover:bg-black/5 p-2 transition-colors flex flex-col justify-between"
               >
                 <div>
                   <div className="flex items-center justify-between text-xs font-mono text-[#0284C7] font-bold mb-1">
-                    <span>{SHOWCASE_ARTICLES[7].kicker}</span>
+                    <span>{SHOWCASE_ARTICLES[8].kicker}</span>
                     <span>4K CINEMA 16:9</span>
                   </div>
                   <h3 className="text-2xl font-black uppercase text-[#0A0E17] leading-tight mb-2 group-hover:text-[#0284C7]">
-                    {SHOWCASE_ARTICLES[7].title}
+                    {SHOWCASE_ARTICLES[8].title}
                   </h3>
                   <div className="relative w-full aspect-[16/9] bg-black border-2 border-[#1E293B] overflow-hidden mb-2 shadow-xl">
                     <video
-                      src={SHOWCASE_ARTICLES[7].mediaSrc}
+                      src={SHOWCASE_ARTICLES[8].mediaSrc}
                       muted
                       autoPlay
                       loop
@@ -948,28 +977,31 @@ export default function MediaPage() {
                     </div>
                   </div>
                   <p className="text-xs font-serif text-[#374151] leading-relaxed">
-                    <strong className="text-[#0284C7] font-mono font-bold">{SHOWCASE_ARTICLES[7].dateline}</strong>
-                    {SHOWCASE_ARTICLES[7].col1}
+                    <strong className="text-[#0284C7] font-mono font-bold">{SHOWCASE_ARTICLES[8].dateline}</strong>
+                    {SHOWCASE_ARTICLES[8].col1}
+                  </p>
+                  <p className="text-xs font-serif text-[#4B5563] mt-2 border-t border-[#1E293B]/20 pt-1">
+                    {SHOWCASE_ARTICLES[8].col2}
                   </p>
                 </div>
               </div>
 
               {/* 3D MOTION CGI (EXACT 9:16 PORTRAIT FRAME) */}
               <div 
-                onClick={() => handleArticleClick(SHOWCASE_ARTICLES[8])}
+                onClick={() => handleArticleClick(SHOWCASE_ARTICLES[9])}
                 className="col-span-4 group cursor-pointer hover:bg-black/5 p-2 transition-colors flex flex-col justify-between"
               >
                 <div>
                   <div className="flex items-center justify-between text-xs font-mono text-[#0284C7] font-bold mb-1">
-                    <span>{SHOWCASE_ARTICLES[8].kicker}</span>
+                    <span>{SHOWCASE_ARTICLES[9].kicker}</span>
                     <span>60 FPS</span>
                   </div>
                   <h3 className="text-lg font-black uppercase text-[#0A0E17] leading-tight mb-2 group-hover:text-[#0284C7]">
-                    {SHOWCASE_ARTICLES[8].title}
+                    {SHOWCASE_ARTICLES[9].title}
                   </h3>
                   <div className="relative w-full aspect-[9/16] max-h-[300px] bg-black border-2 border-[#1E293B] overflow-hidden mb-2 shadow-md">
                     <video
-                      src={SHOWCASE_ARTICLES[8].mediaSrc}
+                      src={SHOWCASE_ARTICLES[9].mediaSrc}
                       muted
                       autoPlay
                       loop
@@ -981,8 +1013,8 @@ export default function MediaPage() {
                     </div>
                   </div>
                   <p className="text-xs font-serif text-[#4B5563] leading-snug">
-                    <strong className="text-[#0284C7] font-mono font-bold">{SHOWCASE_ARTICLES[8].dateline}</strong>
-                    {SHOWCASE_ARTICLES[8].col1}
+                    <strong className="text-[#0284C7] font-mono font-bold">{SHOWCASE_ARTICLES[9].dateline}</strong>
+                    {SHOWCASE_ARTICLES[9].col1}
                   </p>
                 </div>
               </div>
@@ -990,56 +1022,35 @@ export default function MediaPage() {
             </div>
 
             {/* ======================================================== */}
-            {/* 2. MIDDLE ROW: EXACT 1:1 SQUARE BRAND DESIGN & UI ARCHIVE */}
+            {/* 2. MIDDLE ROW A: 1:1 SQUARE BRAND ARTWORK & POSTER ART   */}
             {/* ======================================================== */}
-            <div className="grid grid-cols-3 gap-6 my-2 border-b-2 border-[#1E293B] pb-4">
+            <div className="grid grid-cols-2 gap-8 my-2 border-b-2 border-[#1E293B] pb-4">
               
-              {/* AGENCY BRAND DESIGN (EXACT 1:1 SQUARE FRAME) */}
-              <div 
-                onClick={() => handleArticleClick(SHOWCASE_ARTICLES[9])}
-                className="group cursor-pointer border-r-2 border-[#1E293B] pr-4 hover:bg-black/5 p-2 transition-colors flex flex-col justify-between"
-              >
-                <div>
-                  <span className="text-[10px] font-mono text-[#0284C7] font-bold block mb-1 uppercase bg-[#E0F2FE] px-2 py-0.5 w-max">
-                    {SHOWCASE_ARTICLES[9].kicker}
-                  </span>
-                  <h4 className="text-base font-black uppercase text-[#0A0E17] mb-1.5 group-hover:text-[#0284C7]">
-                    {SHOWCASE_ARTICLES[9].title}
-                  </h4>
-                  <div className="w-full aspect-square bg-black border-2 border-[#1E293B] overflow-hidden flex items-center justify-center mb-1.5 shadow-md">
-                    <img
-                      src={SHOWCASE_ARTICLES[9].mediaSrc}
-                      alt="Brand Identity"
-                      className="w-full h-full object-cover group-hover:scale-105 transition-transform"
-                    />
-                  </div>
-                  <p className="text-xs font-serif text-[#4B5563] leading-tight">
-                    {SHOWCASE_ARTICLES[9].col1}
-                  </p>
-                </div>
-              </div>
-
-              {/* STUDIO SOFTWARE UI (EXACT 1:1 SQUARE FRAME) */}
+              {/* AGENCY BRAND DESIGN (EXACT 1:1 SQUARE FRAME - WE.PNG) */}
               <div 
                 onClick={() => handleArticleClick(SHOWCASE_ARTICLES[10])}
-                className="group cursor-pointer border-r-2 border-[#1E293B] pr-4 hover:bg-black/5 p-2 transition-colors flex flex-col justify-between"
+                className="group cursor-pointer border-r-2 border-[#1E293B] pr-6 hover:bg-black/5 p-2 transition-colors flex flex-col justify-between"
               >
                 <div>
                   <span className="text-[10px] font-mono text-[#0284C7] font-bold block mb-1 uppercase bg-[#E0F2FE] px-2 py-0.5 w-max">
                     {SHOWCASE_ARTICLES[10].kicker}
                   </span>
-                  <h4 className="text-base font-black uppercase text-[#0A0E17] mb-1.5 group-hover:text-[#0284C7]">
+                  <h4 className="text-lg font-black uppercase text-[#0A0E17] mb-2 group-hover:text-[#0284C7]">
                     {SHOWCASE_ARTICLES[10].title}
                   </h4>
-                  <div className="w-full aspect-square bg-black border-2 border-[#1E293B] overflow-hidden flex items-center justify-center mb-1.5 shadow-md">
+                  <div className="w-full aspect-square max-h-[300px] bg-black border-2 border-[#1E293B] overflow-hidden flex items-center justify-center mb-2 shadow-md">
                     <img
                       src={SHOWCASE_ARTICLES[10].mediaSrc}
-                      alt="Studio UI"
-                      className="w-full h-full object-cover group-hover:scale-105 transition-transform"
+                      alt="Brand Identity"
+                      className="w-full h-full object-contain p-2 group-hover:scale-105 transition-transform"
                     />
                   </div>
-                  <p className="text-xs font-serif text-[#4B5563] leading-tight">
+                  <p className="text-xs font-serif text-[#374151] leading-relaxed">
+                    <strong className="text-[#0284C7] font-mono font-bold">{SHOWCASE_ARTICLES[10].dateline}</strong>
                     {SHOWCASE_ARTICLES[10].col1}
+                  </p>
+                  <p className="text-xs font-serif text-[#4B5563] mt-1">
+                    {SHOWCASE_ARTICLES[10].col2}
                   </p>
                 </div>
               </div>
@@ -1053,18 +1064,22 @@ export default function MediaPage() {
                   <span className="text-[10px] font-mono text-[#0284C7] font-bold block mb-1 uppercase bg-[#E0F2FE] px-2 py-0.5 w-max">
                     {SHOWCASE_ARTICLES[11].kicker}
                   </span>
-                  <h4 className="text-base font-black uppercase text-[#0A0E17] mb-1.5 group-hover:text-[#0284C7]">
+                  <h4 className="text-lg font-black uppercase text-[#0A0E17] mb-2 group-hover:text-[#0284C7]">
                     {SHOWCASE_ARTICLES[11].title}
                   </h4>
-                  <div className="w-full aspect-square bg-black border-2 border-[#1E293B] overflow-hidden flex items-center justify-center mb-1.5 shadow-md">
+                  <div className="w-full aspect-square max-h-[300px] bg-black border-2 border-[#1E293B] overflow-hidden flex items-center justify-center mb-2 shadow-md">
                     <img
                       src={SHOWCASE_ARTICLES[11].mediaSrc}
                       alt="Graphic Poster"
-                      className="w-full h-full object-cover group-hover:scale-105 transition-transform"
+                      className="w-full h-full object-contain p-2 group-hover:scale-105 transition-transform"
                     />
                   </div>
-                  <p className="text-xs font-serif text-[#4B5563] leading-tight">
+                  <p className="text-xs font-serif text-[#374151] leading-relaxed">
+                    <strong className="text-[#0284C7] font-mono font-bold">{SHOWCASE_ARTICLES[11].dateline}</strong>
                     {SHOWCASE_ARTICLES[11].col1}
+                  </p>
+                  <p className="text-xs font-serif text-[#4B5563] mt-1">
+                    {SHOWCASE_ARTICLES[11].col2}
                   </p>
                 </div>
               </div>
@@ -1072,66 +1087,121 @@ export default function MediaPage() {
             </div>
 
             {/* ======================================================== */}
-            {/* 3. PANORAMA BANNER (EXACT ULTRA-WIDE 2000x647 BANNER)    */}
+            {/* 3. WEDDING COLLECTION ADVERTISEMENT (MOVED IN CTRL+N SPOT)*/}
             {/* ======================================================== */}
             <div 
               onClick={() => handleArticleClick(SHOWCASE_ARTICLES[12])}
-              className="group cursor-pointer border-b-2 border-[#1E293B] pb-3 my-2 hover:bg-black/5 p-2 transition-colors"
+              className="group cursor-pointer border-4 border-[#B45309] bg-[#FFFBEB] p-5 my-3 hover:bg-[#FEF3C7] transition-colors shadow-md"
             >
-              <div className="flex items-center justify-between text-[10px] font-mono text-[#0284C7] font-bold mb-1">
-                <span>{SHOWCASE_ARTICLES[12].kicker}</span>
-                <span>PANORAMA VIEW</span>
+              <div className="flex items-center justify-between border-b-2 border-[#B45309] pb-1.5 text-xs font-mono text-[#B45309] font-bold mb-3">
+                <div className="flex items-center gap-2">
+                  <Sparkles className="w-4 h-4 text-[#B45309]" />
+                  <span>★ OFFICIAL COMMERCIAL GAZETTE ADVERTISEMENT</span>
+                </div>
+                <span className="bg-[#B45309] text-white px-3 py-0.5 font-bold">COUPON: NAVRA25 (25% OFF)</span>
               </div>
-              <div className="w-full aspect-[20/6] bg-black border-2 border-[#1E293B] overflow-hidden mb-1 shadow-md">
-                <img
-                  src={SHOWCASE_ARTICLES[12].mediaSrc}
-                  alt="Panorama Banner"
-                  className="w-full h-full object-cover group-hover:scale-105 transition-transform"
-                />
-              </div>
-              <p className="text-[11px] font-mono text-[#4B5563] text-center italic">
-                {SHOWCASE_ARTICLES[12].caption}
-              </p>
-            </div>
-
-            {/* ======================================================== */}
-            {/* 4. LUXURY JEWELRY GAZETTE AD BOX (EXACT 1:1 SQUARE AD)   */}
-            {/* ======================================================== */}
-            <div 
-              onClick={() => handleArticleClick(SHOWCASE_ARTICLES[16])}
-              className="group cursor-pointer border-4 border-[#B45309] bg-[#FFFBEB] p-4 my-2 hover:bg-[#FEF3C7] transition-colors"
-            >
-              <div className="flex items-center justify-between border-b-2 border-[#B45309] pb-1.5 text-xs font-mono text-[#B45309] font-bold mb-2">
-                <span>★ OFFICIAL COMMERCIAL GAZETTE ADVERTISEMENT</span>
-                <span className="bg-[#B45309] text-white px-2 py-0.5">COUPON: NAVRA25</span>
-              </div>
-              <div className="grid grid-cols-12 gap-5 items-center">
-                <div className="col-span-4 aspect-square bg-black border-2 border-[#1E293B] overflow-hidden flex items-center justify-center shadow-md">
+              <div className="grid grid-cols-12 gap-6 items-center">
+                <div className="col-span-4 aspect-square bg-black border-2 border-[#1E293B] overflow-hidden flex items-center justify-center shadow-lg">
                   <img
-                    src={SHOWCASE_ARTICLES[16].mediaSrc}
-                    alt="Jewelry Ad"
-                    className="w-full h-full object-cover group-hover:scale-105 transition-transform"
+                    src={SHOWCASE_ARTICLES[12].mediaSrc}
+                    alt="Luxury Wedding Jewelry"
+                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
                   />
                 </div>
-                <div className="col-span-8 font-serif text-xs text-[#1F2937] leading-snug space-y-1.5">
-                  <h4 className="text-xl font-black uppercase text-[#92400E]">
-                    {SHOWCASE_ARTICLES[16].title}
+                <div className="col-span-8 font-serif text-sm text-[#1F2937] leading-relaxed space-y-2">
+                  <h4 className="text-2xl font-black uppercase text-[#92400E]">
+                    {SHOWCASE_ARTICLES[12].title}
                   </h4>
-                  <p className="text-xs text-[#4B5563]">
-                    {SHOWCASE_ARTICLES[16].col1}
+                  <p className="text-xs text-[#374151]">
+                    <strong className="text-[#B45309] font-mono">{SHOWCASE_ARTICLES[12].dateline}</strong>
+                    {SHOWCASE_ARTICLES[12].col1}
                   </p>
-                  <div className="text-xs font-mono text-[#B45309] font-bold pt-1">
-                    ▶ CLICK TO VIEW FULL COMMERCIAL POSTER
+                  <p className="text-xs text-[#4B5563]">
+                    {SHOWCASE_ARTICLES[12].col2}
+                  </p>
+                  <div className="pt-2 border-t border-[#B45309]/30 flex items-center justify-between text-xs font-mono text-[#B45309] font-bold">
+                    <span>▶ CLICK TO INSPECT COMMERCIAL CREATIVE</span>
+                    <span>OFFER VALID UNTIL 23RD NOV</span>
                   </div>
                 </div>
               </div>
             </div>
 
             {/* ======================================================== */}
-            {/* 5. BOTTOM: PRESS CLASSIFIEDS & INQUIRY BUREAU (SECTION C)*/}
+            {/* 4. CREATIVE LAB SUITE: CONCEPT ART, LOGO & POP ART       */}
             {/* ======================================================== */}
-            <div className="border-4 border-[#1E293B] bg-[#E2E8F0]/40 p-4 my-2">
-              <div className="flex items-center justify-between border-b-2 border-[#1E293B] pb-1.5 text-xs font-mono">
+            <div className="grid grid-cols-3 gap-6 my-2 border-b-2 border-[#1E293B] pb-3">
+              
+              {/* Concept 03 */}
+              <div 
+                onClick={() => handleArticleClick(SHOWCASE_ARTICLES[13])}
+                className="group cursor-pointer border-r-2 border-[#1E293B] pr-4 hover:bg-black/5 p-2 transition-colors flex flex-col justify-between"
+              >
+                <div>
+                  <span className="text-[9px] font-mono text-[#0284C7] font-bold block mb-1 uppercase bg-[#E0F2FE] px-1.5 py-0.5 w-max">
+                    {SHOWCASE_ARTICLES[13].kicker}
+                  </span>
+                  <h5 className="text-xs font-black uppercase text-[#0A0E17] leading-tight mb-1 group-hover:text-[#0284C7]">
+                    {SHOWCASE_ARTICLES[13].title}
+                  </h5>
+                  <div className="relative w-full aspect-[9/16] max-h-[140px] bg-black border-2 border-[#1E293B] overflow-hidden mb-1 shadow-sm">
+                    <img src={SHOWCASE_ARTICLES[13].mediaSrc} alt="Concept 03" className="w-full h-full object-cover p-0.5 group-hover:scale-105 transition-transform" />
+                  </div>
+                  <p className="text-[10px] font-serif text-[#4B5563] leading-tight">
+                    {SHOWCASE_ARTICLES[13].col1}
+                  </p>
+                </div>
+              </div>
+
+              {/* Logo Teaser */}
+              <div 
+                onClick={() => handleArticleClick(SHOWCASE_ARTICLES[14])}
+                className="group cursor-pointer border-r-2 border-[#1E293B] pr-4 hover:bg-black/5 p-2 transition-colors flex flex-col justify-between"
+              >
+                <div>
+                  <span className="text-[9px] font-mono text-[#0284C7] font-bold block mb-1 uppercase bg-[#E0F2FE] px-1.5 py-0.5 w-max">
+                    {SHOWCASE_ARTICLES[14].kicker}
+                  </span>
+                  <h5 className="text-xs font-black uppercase text-[#0A0E17] leading-tight mb-1 group-hover:text-[#0284C7]">
+                    {SHOWCASE_ARTICLES[14].title}
+                  </h5>
+                  <div className="relative w-full aspect-[9/16] max-h-[140px] bg-black border-2 border-[#1E293B] overflow-hidden mb-1 shadow-sm">
+                    <video src={SHOWCASE_ARTICLES[14].mediaSrc} muted autoPlay loop playsInline className="w-full h-full object-cover group-hover:scale-105 transition-transform" />
+                  </div>
+                  <p className="text-[10px] font-serif text-[#4B5563] leading-tight">
+                    {SHOWCASE_ARTICLES[14].col1}
+                  </p>
+                </div>
+              </div>
+
+              {/* Pop Art HaHa */}
+              <div 
+                onClick={() => handleArticleClick(SHOWCASE_ARTICLES[15])}
+                className="group cursor-pointer hover:bg-black/5 p-2 transition-colors flex flex-col justify-between"
+              >
+                <div>
+                  <span className="text-[9px] font-mono text-[#0284C7] font-bold block mb-1 uppercase bg-[#E0F2FE] px-1.5 py-0.5 w-max">
+                    {SHOWCASE_ARTICLES[15].kicker}
+                  </span>
+                  <h5 className="text-xs font-black uppercase text-[#0A0E17] leading-tight mb-1 group-hover:text-[#0284C7]">
+                    {SHOWCASE_ARTICLES[15].title}
+                  </h5>
+                  <div className="relative w-full aspect-[3/4] max-h-[140px] bg-black border-2 border-[#1E293B] overflow-hidden mb-1 shadow-sm">
+                    <img src={SHOWCASE_ARTICLES[15].mediaSrc} alt="HaHa" className="w-full h-full object-cover p-0.5 group-hover:scale-105 transition-transform" />
+                  </div>
+                  <p className="text-[10px] font-serif text-[#4B5563] leading-tight">
+                    {SHOWCASE_ARTICLES[15].col1}
+                  </p>
+                </div>
+              </div>
+
+            </div>
+
+            {/* ======================================================== */}
+            {/* 5. SECTION C (PRESS CLASSIFIEDS & DISPATCH BUREAU)       */}
+            {/* ======================================================== */}
+            <div className="border-4 border-[#1E293B] bg-[#E2E8F0]/40 p-5 my-3">
+              <div className="flex items-center justify-between border-b-2 border-[#1E293B] pb-2 text-xs font-mono">
                 <div className="flex items-center gap-2">
                   <span className="w-2.5 h-2.5 rounded-full bg-[#0284C7] animate-pulse" />
                   <span className="text-[#0A0E17] font-bold uppercase tracking-wider">
@@ -1141,14 +1211,14 @@ export default function MediaPage() {
                 <Barcode className="w-8 h-4 text-[#1E293B]" />
               </div>
 
-              <div className="grid grid-cols-12 gap-4 mt-2.5">
+              <div className="grid grid-cols-12 gap-6 mt-3">
                 <div className="col-span-5 flex flex-col justify-between text-xs font-mono">
                   <div>
-                    <h4 className="text-base font-black font-serif uppercase text-[#0A0E17] mb-1">
+                    <h4 className="text-lg font-black font-serif uppercase text-[#0A0E17] mb-1">
                       Commission a Media Production Sprint
                     </h4>
-                    <p className="text-[11px] font-serif text-[#374151] leading-relaxed mb-2">
-                      Direct inquiries for promotional reels, 3D CGI visuals, or complete brand identity systems.
+                    <p className="text-xs font-serif text-[#374151] leading-relaxed mb-3">
+                      Direct editorial inquiries for commercial reels, 3D CGI visuals, or complete brand identity systems.
                     </p>
                     <div className="space-y-1 text-xs">
                       <a href="mailto:harshjsh02@gmail.com" className="flex items-center gap-2 text-[#0284C7] font-bold hover:underline">
@@ -1163,46 +1233,47 @@ export default function MediaPage() {
                   </div>
                 </div>
 
-                <div className="col-span-7 bg-[#F4F1EA] border-2 border-[#1E293B] p-3 shadow-inner">
+                <div className="col-span-7 bg-[#F4F1EA] border-2 border-[#1E293B] p-4 shadow-inner">
                   {formSubmitted ? (
                     <div className="flex items-center justify-center p-3 text-center space-x-2 text-[#0284C7] font-mono text-xs font-bold">
                       <CheckCircle2 className="w-5 h-5 text-[#0284C7]" />
                       <span>DISPATCH TRANSMITTED // BUREAU WILL REPLY IN 24H</span>
                     </div>
                   ) : (
-                    <form onSubmit={handleContactSubmit} className="space-y-1.5 text-xs font-mono">
-                      <div className="grid grid-cols-2 gap-2">
+                    <form onSubmit={handleContactSubmit} className="space-y-2 text-xs font-mono">
+                      <div className="grid grid-cols-2 gap-2.5">
                         <input
                           required
                           type="text"
                           placeholder="Name / Organization"
-                          className="w-full px-2 py-1 bg-white border border-[#1E293B] text-[#111827] placeholder-[#6B7280] focus:outline-none focus:border-[#0284C7]"
+                          className="w-full px-2.5 py-1.5 bg-white border border-[#1E293B] text-[#111827] placeholder-[#6B7280] focus:outline-none focus:border-[#0284C7]"
                         />
                         <input
                           required
                           type="email"
                           placeholder="Email Address"
-                          className="w-full px-2 py-1 bg-white border border-[#1E293B] text-[#111827] placeholder-[#6B7280] focus:outline-none focus:border-[#0284C7]"
+                          className="w-full px-2.5 py-1.5 bg-white border border-[#1E293B] text-[#111827] placeholder-[#6B7280] focus:outline-none focus:border-[#0284C7]"
                         />
                       </div>
                       <input
                         required
                         type="text"
-                        placeholder="Project Brief & Requirements..."
-                        className="w-full px-2 py-1 bg-white border border-[#1E293B] text-[#111827] placeholder-[#6B7280] focus:outline-none focus:border-[#0284C7]"
+                        placeholder="Project Brief & Deliverable Requirements..."
+                        className="w-full px-2.5 py-1.5 bg-white border border-[#1E293B] text-[#111827] placeholder-[#6B7280] focus:outline-none focus:border-[#0284C7]"
                       />
                       <button
                         type="submit"
-                        className="w-full py-1.5 bg-[#0A0E17] text-white font-black uppercase tracking-wider text-[11px] hover:bg-[#0284C7] transition-colors flex items-center justify-center gap-1.5 cursor-pointer shadow-md"
+                        className="w-full py-2 bg-[#0A0E17] text-white font-black uppercase tracking-wider text-xs hover:bg-[#0284C7] transition-colors flex items-center justify-center gap-1.5 cursor-pointer shadow-md"
                       >
                         <span>Transmit Project Dispatch</span>
-                        <Send className="w-3 h-3" />
+                        <Send className="w-3.5 h-3.5" />
                       </button>
                     </form>
                   )}
                 </div>
               </div>
             </div>
+
           </div>
 
           {/* Page 2 Footer Bar */}
